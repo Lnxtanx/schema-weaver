@@ -260,4 +260,34 @@
     to { opacity: 1; transform: translateY(0); }
   }
   .animate-fade-up { animation: fade-up 0.7s ease-out backwards; }
+
+  /* Subtle conic-gradient ring for premium card edges */
+  .ring-conic {
+    position: relative;
+  }
+  .ring-conic::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+      from 180deg at 50% 50%,
+      oklch(0.72 0.17 162 / 60%),
+      oklch(0.65 0.18 250 / 60%),
+      oklch(0.72 0.17 162 / 60%)
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  /* Soft scroll glow for premium feel */
+  html { scroll-behavior: smooth; }
+  ::selection {
+    background: oklch(0.72 0.17 162 / 35%);
+    color: oklch(0.99 0.005 250);
+  }
 }

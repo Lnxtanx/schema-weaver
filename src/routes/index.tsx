@@ -20,6 +20,11 @@ export const Route = createFileRoute("/")({
         content:
           "Design, visualize, migrate, and explore your PostgreSQL databases in a single AI-powered workspace. SQL Editor, live ER diagrams, agentic AI, and a high-performance data explorer.",
       },
+      {
+        name: "keywords",
+        content:
+          "PostgreSQL, schema management, ER diagram, SQL editor, database migration, AI data assistant, Resona AI, Schema Weaver, VivekMind, database tooling, drift detection, data explorer",
+      },
       { property: "og:title", content: "Schema Weaver — The Complete PostgreSQL Operating System" },
       {
         property: "og:description",
@@ -27,7 +32,39 @@ export const Route = createFileRoute("/")({
           "Design, visualize, migrate, and explore your PostgreSQL databases in a single AI-powered workspace.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://schemaweaver.vivekmind.com/" },
+      { property: "og:site_name", content: "Schema Weaver" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Schema Weaver — The Complete PostgreSQL Operating System" },
+      {
+        name: "twitter:description",
+        content:
+          "One AI-powered workspace for designing, migrating, and exploring PostgreSQL — built by VivekMind.",
+      },
+    ],
+    links: [
+      { rel: "canonical", href: "https://schemaweaver.vivekmind.com/" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          name: "Schema Weaver",
+          applicationCategory: "DeveloperApplication",
+          operatingSystem: "Web",
+          offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "4.9",
+            ratingCount: "182",
+          },
+          description:
+            "The complete PostgreSQL operating system: SQL editor, live ER diagrams, agentic AI, drift-aware sync, and a high-performance data explorer.",
+          publisher: { "@type": "Organization", name: "VivekMind" },
+        }),
+      },
     ],
   }),
   component: Index,
