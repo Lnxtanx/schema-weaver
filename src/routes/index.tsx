@@ -1,26 +1,54 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/landing/Navbar";
+import { Hero } from "@/components/landing/Hero";
+import { SqlEditorSection } from "@/components/landing/SqlEditorSection";
+import { DataExplorerSection } from "@/components/landing/DataExplorerSection";
+import { ResonaSection } from "@/components/landing/ResonaSection";
+import { SyncSection } from "@/components/landing/SyncSection";
+import { CapabilitiesGrid } from "@/components/landing/CapabilitiesGrid";
+import { TeamSection } from "@/components/landing/TeamSection";
+import { Testimonials } from "@/components/landing/Testimonials";
+import { CtaSection } from "@/components/landing/CtaSection";
+import { Footer } from "@/components/landing/Footer";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Schema Weaver — The Complete PostgreSQL Operating System" },
+      {
+        name: "description",
+        content:
+          "Design, visualize, migrate, and explore your PostgreSQL databases in a single AI-powered workspace. SQL Editor, live ER diagrams, agentic AI, and a high-performance data explorer.",
+      },
+      { property: "og:title", content: "Schema Weaver — The Complete PostgreSQL Operating System" },
+      {
+        property: "og:description",
+        content:
+          "Design, visualize, migrate, and explore your PostgreSQL databases in a single AI-powered workspace.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background text-foreground">
+      <Navbar />
+      <main>
+        <Hero />
+        <SqlEditorSection />
+        <DataExplorerSection />
+        <ResonaSection />
+        <SyncSection />
+        <CapabilitiesGrid />
+        <TeamSection />
+        <Testimonials />
+        <CtaSection />
+      </main>
+      <Footer />
     </div>
   );
-}
-
-function Index() {
-  return <PlaceholderIndex />;
 }
