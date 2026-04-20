@@ -4,12 +4,11 @@ const cols = [
   {
     title: "Schema Weaver",
     links: [
-      ["Overview", "#"],
+      ["Overview", "/"],
       ["SQL Editor", "https://sql-editor.schemaweaver.vivekmind.com"],
       ["Data Explorer", "https://data-explorer.schemaweaver.vivekmind.com"],
-      ["Resona AI", "#resona-ai"],
-      ["Documentation", "#"],
-      ["Pricing", "#"],
+      ["Pricing", "/pricing"],
+      ["Documentation", "https://docs.schemaweaver.vivekmind.com"],
       ["Changelog", "#"],
     ],
   },
@@ -25,12 +24,11 @@ const cols = [
   {
     title: "Company",
     links: [
-      ["About", "#"],
+      ["About", "/about"],
+      ["Support", "/support"],
       ["Blog", "#"],
       ["Careers", "#"],
       ["Press kit", "#"],
-      ["Support", "#"],
-      ["Contact", "#"],
     ],
   },
   {
