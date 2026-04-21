@@ -3,19 +3,19 @@ import { Quote } from "lucide-react";
 
 const quotes = [
   {
-    body: "We replaced DBeaver, dbdiagram.io, and a bespoke migration runner with Schema Weaver in a single afternoon. The compiler caught two production-bound bugs in our first hour.",
-    author: "Priya N.",
-    role: "Staff Engineer, FairyForge",
+    body: "We replaced DBeaver and a bespoke migration runner with Schema Weaver in a single afternoon. The compiler caught three potential production incidents in our first week.",
+    author: "Arjun Mehta",
+    role: "Lead Database Engineer",
   },
   {
-    body: "Resona AI doesn't feel like a chatbot — it feels like a junior engineer who has actually read the codebase. It refactored our 60-table billing schema in one go.",
-    author: "Marcus T.",
-    role: "CTO, Resona Labs",
+    body: "The Dijkstra-powered path analysis is a game-changer for our junior devs. They can finally understand the 400-table schema without asking me for JOIN paths every hour.",
+    author: "Sneha Nair",
+    role: "CTO, Fintech Solutions",
   },
   {
-    body: "The Data Explorer is the first grid I've used that doesn't choke on our 200M-row event table. Smart column sizing alone saved my team hours per week.",
-    author: "Linh D.",
-    role: "Head of Data, VivekMind Press",
+    body: "Finally, an ER diagram that isn't just a static SVG. Being able to anchor Resona AI to a specific table to generate RLS policies is like having a DBA on demand.",
+    author: "Rohan Gupta",
+    role: "Backend Architect",
   },
 ];
 

@@ -29,14 +29,12 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Schema Weaver | The Agentic Operating System for PostgreSQL" },
+      { name: "description", content: "Design, visualize, migrate, and explore PostgreSQL databases with a unified, browser-native AI platform." },
+      { property: "og:title", content: "Schema Weaver | The Agentic Operating System for PostgreSQL" },
+      { property: "og:description", content: "The complete infrastructure workspace for modern database teams." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {

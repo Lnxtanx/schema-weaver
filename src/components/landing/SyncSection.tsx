@@ -6,26 +6,26 @@ const steps = [
   {
     icon: ArrowDownToLine,
     label: "Pull",
-    title: "Introspection",
-    body: "Import any existing live database into a Schema Weaver project with one click. Tables, indexes, functions, triggers, RLS policies — all reverse-engineered into clean, multi-file DDL you can actually review.",
+    title: "Two-Track Introspection",
+    body: "Schema Weaver uses a unique two-track engine: Atlas for structural objects and a custom behavioral layer for RLS policies, triggers, and functions — all reverse-engineered into modular DDL.",
   },
   {
-    icon: GitCompare,
-    label: "Diff",
-    title: "Drift Detection",
-    body: "Instantly see if someone made manual changes to production that aren't in your code. Side-by-side, syntax-highlighted, semantic diffs — not just text. Catch hot-fixes before they become incidents.",
+    icon: ShieldCheck,
+    label: "Protect",
+    title: "Advisory Locking",
+    body: "Every migration is protected by PostgreSQL advisory locks and drift detection. We fingerprint your database structural identity to ensure two people never deploy conflicting changes.",
   },
   {
     icon: ArrowUpFromLine,
     label: "Push",
-    title: "Safe Migrations",
-    body: "Diff your changes, preview the generated DDL, and apply with PostgreSQL advisory locking, transactional execution, and automatic rollback on error. Schema Weaver writes the migration; you stay in control of when it runs.",
+    title: "6-Phase Safe Mode",
+    body: "Change column types without downtime. Schema Weaver automates the shadow column, sync triggers, and 5,000-row batch backfilling required to migrate production data safely.",
   },
   {
-    icon: ShieldCheck,
+    icon: GitCompare,
     label: "Audit",
-    title: "Full History",
-    body: "Every pull, diff, and migration is recorded with author, timestamp, and resulting hash. Roll back to any point in your schema's history — production or local — without leaving the app.",
+    title: "Hash Chain Integrity",
+    body: "Every migration is recorded in a tamper-evident audit chain. Roll back any change with automatically generated reverse SQL, maintaining a perfect history of your schema's evolution.",
   },
 ];
 
@@ -42,7 +42,11 @@ export function SyncSection() {
       description="The bridge between your local code and live production. Schema Weaver manages the sync so you don't have to write the same migration glue for the hundredth time."
     >
       <div className="mt-16 grid lg:grid-cols-2 gap-10 items-start">
-        <ProductShot caption="connection-dashboard.tsx — production · drift detected" glow="emerald" />
+        <ProductShot
+          src="/images/sql-editor/connection-dashboard.png"
+          caption="connection-dashboard — production · drift detected"
+          glow="emerald"
+        />
 
         <ol className="space-y-5">
           {steps.map((s, i) => (

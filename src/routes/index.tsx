@@ -14,18 +14,18 @@ import { Footer } from "@/components/landing/Footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Schema Weaver — The Complete PostgreSQL Operating System" },
+      { title: "Schema Weaver | Spatial AI & Agentic SQL for PostgreSQL" },
       {
         name: "description",
         content:
-          "Design, visualize, migrate, and explore your PostgreSQL databases in a single AI-powered workspace. SQL Editor, live ER diagrams, agentic AI, and a high-performance data explorer.",
+          "Design, visualize, migrate, and explore your PostgreSQL databases with the world's first Spatial AI assistant. 20-layer schema compiler, Dijkstra-powered path analysis, and safe migrations.",
       },
       {
         name: "keywords",
         content:
-          "PostgreSQL, schema management, ER diagram, SQL editor, database migration, AI data assistant, Resona AI, Schema Weaver, VivekMind, database tooling, drift detection, data explorer",
+          "Spatial AI, Agentic SQL, PostgreSQL, schema management, ER diagram, SQL editor, database migration, AI database architect, Resona AI, Schema Weaver, Vivek.KY, drift detection, data explorer",
       },
-      { property: "og:title", content: "Schema Weaver — The Complete PostgreSQL Operating System" },
+      { property: "og:title", content: "Schema Weaver | Spatial AI & Agentic SQL for PostgreSQL" },
       {
         property: "og:description",
         content:

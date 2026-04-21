@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { PageHero } from "@/components/marketing/PageHero";
+import { FeedbackDialog } from "@/components/marketing/FeedbackDialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -59,21 +60,22 @@ const channels = [
     title: "Documentation",
     body: "Guides, references, and recipes for every feature in Schema Weaver.",
     cta: "Browse docs",
-    href: "#",
+    href: "https://docs.schemaweaver.vivekmind.com",
+    type: "link",
   },
   {
     icon: MessageSquare,
-    title: "Community",
-    body: "Ask questions and share patterns with thousands of database engineers.",
-    cta: "Join Discord",
-    href: "#",
+    title: "Product Feedback",
+    body: "Have an idea or something isn't working as expected? Tell us directly.",
+    cta: "Submit Feedback",
+    type: "feedback",
   },
   {
     icon: Github,
     title: "Bug reports",
-    body: "Found something off? File an issue on GitHub — we triage daily.",
-    cta: "Open issue",
-    href: "https://github.com",
+    body: "Found a technical issue? File a report and our team will triage it.",
+    cta: "Report Bug",
+    type: "bug",
   },
   {
     icon: LifeBuoy,
@@ -81,13 +83,14 @@ const channels = [
     body: "Team and Enterprise plans get priority email and a dedicated CSM.",
     cta: "See plans",
     href: "/pricing",
+    type: "link",
   },
 ];
 
 const slaCards = [
   { icon: Zap, label: "Free & Team", value: "< 24h email response, business days" },
   { icon: Shield, label: "Enterprise", value: "1h response, 99.99% uptime SLA" },
-  { icon: Mail, label: "Security", value: "security@schemaweaver.vivekmind.com" },
+  { icon: Mail, label: "Direct Support", value: "support@vivekmind.com" },
 ];
 
 function SupportPage() {
@@ -115,11 +118,11 @@ function SupportPage() {
               <span className="text-gradient-mesh">you need us.</span>
             </>
           }
-          description="Self-serve docs, an active community, and a real human team behind every Team and Enterprise plan. Pick the channel that fits."
+          description="Self-serve docs, an active community, and direct support for Team and Enterprise plans. Pick the channel that fits."
         />
 
         {/* Channels */}
-        <section className="pb-20 -mt-8">
+        <section className="pb-20 pt-4">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {channels.map((c, i) => (
@@ -134,14 +137,25 @@ function SupportPage() {
                   <h3 className="mt-5 font-display font-semibold text-lg">{c.title}</h3>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed flex-1">{c.body}</p>
                   <div className="mt-5">
-                    {c.href.startsWith("/") ? (
-                      <Button variant="glass" size="sm" asChild className="w-full">
-                        <Link to={c.href as "/pricing"}>{c.cta}</Link>
-                      </Button>
+                    {c.type === "link" ? (
+                      c.href!.startsWith("/") ? (
+                        <Button variant="glass" size="sm" asChild className="w-full">
+                          <Link to={c.href as "/pricing"}>{c.cta}</Link>
+                        </Button>
+                      ) : (
+                        <Button variant="glass" size="sm" asChild className="w-full">
+                          <a href={c.href} target="_blank" rel="noopener noreferrer">{c.cta}</a>
+                        </Button>
+                      )
                     ) : (
-                      <Button variant="glass" size="sm" asChild className="w-full">
-                        <a href={c.href}>{c.cta}</a>
-                      </Button>
+                      <FeedbackDialog 
+                        defaultType={c.type as "feedback" | "bug"}
+                        trigger={
+                          <Button variant="glass" size="sm" className="w-full">
+                            {c.cta}
+                          </Button>
+                        }
+                      />
                     )}
                   </div>
                 </div>
@@ -181,9 +195,9 @@ function SupportPage() {
                 Send us a message.
               </h2>
               <p className="mt-4 text-muted-foreground">
-                For sales, partnerships, or general questions. Security disclosures go to{" "}
-                <a href="mailto:security@schemaweaver.vivekmind.com" className="text-primary hover:underline">
-                  security@schemaweaver.vivekmind.com
+                For sales, partnerships, or general questions. Email us directly at{" "}
+                <a href="mailto:support@vivekmind.com" className="text-primary hover:underline">
+                  support@vivekmind.com
                 </a>
                 .
               </p>

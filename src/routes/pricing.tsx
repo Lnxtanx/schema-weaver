@@ -107,7 +107,7 @@ const tiers = [
       "Multi-file SQL editor",
       "Live ER diagram",
       "20-layer Schema Compiler",
-      "100 Resona AI messages / month",
+      "50 Resona AI messages / day",
     ],
   },
   {
@@ -124,7 +124,7 @@ const tiers = [
       "Real-time collaboration",
       "Role-based access (Owner / Editor / Viewer)",
       "Drift detection & safe migrations",
-      "Unlimited Resona AI usage",
+      "500 Resona AI messages / day",
       "Data masking for PII",
       "Audit log (90 days)",
     ],

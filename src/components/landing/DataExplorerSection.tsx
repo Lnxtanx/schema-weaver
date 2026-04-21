@@ -5,23 +5,23 @@ import { BarChart3, Download, Filter, Gauge, Table } from "lucide-react";
 const features = [
   {
     icon: Gauge,
-    title: "Smart Column Sizing",
-    body: "Canvas-measured, 95th-percentile sampling auto-fits columns to your actual data. No more manually dragging UUID columns wider, no more truncated JSON blobs. Open a 30-column table and start reading immediately.",
+    title: "Canvas-Based Smart Sizing",
+    body: "Pixel-perfect column widths calculated using the browser's Canvas API. We sample data at the 95th percentile to ensure your UUIDs, JSON blobs, and long text fields are perfectly readable without manual dragging.",
   },
   {
     icon: BarChart3,
-    title: "Column Statistics",
-    body: "Click any header to see null rates, distinct counts, min/max, and value distributions. Understand data quality and shape without writing a single COUNT(*), GROUP BY, or histogram query.",
+    title: "Live Column Statistics",
+    body: "Click any header to open a slide-over panel with real-time distributions, null rates, and distinct counts. Understand your data quality and skew without writing a single aggregate query.",
   },
   {
     icon: Filter,
-    title: "Server-Side Filtering",
-    body: "Filters compile to indexed SQL and run on the server — even on tables with hundreds of millions of rows. Stack equality, range, fuzzy, and JSON-path predicates without leaving the grid.",
+    title: "Cursor-Based Pagination",
+    body: "Browse millions of rows with zero lag. Our cursor-based engine ensures efficient forward navigation and infinite scrolling performance, even on the largest production tables.",
   },
   {
     icon: Download,
-    title: "Multi-Format Export",
-    body: "Download tables or entire schemas as CSV, JSON, NDJSON, Excel, Parquet, or SQL inserts. Bundle a whole database into a single ZIP archive for backups, hand-offs, or analyst sandboxes.",
+    title: "Full Database ZIP Export",
+    body: "Download individual tables or bundle your entire schema into a single ZIP archive. Supports CSV, JSON, NDJSON, Excel, and SQL inserts — perfect for hand-offs and local analysis.",
   },
 ];
 
@@ -42,7 +42,11 @@ export function DataExplorerSection() {
       description="A virtualized data grid that feels like a spreadsheet but performs like a database. Connect to your live PostgreSQL instances and browse millions of rows with zero lag — keyboard-first, pixel-precise, and beautiful in every theme."
     >
       <div className="mt-16 space-y-12">
-        <ProductShot caption="data-explorer.tsx — public.topic_goals · ~18.0K rows" glow="blue" />
+        <ProductShot
+          src="/images/data-explorer/data-explorer.png"
+          caption="data-explorer — public.customers · ~12.5K rows"
+          glow="blue"
+        />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {features.map((f) => (
@@ -62,10 +66,10 @@ export function DataExplorerSection() {
         {/* Stats banner */}
         <div className="rounded-2xl border border-border bg-card/60 p-8 sm:p-10 grid sm:grid-cols-4 gap-6 text-center">
           {[
-            ["100M+", "Rows scrolled smoothly"],
-            ["<16ms", "Frame budget"],
-            ["6", "Export formats"],
-            ["0", "Row-level data leaves your DB"],
+            ["Virtualized", "Handle massive tables"],
+            ["Canvas-API", "Smart column sizing"],
+            ["6+", "Export formats"],
+            ["Local", "No data leaves your DB"],
           ].map(([v, l]) => (
             <div key={l}>
               <div className="font-display text-3xl sm:text-4xl font-bold text-gradient-mesh">{v}</div>

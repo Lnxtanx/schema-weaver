@@ -5,10 +5,12 @@ export function ProductShot({
   caption,
   className,
   glow = "emerald",
+  src,
 }: {
   caption?: string;
   className?: string;
   glow?: "emerald" | "blue" | "none";
+  src?: string;
 }) {
   const glowClass =
     glow === "emerald"
@@ -32,7 +34,7 @@ export function ProductShot({
             </div>
           )}
         </div>
-        <img src={productImage} alt={caption ?? "Schema Weaver interface"} className="w-full h-auto block" />
+        <img src={src ?? productImage} alt={caption ?? "Schema Weaver interface"} className="w-full h-auto block" />
       </div>
     </div>
   );

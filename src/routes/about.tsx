@@ -8,18 +8,18 @@ import { ArrowRight, Compass, Heart, Lock, Sparkles, Telescope, Users } from "lu
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Schema Weaver | Built by VivekMind" },
+      { title: "About — Schema Weaver | Built by Vivek.KY" },
       {
         name: "description",
         content:
-          "Schema Weaver is built by VivekMind, a small team obsessed with database craft. Learn our story, principles, and the products we ship for technical teams.",
+          "Schema Weaver was founded by Vivek.KY in January 2026 to solve the technical friction of schema building in the AI era. Learn about our solo-mission to build the world's first browser-native PostgreSQL operating system.",
       },
-      { name: "keywords", content: "VivekMind, Schema Weaver about, database tools company, PostgreSQL platform team, FairyForge, Resona AI" },
-      { property: "og:title", content: "About Schema Weaver — Built by VivekMind" },
+      { name: "keywords", content: "Vivek.KY, Schema Weaver origin, database tools, PostgreSQL IDE, solo founder, VivekMind" },
+      { property: "og:title", content: "About Schema Weaver — Built by Vivek.KY" },
       {
         property: "og:description",
         content:
-          "Infrastructure for the next generation of technical teams. Meet the people behind Schema Weaver.",
+          "The story of a solo mission to rebuild database infrastructure for the browser.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://schemaweaver.vivekmind.com/about" },
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/about")({
       { name: "twitter:title", content: "About — Schema Weaver" },
       {
         name: "twitter:description",
-        content: "The team and principles behind Schema Weaver.",
+        content: "The story of Schema Weaver and its solo-founder mission.",
       },
     ],
     links: [
@@ -42,12 +42,12 @@ export const Route = createFileRoute("/about")({
           name: "VivekMind",
           url: "https://vivekmind.com",
           sameAs: [
-            "https://twitter.com/vivekmind",
-            "https://github.com/vivekmind",
-            "https://linkedin.com/company/vivekmind",
+            "https://twitter.com/Lnxtanx",
+            "https://github.com/lnxtanx",
+            "https://linkedin.com/company/schema-weaver",
           ],
           description:
-            "VivekMind builds infrastructure tools for the next generation of technical teams, including Schema Weaver, FairyForge, and Resona AI.",
+            "VivekMind is the engineering studio of Vivek.KY, focused on building agentic infrastructure for technical teams.",
         }),
       },
     ],
@@ -59,49 +59,30 @@ const principles = [
   {
     icon: Compass,
     title: "Respect the craft.",
-    body: "Databases are the most important system in your stack. Our tools should feel like instruments, not utilities.",
+    body: "Databases are the most important system in your stack. Our tools should feel like high-fidelity instruments, not utility apps.",
   },
   {
     icon: Lock,
-    title: "Privacy is non-negotiable.",
-    body: "Your row-level data never leaves your infrastructure. Schema-first analysis is our default, not an afterthought.",
+    title: "Privacy is the default.",
+    body: "Your row-level data never leaves your infrastructure. We reason over schema metadata, ensuring zero exfiltration of user data.",
   },
   {
     icon: Sparkles,
-    title: "Agentic, not gimmicky.",
-    body: "AI should plan, act, and observe — not just autocomplete. Resona AI ships work, not suggestions.",
+    title: "Agentic Loop architecture.",
+    body: "AI should plan, act, and observe — not just autocomplete. Resona AI uses a ReAct loop to perform surgical multi-file edits.",
   },
   {
     icon: Heart,
-    title: "Indie energy. Enterprise discipline.",
-    body: "Small team, weekly releases, deeply considered defaults. We ship like a startup and review like a bank.",
+    title: "Browser-native focus.",
+    body: "Desktop apps are too heavy; static charts are too slow. We build for the browser to deliver zero-latency, collaborative engineering.",
   },
 ];
 
 const milestones = [
-  { year: "2023", text: "VivekMind founded. First prototype of Schema Weaver compiles its first 10-table schema." },
-  { year: "2024", text: "Public beta of SQL Editor + ER Diagram. Resona AI v1 released as a schema co-pilot." },
-  { year: "2025", text: "Data Explorer launches with smart column sizing and natural-language SQL via Resona v2." },
-  { year: "Today", text: "Trusted by hundreds of teams to design, sync, and explore PostgreSQL safely every day." },
-];
-
-const products = [
-  {
-    name: "Schema Weaver",
-    body: "The complete PostgreSQL operating system: SQL Editor, live ER diagrams, agentic AI, and a high-performance Data Explorer.",
-  },
-  {
-    name: "FairyForge",
-    body: "A magical workspace for designing and shipping interactive learning experiences for technical content.",
-  },
-  {
-    name: "Resona AI",
-    body: "Our agentic AI research lab. Resona powers the co-pilot in Schema Weaver and ships open research on agent design.",
-  },
-  {
-    name: "VivekMind Press",
-    body: "Long-form writing on database design, distributed systems, and the craft of building technical tools.",
-  },
+  { year: "Jan 3, 2026", text: "Project started as a solo mission by Vivek.KY. After facing friction with existing schema builders, the first lines of the browser-native parser were written." },
+  { year: "Feb 2026", text: "The 20-layer Schema Compiler prototype is completed, capable of A-F grading and modular DDL analysis." },
+  { year: "Mar 2026", text: "Resona AI integrated with Spatial intelligence, introducing anchored Table and Group nodes directly on the ER canvas." },
+  { year: "Today", text: "Schema Weaver evolves into a comprehensive PostgreSQL Operating System, used by engineers to design and explore production schemas." },
 ];
 
 function AboutPage() {
@@ -110,52 +91,65 @@ function AboutPage() {
       <Navbar />
       <main>
         <PageHero
-          eyebrow="About VivekMind"
+          eyebrow="The Origin Story"
           title={
             <>
-              Tools that respect{" "}
-              <span className="text-gradient-mesh">your craft.</span>
+              Built for the browser.
+              <br />
+              <span className="text-gradient-mesh">Made for the AI era.</span>
             </>
           }
-          description="We're a small team building infrastructure for the next generation of technical teams. Schema Weaver is our flagship — a single workspace for the entire PostgreSQL lifecycle."
+          description="Schema Weaver was born in January 2026 out of a technical frustration. Existing database clients were too heavy, visualization tools were too static, and nothing was built for the speed of agentic AI."
         >
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Button variant="hero" size="xl" asChild>
-              <Link to="/pricing">
-                See pricing <ArrowRight className="w-4 h-4" />
-              </Link>
+              <a href="https://sql-editor.schemaweaver.vivekmind.com">
+                Launch SQL Editor <ArrowRight className="w-4 h-4" />
+              </a>
             </Button>
             <Button variant="glass" size="xl" asChild>
-              <Link to="/support">Talk to the team</Link>
+              <a href="mailto:vivek@vivekmind.com">Contact Founder</a>
             </Button>
           </div>
         </PageHero>
 
-        {/* Mission */}
+        {/* Story */}
         <section className="py-24">
           <div className="max-w-4xl mx-auto px-6">
             <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-primary">
               <Telescope className="w-3 h-3" />
-              Our mission
+              The Mission
             </div>
-            <p className="mt-6 font-display text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-tight text-foreground/90">
-              Database tooling has been stuck in 2008 for too long. We're rebuilding it from
-              first principles —{" "}
-              <span className="text-gradient-mesh">opinionated, AI-native, and made for the way modern teams actually ship.</span>
-            </p>
+            <div className="mt-8 space-y-6 text-lg sm:text-xl text-muted-foreground leading-relaxed">
+              <p>
+                In early 2026, building complex PostgreSQL schemas still felt like an exercise in friction. 
+                Existing desktop clients like <span className="text-foreground font-medium">DBeaver</span> were powerful but heavy, 
+                and visualization tools like <span className="text-foreground font-medium">dbdiagram.io</span> were static drawings 
+                disconnected from live production reality.
+              </p>
+              <p>
+                Vivek.KY started Schema Weaver on <span className="text-foreground font-medium">January 3rd, 2026</span> as a solo mission 
+                to build what was missing: a "PostgreSQL Operating System" that runs entirely in the browser, 
+                understands the graph-theory of your database, and integrates agentic AI as a core architectural layer.
+              </p>
+              <p className="text-foreground font-medium">
+                We believe database tools should be as modular as your code, as fast as your IDE, 
+                and as intelligent as your best engineer.
+              </p>
+            </div>
           </div>
         </section>
 
         {/* Principles */}
-        <section className="py-24 border-t border-border">
+        <section className="py-24 border-t border-border bg-muted/10">
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-primary">
                 <span className="w-6 h-px bg-primary" />
-                Principles
+                Engineering Values
               </div>
               <h2 className="mt-4 font-display font-bold text-4xl sm:text-5xl tracking-tight">
-                What we believe.
+                Our core principles.
               </h2>
             </div>
             <div className="mt-14 grid sm:grid-cols-2 gap-px rounded-2xl overflow-hidden border border-border bg-border">
@@ -177,7 +171,7 @@ function AboutPage() {
           <div className="max-w-4xl mx-auto px-6">
             <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-primary">
               <span className="w-6 h-px bg-primary" />
-              Timeline
+              Project Evolution
             </div>
             <h2 className="mt-4 font-display font-bold text-4xl sm:text-5xl tracking-tight">
               A short history.
@@ -193,32 +187,6 @@ function AboutPage() {
                 </li>
               ))}
             </ol>
-          </div>
-        </section>
-
-        {/* Products */}
-        <section className="py-24 border-t border-border">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-primary">
-                <Users className="w-3 h-3" />
-                The VivekMind family
-              </div>
-              <h2 className="mt-4 font-display font-bold text-4xl sm:text-5xl tracking-tight">
-                More than one product.
-              </h2>
-              <p className="mt-4 text-muted-foreground">
-                Schema Weaver is part of a wider ecosystem of tools and research from VivekMind.
-              </p>
-            </div>
-            <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {products.map((p) => (
-                <div key={p.name} className="rounded-xl border border-border bg-card p-6 hover:border-primary/40 transition-colors">
-                  <h3 className="font-display font-semibold text-lg">{p.name}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.body}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
       </main>

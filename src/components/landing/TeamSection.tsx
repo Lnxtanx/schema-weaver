@@ -65,7 +65,11 @@ export function TeamSection() {
         </div>
 
         <div className="order-1 lg:order-2">
-          <ProductShot caption="team-collaboration.tsx — workspace · 12 members" glow="blue" />
+          <ProductShot
+            src="/images/sql-editor/team-collaboration.png"
+            caption="team-collaboration — workspace · 12 members"
+            glow="blue"
+          />
 
           <div className="mt-6 grid grid-cols-3 gap-3">
             <Mini icon={Users} label="Roles" value="4" />

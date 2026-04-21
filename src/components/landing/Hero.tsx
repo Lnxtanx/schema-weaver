@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, BookOpen, Sparkles } from "lucide-react";
-import productImage from "@/assets/product-placeholder.png";
+import { ArrowRight, BookOpen } from "lucide-react";
 
 export function Hero() {
   return (
@@ -13,8 +12,8 @@ export function Hero() {
           <div className="inline-flex items-center gap-2 bg-glass border border-border rounded-full px-4 py-1.5 text-xs">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse-glow" />
             <span className="text-muted-foreground">Now with</span>
-            <Sparkles className="w-3 h-3 text-primary" />
-            <span className="text-foreground font-medium">Resona AI v2 — Agentic Schema & Data Co-pilot</span>
+            <img src="/resona.png" alt="" className="w-3.5 h-3.5 object-contain" />
+            <span className="text-foreground font-medium">Resona AI — Agentic Schema & Data Co-pilot</span>
           </div>
         </div>
 
@@ -85,7 +84,7 @@ export function Hero() {
               </div>
             </div>
             <img
-              src={productImage}
+              src="/images/sql-editor/sql-editor.png"
               alt="Schema Weaver SQL Editor with live ER Diagram"
               className="w-full h-auto block"
             />
@@ -94,12 +93,11 @@ export function Hero() {
 
         {/* Trust strip */}
         <div className="mt-16 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-xs uppercase tracking-widest text-muted-foreground/70">
-          <span>Trusted by teams shipping at</span>
-          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">FairyForge</span>
-          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">VivekMind Press</span>
-          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">Resona Labs</span>
-          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">Cloop</span>
-          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">+ 40 more</span>
+          <span>Built for modern database teams</span>
+          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">Privacy-First</span>
+          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">Zero-Exfiltration</span>
+          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">Local Analysis</span>
+          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">VivekMind Ecosystem</span>
         </div>
       </div>
     </section>

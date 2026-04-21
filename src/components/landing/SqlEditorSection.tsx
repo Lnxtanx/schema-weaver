@@ -11,20 +11,21 @@ const features = [
   },
   {
     icon: Network,
-    title: "Live ER Diagram",
+    title: "Graph Intelligence",
     body: "Not a static drawing. An interactive, auto-updating graph of every relationship in your database. Click any table to edit it inline, drag to re-cluster, color-code by namespace, and collapse subsystems. Foreign keys animate as you type — your schema is finally something you can see.",
     caption: "er-diagram.tsx — schema.public",
   },
   {
     icon: GitBranch,
-    title: "Path Analysis",
-    body: "Instantly find the shortest JOIN path between any two tables in your schema, no matter how many bridge tables sit in between. Schema Weaver renders the resolved path, generates the SQL, and highlights the route on the diagram — eliminating an entire category of guesswork.",
+    title: "Dijkstra-Powered Path Analysis",
+    body: "Instantly find the shortest JOIN path between any two tables in your schema. Use BFS for fewest hops or Dijkstra for weighted shortest paths that prioritize high-confidence relationships. Schema Weaver renders the resolved path, generates the SQL, and highlights the route on the diagram.",
     caption: "path-analysis.tsx — orders → customers",
+    image: "/images/sql-editor/path-analysis.png"
   },
   {
     icon: Activity,
-    title: "Multi-File DDL Projects",
-    body: "Stop maintaining 5,000-line schema.sql files. Organize tables, functions, triggers, and policies into folders just like a TypeScript codebase. Cross-file references are resolved by the compiler and rendered live in the graph.",
+    title: "The Merge Model",
+    body: "Stop maintaining 5,000-line schema.sql files. Organize tables, functions, and policies into folders just like a TypeScript codebase. Schema Weaver's local-first compiler resolves cross-file references in real-time, feeding a unified dependency graph.",
     caption: "files/users/schema.sql",
   },
 ];
@@ -43,14 +44,26 @@ export function SqlEditorSection() {
       }
       description="A professional-grade IDE purpose-built for PostgreSQL. Organize your DDL into projects, folders, and files. Catch entire classes of bugs before a single migration runs. Modular, maintainable, and finally — reviewable."
     >
-      <div className="mt-16 grid lg:grid-cols-5 gap-8 items-start">
+      <div className="mt-16 grid lg:grid-cols-5 gap-12 items-start">
         {/* Sticky main shot */}
-        <div className="lg:col-span-3 lg:sticky lg:top-24">
-          <ProductShot caption="sql-editor.tsx — main project view" glow="emerald" />
+        <div className="lg:col-span-3 lg:sticky lg:top-24 space-y-8">
+          <ProductShot
+            src="/images/sql-editor/sql-editor.png"
+            caption="sql-editor — main project view"
+            glow="emerald"
+          />
           <div className="mt-6 grid grid-cols-3 gap-3">
-            <Stat label="DDL files" value="∞" />
             <Stat label="Analysis layers" value="20" />
-            <Stat label="Avg compile" value="<40ms" />
+            <Stat label="Avg compile" value="<50ms" />
+            <Stat label="PostgreSQL" value="12+" />
+          </div>
+          
+          <div className="hidden lg:block pt-8 border-t border-border">
+            <ProductShot
+              src="/images/sql-editor/path-analysis.png"
+              caption="path-analysis — finding @orders → @payments path"
+              glow="none"
+            />
           </div>
         </div>
 
@@ -70,10 +83,12 @@ export function SqlEditorSection() {
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                     {f.body}
                   </p>
-                  <code className="inline-block mt-3 text-[11px] font-mono text-primary/80 bg-primary/5 border border-primary/20 rounded px-2 py-0.5">
-                    <Sparkles className="w-3 h-3 inline mr-1" />
-                    {f.caption}
-                  </code>
+                  {f.caption && (
+                    <code className="inline-block mt-3 text-[11px] font-mono text-primary/80 bg-primary/5 border border-primary/20 rounded px-2 py-0.5">
+                      <Sparkles className="w-3 h-3 inline mr-1" />
+                      {f.caption}
+                    </code>
+                  )}
                 </div>
               </div>
             </article>

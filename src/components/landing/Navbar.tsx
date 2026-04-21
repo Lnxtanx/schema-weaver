@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { Database } from "lucide-react";
+import { FeedbackDialog } from "@/components/marketing/FeedbackDialog";
+import { MessageSquare } from "lucide-react";
 
 export function Navbar() {
   return (
@@ -9,16 +10,20 @@ export function Navbar() {
         <Link to="/" className="flex items-center gap-2 group">
           <div
             className="w-8 h-8 rounded-lg flex items-center justify-center transition-transform group-hover:scale-105"
-            style={{ background: "var(--gradient-mesh)" }}
           >
-            <Database className="w-4 h-4 text-primary-foreground" strokeWidth={2.5} />
+            <img src="/resona.png" alt="Schema Weaver" className="w-5 h-5 object-contain" />
           </div>
           <span className="font-display font-semibold text-lg tracking-tight">
             Schema Weaver
           </span>
-          <span className="hidden sm:inline text-xs text-muted-foreground border border-border rounded-md px-1.5 py-0.5 ml-1">
+          <a 
+            href="https://vivekmind.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hidden sm:inline text-xs text-muted-foreground border border-border rounded-md px-1.5 py-0.5 ml-1 hover:text-primary hover:border-primary/40 transition-all"
+          >
             by VivekMind
-          </span>
+          </a>
         </Link>
 
         <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
@@ -60,6 +65,14 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
+          <FeedbackDialog 
+            trigger={
+              <Button variant="ghost" size="sm" className="hidden lg:flex gap-2">
+                <MessageSquare className="w-4 h-4" />
+                Feedback
+              </Button>
+            }
+          />
           <Button variant="ghost" size="sm" asChild className="hidden sm:inline-flex">
             <a href="https://sql-editor.schemaweaver.vivekmind.com">Sign in</a>
           </Button>

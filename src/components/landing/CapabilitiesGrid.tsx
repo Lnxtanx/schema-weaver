@@ -3,13 +3,13 @@ import { Brain, Database, EyeOff, GitMerge, Network, Users, Workflow, Zap } from
 
 const caps = [
   { icon: Database, title: "Database Sync", body: "Pull live schema, diff project vs production, apply migrations with advisory locking and drift detection." },
-  { icon: Brain, title: "Agentic AI", body: "Resona AI co-pilot for both schema design (DDL) and data analysis (SQL generation, charts, summaries)." },
-  { icon: Network, title: "Visualization", body: "Auto-generated ER diagrams with path analysis, schema clustering, and namespace color-coding." },
+  { icon: Brain, title: "Spatial AI", body: "Table-anchored, Group-aware, and Global AI co-pilots for schema design and surgical multi-file edits." },
+  { icon: Network, title: "Graph Intelligence", body: "Dijkstra-powered path analysis, schema clustering, and namespace color-coding for massive schemas." },
+  { icon: Zap, title: "Safe Migrations", body: "Automated 6-phase column type changes with shadow columns and sync triggers to avoid production downtime." },
   { icon: Users, title: "Team Collaboration", body: "Cloud projects, role-based access (Owner/Editor/Viewer), and shared connections — never share credentials again." },
   { icon: EyeOff, title: "Data Masking", body: "Automatic PII redaction (emails, phones, credit cards) in the Data Explorer for non-admin roles." },
-  { icon: Workflow, title: "Multi-File DDL", body: "Organize tables, functions, and policies into folders. Cross-file references resolved by the compiler in real time." },
-  { icon: GitMerge, title: "Git-Aware", body: "Sync your project to a Git remote. Branch your schema, propose changes via PR, and merge with confidence." },
-  { icon: Zap, title: "20-Layer Compiler", body: "Static analysis catches missing indexes, circular FKs, naming violations, and orphan tables before they ship." },
+  { icon: Workflow, title: "Multi-File DDL", body: "The Merge Model resolves cross-file references in real-time, allowing modular, maintainable schema projects." },
+  { icon: GitMerge, title: "Tamper-Evident", body: "Immutable version history and cryptographic hash chains ensure a verifiable audit trail of every schema change." },
 ];
 
 export function CapabilitiesGrid() {

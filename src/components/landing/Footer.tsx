@@ -7,38 +7,23 @@ const cols = [
       ["Overview", "/"],
       ["SQL Editor", "https://sql-editor.schemaweaver.vivekmind.com"],
       ["Data Explorer", "https://data-explorer.schemaweaver.vivekmind.com"],
-      ["Pricing", "/pricing"],
       ["Documentation", "https://docs.schemaweaver.vivekmind.com"],
-      ["Changelog", "#"],
-    ],
-  },
-  {
-    title: "More Products",
-    links: [
-      ["FairyForge", "#"],
-      ["VivekMind Press", "#"],
-      ["Resona AI Research", "#"],
-      ["Cloop", "#"],
+      ["Pricing", "/pricing"],
     ],
   },
   {
     title: "Company",
     links: [
+      ["VivekMind Home", "https://vivekmind.com"],
       ["About", "/about"],
       ["Support", "/support"],
-      ["Blog", "#"],
-      ["Careers", "#"],
-      ["Press kit", "#"],
     ],
   },
   {
     title: "Legal",
     links: [
-      ["Privacy", "#"],
-      ["Terms", "#"],
-      ["Security", "#"],
-      ["DPA", "#"],
-      ["Subprocessors", "#"],
+      ["Privacy Policy", "https://vivekmind.com/privacy"],
+      ["Terms of Service", "https://vivekmind.com/terms"],
     ],
   },
 ];
@@ -48,26 +33,28 @@ export function Footer() {
     <footer className="border-t border-border bg-muted/30">
       <div className="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-5 gap-10">
         {/* Brand col */}
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-2">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: "var(--gradient-mesh)" }}>
-              <Database className="w-4 h-4 text-primary-foreground" strokeWidth={2.5} />
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+              <img src="/resona.png" alt="Schema Weaver" className="w-5 h-5 object-contain" />
             </div>
-            <span className="font-display font-semibold text-lg">VivekMind</span>
+            <span className="font-display font-semibold text-lg text-gradient-mesh">Schema Weaver</span>
           </div>
-          <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-            Infrastructure for the next generation of technical teams. Building tools that respect
-            your craft, your data, and your time.
+          <p className="mt-4 text-sm text-muted-foreground leading-relaxed max-w-xs">
+            The Agentic Operating System for PostgreSQL. Infrastructure for the next generation of technical teams.
           </p>
+          <div className="mt-2 text-[10px] uppercase tracking-widest text-muted-foreground/60 font-semibold">
+            Built by VivekMind
+          </div>
 
           <div className="mt-6 flex items-center gap-3">
-            <a href="#" aria-label="Twitter" className="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors">
+            <a href="https://twitter.com/Lnxtanx" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors">
               <Twitter className="w-4 h-4" />
             </a>
-            <a href="#" aria-label="GitHub" className="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors">
+            <a href="https://github.com/lnxtanx" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors">
               <Github className="w-4 h-4" />
             </a>
-            <a href="#" aria-label="LinkedIn" className="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors">
+            <a href="https://linkedin.com/company/schema-weaver" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors">
               <Linkedin className="w-4 h-4" />
             </a>
           </div>
@@ -94,10 +81,6 @@ export function Footer() {
       <div className="border-t border-border">
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
           <div>© {new Date().getFullYear()} VivekMind, Inc. All rights reserved.</div>
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse-glow" />
-            All systems operational
-          </div>
         </div>
       </div>
     </footer>
