@@ -9,19 +9,19 @@ export function ResonaSection() {
       eyebrow="Agentic & Spatial AI"
       title={
         <>
-          Meet Resona.
+          Resona AI.
           <br />
-          <span className="text-gradient-mesh">Your Spatial AI Database Architect.</span>
+          <span className="text-gradient-mesh">The Spatial AI Database Architect.</span>
         </>
       }
-      description="Resona isn't just a sidebar chatbot. It is the world's first Spatial AI for databases — anchored directly to your schema nodes. It plans, executes tools, and writes surgical multi-file edits across your entire project."
+      description="Resona isn't a chatbot — it's the world's first Spatial AI Database Agent. Anchored directly to your ER diagram nodes, it executes 55+ tools to perform surgical multi-file edits across your entire project."
     >
       <div className="mt-16 grid lg:grid-cols-3 gap-6">
         {/* Card 1 — Table AI */}
         <div className="rounded-2xl border border-border bg-card overflow-hidden flex flex-col">
           <ProductShot
             src="/images/sql-editor/resona-ai-table.png"
-            caption="Table AI — anchored to @notifications"
+            caption="Table AI — Anchored PostgreSQL Agent Context"
             glow="emerald"
           />
           <div className="p-6 flex-1">

@@ -14,32 +14,32 @@ import { Footer } from "@/components/landing/Footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Schema Weaver | Spatial AI & Agentic SQL for PostgreSQL" },
+      { title: "PostgreSQL SQL Editor & ER Diagram Tool | Resona AI - Schema Weaver (SW)" },
       {
         name: "description",
         content:
-          "Design, visualize, migrate, and explore your PostgreSQL databases with the world's first Spatial AI assistant. 20-layer schema compiler, Dijkstra-powered path analysis, and safe migrations.",
+          "Design and visualize PostgreSQL with Schema Weaver (SW). The world's first Spatial AI assistant for database architecture. Features modular SQL editing, Dijkstra-powered path analysis, and drift-aware migrations.",
       },
       {
         name: "keywords",
         content:
-          "Spatial AI, Agentic SQL, PostgreSQL, schema management, ER diagram, SQL editor, database migration, AI database architect, Resona AI, Schema Weaver, Vivek.KY, drift detection, data explorer",
+          "PostgreSQL SQL Editor, schemaweaver, ER diagram tool, agentic SQL, spatial AI, database migration tool, postgres visualization, DDL editor, sw-db, database AI agent, Resona AI",
       },
-      { property: "og:title", content: "Schema Weaver | Spatial AI & Agentic SQL for PostgreSQL" },
+      { property: "og:title", content: "PostgreSQL SQL Editor & ER Diagram Tool | Resona AI - Schema Weaver" },
       {
         property: "og:description",
         content:
-          "Design, visualize, migrate, and explore your PostgreSQL databases in a single AI-powered workspace.",
+          "A unified infrastructure workspace for designing, visualizing, and exploring PostgreSQL databases. Built for the AI era.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://schemaweaver.vivekmind.com/" },
-      { property: "og:site_name", content: "Schema Weaver" },
+      { property: "og:site_name", content: "Schema Weaver (SW)" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Schema Weaver — The Complete PostgreSQL Operating System" },
+      { name: "twitter:title", content: "PostgreSQL SQL Editor & ER Diagram Tool | Resona AI" },
       {
         name: "twitter:description",
         content:
-          "One AI-powered workspace for designing, migrating, and exploring PostgreSQL — built by VivekMind.",
+          "The agentic operating system for PostgreSQL. Modular schema design and Dijkstra-powered visualization — built by VivekMind.",
       },
     ],
     links: [
@@ -51,7 +51,8 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "SoftwareApplication",
-          name: "Schema Weaver",
+          name: "Schema Weaver (SW)",
+          alternateName: "schemaweaver",
           applicationCategory: "DeveloperApplication",
           operatingSystem: "Web",
           offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
@@ -61,8 +62,20 @@ export const Route = createFileRoute("/")({
             ratingCount: "182",
           },
           description:
-            "The complete PostgreSQL operating system: SQL editor, live ER diagrams, agentic AI, drift-aware sync, and a high-performance data explorer.",
-          publisher: { "@type": "Organization", name: "VivekMind" },
+            "A browser-native PostgreSQL operating system for schema engineering. Includes modular DDL editor, live ER diagrams with Dijkstra-powered path analysis, and Resona AI for spatial database architecture.",
+          publisher: { 
+            "@type": "Organization", 
+            name: "VivekMind",
+            url: "https://vivekmind.com"
+          },
+          featureList: [
+            "Modular PostgreSQL SQL Editor",
+            "Live Interactive ER Diagrams",
+            "Resona Spatial AI Assistant",
+            "Dijkstra-powered Path Analysis",
+            "Drift-aware Database Migrations",
+            "20-layer Schema Compiler"
+          ]
         }),
       },
     ],

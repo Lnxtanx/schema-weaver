@@ -32,19 +32,19 @@ export function DataExplorerSection() {
       eyebrow="The Insights Engine"
       title={
         <>
-          Explore your data
+          A High-Performance
           <br />
           <span style={{ background: "var(--gradient-blue)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>
-            at the speed of thought.
+            PostgreSQL Data Workbench.
           </span>
         </>
       }
-      description="A virtualized data grid that feels like a spreadsheet but performs like a database. Connect to your live PostgreSQL instances and browse millions of rows with zero lag — keyboard-first, pixel-precise, and beautiful in every theme."
+      description="A virtualized live table browser that feels like a spreadsheet but performs like a database. Connect to any PostgreSQL instance and explore millions of rows with zero lag — keyboard-first and pixel-precise."
     >
       <div className="mt-16 space-y-12">
         <ProductShot
           src="/images/data-explorer/data-explorer.png"
-          caption="data-explorer — public.customers · ~12.5K rows"
+          caption="SW Data Explorer — Live PostgreSQL Table Browser"
           glow="blue"
         />
 

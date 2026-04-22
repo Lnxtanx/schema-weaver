@@ -61,7 +61,7 @@ export function SqlEditorSection() {
           <div className="hidden lg:block pt-8 border-t border-border">
             <ProductShot
               src="/images/sql-editor/path-analysis.png"
-              caption="path-analysis — finding @orders → @payments path"
+              caption="Path Analysis — Dijkstra-Powered PostgreSQL Visualization"
               glow="none"
             />
           </div>
