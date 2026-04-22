@@ -29,6 +29,13 @@ export function Navbar() {
         Pricing
       </Link>
       <Link
+        to="/compare"
+        activeProps={{ className: "text-foreground" }}
+        className="hover:text-foreground transition-colors"
+      >
+        Compare
+      </Link>
+      <Link
         to="/about"
         activeProps={{ className: "text-foreground" }}
         className="hover:text-foreground transition-colors"
