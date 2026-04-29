@@ -24,6 +24,8 @@ const cols = [
     links: [
       ["Privacy Policy", "https://vivekmind.com/privacy"],
       ["Terms of Service", "https://vivekmind.com/terms"],
+      ["Refund Policy", "/refund-policy"],
+      ["Cancellation Policy", "/cancellation-policy"],
     ],
   },
 ];
