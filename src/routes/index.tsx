@@ -95,7 +95,6 @@ function Index() {
         <SyncSection />
         <CapabilitiesGrid />
         <TeamSection />
-        <Testimonials />
         <CtaSection />
       </main>
       <Footer />

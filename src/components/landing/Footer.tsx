@@ -59,6 +59,22 @@ export function Footer() {
             <a href="https://linkedin.com/company/schema-weaver" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors">
               <Linkedin className="w-4 h-4" />
             </a>
+            <a href="https://www.reddit.com/r/schemaweaver/" target="_blank" rel="noopener noreferrer" aria-label="Reddit" className="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors">
+              <svg 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                className="w-4 h-4"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                <path d="M12 7l1 2" />
+                <path d="M15 8l2 -1" />
+              </svg>
+            </a>
           </div>
         </div>
 
