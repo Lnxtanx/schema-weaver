@@ -102,8 +102,18 @@ export function FeedbackDialog({
         });
       }
 
-      // Simulate API call for landing page
-      await new Promise((resolve) => setTimeout(resolve, 1200));
+      const API_URL = "https://api-node.schemaweaver.vivekmind.com/api/feedback";
+      
+      const response = await fetch(API_URL, {
+        method: "POST",
+        body: formData,
+        // No headers needed for FormData, fetch sets them automatically
+      });
+
+      if (!response.ok) {
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData.error || "Submission failed");
+      }
 
       toast.success(
         type === "bug" 

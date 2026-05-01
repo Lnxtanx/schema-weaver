@@ -1,4 +1,4 @@
-import { Database, Github, Linkedin, Twitter } from "lucide-react";
+import { Database, Github, Linkedin, Twitter, MessageCircle as Reddit } from "lucide-react";
 
 const cols = [
   {
@@ -62,17 +62,10 @@ export function Footer() {
             <a href="https://www.reddit.com/r/schemaweaver/" target="_blank" rel="noopener noreferrer" aria-label="Reddit" className="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors">
               <svg 
                 viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
+                fill="currentColor" 
                 className="w-4 h-4"
               >
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                <path d="M12 7l1 2" />
-                <path d="M15 8l2 -1" />
+                <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.056 1.597.04.21.06.427.06.646 0 2.734-3.516 4.95-7.85 4.95-4.334 0-7.85-2.216-7.85-4.95 0-.219.022-.435.062-.645a1.736 1.736 0 0 1-1.097-1.597c0-.968.786-1.754 1.754-1.754.463 0 .875.18 1.183.466 1.17-.834 2.8-1.397 4.59-1.477l.799-3.747 2.72.574c.02-.676.58-1.216 1.256-1.216zM9.01 13.035c-.639 0-1.15.509-1.15 1.14 0 .63.511 1.141 1.15 1.141.64 0 1.15-.51 1.15-1.14 0-.63-.51-1.14-1.15-1.14zm5.98 0c-.639 0-1.15.509-1.15 1.14 0 .63.511 1.141 1.15 1.141.64 0 1.15-.51 1.15-1.14 0-.63-.51-1.14-1.15-1.14zm-5.98 2.498c-.147 0-.267.119-.267.266 0 .308.558.556 1.247.556.147 0 .267-.12.267-.267 0-.147-.12-.266-.267-.266-.69 0-1.247-.248-1.247-.556zm5.98 0c-.147 0-.267.119-.267.266 0 .308.558.556 1.247.556.147 0 .267-.12.267-.267 0-.147-.12-.266-.267-.266-.69 0-1.247-.248-1.247-.556z"/>
               </svg>
             </a>
           </div>
