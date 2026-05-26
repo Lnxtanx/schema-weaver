@@ -19,7 +19,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { MessageSquare, Bug, Send, Sparkles, X, Upload, AlertCircle, Loader2 } from "lucide-react";
+import {
+  MessageSquare,
+  Bug,
+  Send,
+  Sparkles,
+  X,
+  Upload,
+  AlertCircle,
+  Loader2,
+} from "lucide-react";
 import { toast } from "sonner";
 
 interface FeedbackDialogProps {
@@ -51,7 +60,8 @@ export function FeedbackDialog({
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const isOpen = controlledOpen !== undefined ? controlledOpen : internalOpen;
-  const onOpenChange = setControlledOpen !== undefined ? setControlledOpen : setInternalOpen;
+  const onOpenChange =
+    setControlledOpen !== undefined ? setControlledOpen : setInternalOpen;
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
@@ -86,6 +96,8 @@ export function FeedbackDialog({
       formData.append("type", type);
       formData.append("topic", topic);
       formData.append("content", content);
+
+      // Explicitly send email if guest
       if (email) formData.append("email", email);
 
       const metadata = {
@@ -102,8 +114,9 @@ export function FeedbackDialog({
         });
       }
 
-      const API_URL = "https://api-node.schemaweaver.vivekmind.com/api/feedback";
-      
+      const API_URL =
+        "https://api-node.schemaweaver.vivekmind.com/api/feedback";
+
       const response = await fetch(API_URL, {
         method: "POST",
         body: formData,
@@ -116,11 +129,11 @@ export function FeedbackDialog({
       }
 
       toast.success(
-        type === "bug" 
-          ? "Bug report submitted. Our engineers will triage this shortly." 
-          : "Thank you for your feedback! We appreciate your input."
+        type === "bug"
+          ? "Bug report submitted. Our engineers will triage this shortly."
+          : "Thank you for your feedback! We appreciate your input.",
       );
-      
+
       // Reset form
       setTopic("");
       setContent("");
@@ -128,7 +141,9 @@ export function FeedbackDialog({
       setImages([]);
       onOpenChange(false);
     } catch (error) {
-      toast.error("Failed to submit. Please try again or email support@vivekmind.com");
+      toast.error(
+        "Failed to submit. Please try again or email support@vivekmind.com",
+      );
     } finally {
       setSubmitting(false);
     }
@@ -148,19 +163,29 @@ export function FeedbackDialog({
                 </>
               ) : (
                 <>
-                  <img src="/resona.png" alt="" className="w-5 h-5 object-contain" />
+                  <img
+                    src="/resona.png"
+                    alt=""
+                    className="w-5 h-5 object-contain"
+                  />
                   Share Feedback
                 </>
               )}
             </DialogTitle>
             <DialogDescription>
-              Help us improve Schema Weaver. Your input goes directly to our product team.
+              Help us improve Schema Weaver. Your input goes directly to our
+              product team.
             </DialogDescription>
           </DialogHeader>
 
           <div className="grid gap-5 py-6 max-h-[60vh] overflow-y-auto px-1 custom-scrollbar">
             <div className="grid gap-2">
-              <Label htmlFor="type" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Category</Label>
+              <Label
+                htmlFor="type"
+                className="text-xs font-medium uppercase tracking-wider text-muted-foreground"
+              >
+                Category
+              </Label>
               <Select value={type} onValueChange={setType}>
                 <SelectTrigger id="type">
                   <SelectValue placeholder="Select type" />
@@ -174,10 +199,19 @@ export function FeedbackDialog({
             </div>
 
             <div className="grid gap-2">
-              <Label htmlFor="topic" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Topic / Area</Label>
+              <Label
+                htmlFor="topic"
+                className="text-xs font-medium uppercase tracking-wider text-muted-foreground"
+              >
+                Topic / Area
+              </Label>
               <Input
                 id="topic"
-                placeholder={type === "bug" ? "e.g. ER Diagram layout issue" : "e.g. Data Explorer filters"}
+                placeholder={
+                  type === "bug"
+                    ? "e.g. ER Diagram layout issue"
+                    : "e.g. Data Explorer filters"
+                }
                 value={topic}
                 onChange={(e) => setTopic(e.target.value)}
                 required
@@ -185,7 +219,12 @@ export function FeedbackDialog({
             </div>
 
             <div className="grid gap-2">
-              <Label htmlFor="feedback-email" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Email (Optional)</Label>
+              <Label
+                htmlFor="feedback-email"
+                className="text-xs font-medium uppercase tracking-wider text-muted-foreground"
+              >
+                Email (Optional)
+              </Label>
               <Input
                 id="feedback-email"
                 type="email"
@@ -196,12 +235,17 @@ export function FeedbackDialog({
             </div>
 
             <div className="grid gap-2">
-              <Label htmlFor="content" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Description</Label>
+              <Label
+                htmlFor="content"
+                className="text-xs font-medium uppercase tracking-wider text-muted-foreground"
+              >
+                Description
+              </Label>
               <Textarea
                 id="content"
                 placeholder={
-                  type === "bug" 
-                    ? "Please describe what happened and how to reproduce it..." 
+                  type === "bug"
+                    ? "Please describe what happened and how to reproduce it..."
                     : "Tell us what you like or what could be better..."
                 }
                 className="min-h-[120px] resize-none"
@@ -212,11 +256,20 @@ export function FeedbackDialog({
             </div>
 
             <div className="space-y-3">
-              <Label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Attachments (Optional)</Label>
+              <Label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                Attachments (Optional)
+              </Label>
               <div className="flex flex-wrap gap-3">
                 {images.map((img) => (
-                  <div key={img.id} className="relative w-20 h-20 rounded-lg border border-border overflow-hidden shadow-sm">
-                    <img src={img.preview} alt="preview" className="w-full h-full object-cover" />
+                  <div
+                    key={img.id}
+                    className="relative w-20 h-20 rounded-lg border border-border overflow-hidden shadow-sm"
+                  >
+                    <img
+                      src={img.preview}
+                      alt="preview"
+                      className="w-full h-full object-cover"
+                    />
                     <button
                       type="button"
                       onClick={() => removeImage(img.id)}
@@ -233,7 +286,9 @@ export function FeedbackDialog({
                     className="w-20 h-20 rounded-lg border border-dashed border-border hover:border-primary/50 hover:bg-muted/30 transition-all flex flex-col items-center justify-center gap-1 text-muted-foreground"
                   >
                     <Upload className="w-4 h-4" />
-                    <span className="text-[10px] font-medium uppercase tracking-tighter">Add Photo</span>
+                    <span className="text-[10px] font-medium uppercase tracking-tighter">
+                      Add Photo
+                    </span>
                   </button>
                 )}
               </div>
@@ -261,7 +316,11 @@ export function FeedbackDialog({
             >
               Cancel
             </Button>
-            <Button type="submit" variant="hero" disabled={submitting || !topic || !content}>
+            <Button
+              type="submit"
+              variant="hero"
+              disabled={submitting || !topic || !content}
+            >
               {submitting ? (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin mr-2" />

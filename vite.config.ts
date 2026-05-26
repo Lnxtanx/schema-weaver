@@ -20,7 +20,7 @@ export default defineConfig(({ command }) => {
   return {
     resolve: {
       alias: {
-        "@": `${process.cwd()}/src`
+        "@": `${process.cwd()}/src`,
       },
       dedupe: [
         "react",
@@ -28,8 +28,8 @@ export default defineConfig(({ command }) => {
         "react/jsx-runtime",
         "react/jsx-dev-runtime",
         "@tanstack/react-query",
-        "@tanstack/query-core"
-      ]
+        "@tanstack/query-core",
+      ],
     },
     plugins,
   };

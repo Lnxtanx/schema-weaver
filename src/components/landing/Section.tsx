@@ -20,9 +20,18 @@ export function Section({
   return (
     <section id={id} className={cn("relative py-24 sm:py-32", className)}>
       <div className="max-w-7xl mx-auto px-6">
-        <div className={cn("max-w-3xl", align === "center" && "mx-auto text-center")}>
+        <div
+          className={cn(
+            "max-w-3xl",
+            align === "center" && "mx-auto text-center",
+          )}
+        >
           {eyebrow && (
-            <div className={cn("inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-primary")}>
+            <div
+              className={cn(
+                "inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-primary",
+              )}
+            >
               <span className="w-6 h-px bg-primary" />
               {eyebrow}
             </div>

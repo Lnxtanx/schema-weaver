@@ -26,13 +26,18 @@ export function Testimonials() {
       title={
         <>
           Loved by the people <br />
-          <span className="text-gradient-mesh">who actually own the database.</span>
+          <span className="text-gradient-mesh">
+            who actually own the database.
+          </span>
         </>
       }
     >
       <div className="mt-16 grid md:grid-cols-3 gap-6">
         {quotes.map((q) => (
-          <figure key={q.author} className="rounded-2xl border border-border bg-card p-7 flex flex-col">
+          <figure
+            key={q.author}
+            className="rounded-2xl border border-border bg-card p-7 flex flex-col"
+          >
             <Quote className="w-6 h-6 text-primary/60" />
             <blockquote className="mt-4 text-base leading-relaxed text-foreground/90 flex-1">
               "{q.body}"

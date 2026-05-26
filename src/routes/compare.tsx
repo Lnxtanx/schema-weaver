@@ -46,20 +46,31 @@ export const Route = createFileRoute("/compare")({
         content:
           "Schema Weaver vs DBeaver, Schema Weaver vs DataGrip, Schema Weaver vs pgAdmin, PostgreSQL IDE comparison, database tool comparison, ER diagram tool comparison",
       },
-      { property: "og:title", content: "Schema Weaver vs Competitors — Feature Comparison" },
+      {
+        property: "og:title",
+        content: "Schema Weaver vs Competitors — Feature Comparison",
+      },
       {
         property: "og:description",
-        content: "5 features no competitor has. 14 strong differentiators. Full comparison matrix against the top 6 PostgreSQL tools.",
+        content:
+          "5 features no competitor has. 14 strong differentiators. Full comparison matrix against the top 6 PostgreSQL tools.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://schemaweaver.vivekmind.com/compare" },
+      {
+        property: "og:url",
+        content: "https://schemaweaver.vivekmind.com/compare",
+      },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Schema Weaver vs Competitors" },
       {
         name: "twitter:description",
-        content: "See exactly how Schema Weaver stacks up against DBeaver, DataGrip, Supabase, pgAdmin, Navicat, and Atlas.",
+        content:
+          "See exactly how Schema Weaver stacks up against DBeaver, DataGrip, Supabase, pgAdmin, Navicat, and Atlas.",
       },
-      { rel: "canonical", href: "https://schemaweaver.vivekmind.com/compare" } as never,
+      {
+        rel: "canonical",
+        href: "https://schemaweaver.vivekmind.com/compare",
+      } as never,
     ],
     links: [
       { rel: "canonical", href: "https://schemaweaver.vivekmind.com/compare" },
@@ -71,7 +82,8 @@ export const Route = createFileRoute("/compare")({
           "@context": "https://schema.org",
           "@type": "WebPage",
           name: "Schema Weaver — Competitor Comparison",
-          description: "Feature-by-feature comparison of Schema Weaver against 20 PostgreSQL tools across 48 capabilities.",
+          description:
+            "Feature-by-feature comparison of Schema Weaver against 20 PostgreSQL tools across 48 capabilities.",
           url: "https://schemaweaver.vivekmind.com/compare",
         }),
       },
@@ -84,41 +96,52 @@ export const Route = createFileRoute("/compare")({
  * Unique features (no competitor has these)
  * ───────────────────────────────────────────────────────────────────────────── */
 
-const uniqueFeatures: Array<{ icon: LucideIcon; title: string; description: string; competitors: string }> = [
+const uniqueFeatures: Array<{
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  competitors: string;
+}> = [
   {
     icon: Brain,
     title: "Spatial AI on the ER Canvas",
-    description: "Three levels of AI — Table, Group, and Global — floating as interactive nodes directly on the diagram canvas, anchored to their subject with edges. Ask an AI that sees exactly what you see.",
+    description:
+      "Three levels of AI — Table, Group, and Global — floating as interactive nodes directly on the diagram canvas, anchored to their subject with edges. Ask an AI that sees exactly what you see.",
     competitors: "0 of 20 competitors",
   },
   {
     icon: Code2,
     title: "Complete Browser-Native PostgreSQL OS",
-    description: "The only complete PostgreSQL IDE that runs entirely in the browser. SQL editor, live ER diagrams with 16 node types, 20-layer schema compiler, migration engine, data explorer, and agentic AI — in one tab, no install, works offline.",
+    description:
+      "The only complete PostgreSQL IDE that runs entirely in the browser. SQL editor, live ER diagrams with 16 node types, 20-layer schema compiler, migration engine, data explorer, and agentic AI — in one tab, no install, works offline.",
     competitors: "0 of 20 competitors with full IDE",
   },
   {
     icon: Shield,
     title: "Two-Track Migration Engine (All Object Types)",
-    description: "Most tools migrate tables and columns only. Schema Weaver handles views, functions, triggers, RLS policies, and materialized views via a dual-track engine — structural DDL (Atlas) + behavioral DDL (CREATE OR REPLACE / DROP+CREATE) — in one 8-step pipeline with advisory locking.",
+    description:
+      "Most tools migrate tables and columns only. Schema Weaver handles views, functions, triggers, RLS policies, and materialized views via a dual-track engine — structural DDL (Atlas) + behavioral DDL (CREATE OR REPLACE / DROP+CREATE) — in one 8-step pipeline with advisory locking.",
     competitors: "0 of 20 competitors",
   },
   {
     icon: Layers,
     title: "20-Layer Schema Compiler (A–F Health Grade)",
-    description: "Real-time quality grading across 20 analysis layers — tables, columns, indexes, constraints, partitions, views, functions, triggers, RLS, privileges, storage, replication, naming, and more. Get a live health score as you type.",
+    description:
+      "Real-time quality grading across 20 analysis layers — tables, columns, indexes, constraints, partitions, views, functions, triggers, RLS, privileges, storage, replication, naming, and more. Get a live health score as you type.",
     competitors: "0 of 20 competitors (1 partial)",
   },
   {
     icon: Box,
     title: "Visual Schema Clustering & Namespaces",
-    description: "Cluster nodes by PostgreSQL schema into resizable, color-coded, and lockable containers. Move entire domains as a unit while maintaining cross-group FK edges. A visual 'operating system' for your database namespaces.",
+    description:
+      "Cluster nodes by PostgreSQL schema into resizable, color-coded, and lockable containers. Move entire domains as a unit while maintaining cross-group FK edges. A visual 'operating system' for your database namespaces.",
     competitors: "0 of 20 competitors",
   },
   {
     icon: FileCode2,
     title: "Schema-to-Code Export (Prisma, Drizzle, DBML, TypeScript)",
-    description: "Export your live ER diagram directly to Prisma Schema, Drizzle ORM, DBML, TypeScript interfaces, or Markdown documentation. Generate framework-ready code from your visual diagram in one click.",
+    description:
+      "Export your live ER diagram directly to Prisma Schema, Drizzle ORM, DBML, TypeScript interfaces, or Markdown documentation. Generate framework-ready code from your visual diagram in one click.",
     competitors: "0 of 20 competitors",
   },
 ];
@@ -127,23 +150,91 @@ const uniqueFeatures: Array<{ icon: LucideIcon; title: string; description: stri
  * Strong differentiators (≤3 of 20 competitors have these)
  * ───────────────────────────────────────────────────────────────────────────── */
 
-const strongDifferentiators: Array<{ feature: string; availableIn: string; icon: LucideIcon }> = [
-  { feature: "FK path analysis (BFS / Dijkstra)", availableIn: "0 of 20 tools", icon: RouteIcon },
-  { feature: "Visual table editor on ER canvas (bidirectional SQL ↔ form)", availableIn: "0 of 20 tools", icon: PenTool },
-  { feature: "AI memory across sessions (4-layer compression)", availableIn: "0 of 20 tools", icon: Brain },
-  { feature: "Focus mode — subgraph view (configurable depth 1–5)", availableIn: "0 of 20 tools", icon: Focus },
-  { feature: "Cascade risk indicator on table nodes", availableIn: "0 of 20 tools", icon: Zap },
-  { feature: "Safe mode migration (6-phase column type changes)", availableIn: "1 of 20 tools", icon: Shield },
-  { feature: "Per-table AI chat on ER canvas", availableIn: "1 of 20 tools (partial)", icon: Brain },
-  { feature: "Global schema AI chat", availableIn: "1 of 20 tools (partial)", icon: Brain },
-  { feature: "Inline diff overlay in editor", availableIn: "2 of 20 tools (partial)", icon: GitCompareArrows },
-  { feature: "Drift detection (external schema changes)", availableIn: "2 of 20 tools", icon: Fingerprint },
-  { feature: "AI data analysis with 10+ chart types", availableIn: "2 of 20 tools", icon: BarChart3 },
-  { feature: "AI reports export (PowerPoint, PDF)", availableIn: "2 of 20 tools", icon: FileText },
-  { feature: "Agentic AI with 55 purpose-built tools", availableIn: "2 of 20 tools (partial)", icon: Zap },
-  { feature: "Live ER diagram updates as you type SQL", availableIn: "3 of 20 tools (partial)", icon: Sparkles },
-  { feature: "Compare two historical file versions", availableIn: "2 of 20 tools", icon: Clock },
-  { feature: "Shared DB connections (no credential sharing)", availableIn: "3 of 20 tools", icon: Shield },
+const strongDifferentiators: Array<{
+  feature: string;
+  availableIn: string;
+  icon: LucideIcon;
+}> = [
+  {
+    feature: "FK path analysis (BFS / Dijkstra)",
+    availableIn: "0 of 20 tools",
+    icon: RouteIcon,
+  },
+  {
+    feature: "Visual table editor on ER canvas (bidirectional SQL ↔ form)",
+    availableIn: "0 of 20 tools",
+    icon: PenTool,
+  },
+  {
+    feature: "AI memory across sessions (4-layer compression)",
+    availableIn: "0 of 20 tools",
+    icon: Brain,
+  },
+  {
+    feature: "Focus mode — subgraph view (configurable depth 1–5)",
+    availableIn: "0 of 20 tools",
+    icon: Focus,
+  },
+  {
+    feature: "Cascade risk indicator on table nodes",
+    availableIn: "0 of 20 tools",
+    icon: Zap,
+  },
+  {
+    feature: "Safe mode migration (6-phase column type changes)",
+    availableIn: "1 of 20 tools",
+    icon: Shield,
+  },
+  {
+    feature: "Per-table AI chat on ER canvas",
+    availableIn: "1 of 20 tools (partial)",
+    icon: Brain,
+  },
+  {
+    feature: "Global schema AI chat",
+    availableIn: "1 of 20 tools (partial)",
+    icon: Brain,
+  },
+  {
+    feature: "Inline diff overlay in editor",
+    availableIn: "2 of 20 tools (partial)",
+    icon: GitCompareArrows,
+  },
+  {
+    feature: "Drift detection (external schema changes)",
+    availableIn: "2 of 20 tools",
+    icon: Fingerprint,
+  },
+  {
+    feature: "AI data analysis with 10+ chart types",
+    availableIn: "2 of 20 tools",
+    icon: BarChart3,
+  },
+  {
+    feature: "AI reports export (PowerPoint, PDF)",
+    availableIn: "2 of 20 tools",
+    icon: FileText,
+  },
+  {
+    feature: "Agentic AI with 55 purpose-built tools",
+    availableIn: "2 of 20 tools (partial)",
+    icon: Zap,
+  },
+  {
+    feature: "Live ER diagram updates as you type SQL",
+    availableIn: "3 of 20 tools (partial)",
+    icon: Sparkles,
+  },
+  {
+    feature: "Compare two historical file versions",
+    availableIn: "2 of 20 tools",
+    icon: Clock,
+  },
+  {
+    feature: "Shared DB connections (no credential sharing)",
+    availableIn: "3 of 20 tools",
+    icon: Shield,
+  },
 ];
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -176,85 +267,211 @@ const comparisonGroups: Array<{
   {
     group: "SQL Editor",
     rows: [
-      { feature: "Multi-file project management",        values: ["Y", "Y", "P", "P", "N", "P", "N"] },
-      { feature: "Syntax highlighting & autocomplete",   values: ["Y", "Y", "Y", "Y", "Y", "Y", "N"] },
-      { feature: "Autosave",                             values: ["Y", "Y", "N", "Y", "N", "P", "N"] },
-      { feature: "Split view (editor + ER diagram)",     values: ["Y", "Y", "P", "N", "N", "P", "N"] },
+      {
+        feature: "Multi-file project management",
+        values: ["Y", "Y", "P", "P", "N", "P", "N"],
+      },
+      {
+        feature: "Syntax highlighting & autocomplete",
+        values: ["Y", "Y", "Y", "Y", "Y", "Y", "N"],
+      },
+      { feature: "Autosave", values: ["Y", "Y", "N", "Y", "N", "P", "N"] },
+      {
+        feature: "Split view (editor + ER diagram)",
+        values: ["Y", "Y", "P", "N", "N", "P", "N"],
+      },
     ],
   },
   {
     group: "Schema Compiler & Quality",
     rows: [
-      { feature: "Real-time schema grading (A–F)",       values: ["Y", "N", "N", "N", "N", "N", "P"] },
-      { feature: "20-layer quality analysis",            values: ["Y", "N", "P", "N", "N", "P", "P"] },
+      {
+        feature: "Real-time schema grading (A–F)",
+        values: ["Y", "N", "N", "N", "N", "N", "P"],
+      },
+      {
+        feature: "20-layer quality analysis",
+        values: ["Y", "N", "P", "N", "N", "P", "P"],
+      },
     ],
   },
   {
     group: "ER Diagram",
     rows: [
-      { feature: "Auto-generated ER diagram",            values: ["Y", "Y", "Y", "Y", "Y", "Y", "P"] },
-      { feature: "Live updates as you edit SQL",          values: ["Y", "P", "N", "N", "N", "P", "N"] },
-      { feature: "Multiple node types (views, enums, etc.)", values: ["Y", "P", "P", "P", "N", "P", "P"] },
-      { feature: "Schema grouping & clustering",          values: ["Y", "Y", "N", "P", "P", "P", "P"] },
-      { feature: "FK path analysis",                      values: ["Y", "N", "N", "N", "N", "N", "N"] },
-      { feature: "Visual table editor (on canvas)",        values: ["Y", "N", "N", "N", "N", "N", "N"] },
-      { feature: "Focus mode (subgraph, depth 1–5)",       values: ["Y", "N", "N", "N", "N", "N", "N"] },
-      { feature: "Visibility controls",                   values: ["Y", "P", "P", "P", "P", "P", "N"] },
-      { feature: "Export PNG / SVG",                      values: ["Y", "Y", "Y", "N", "Y", "Y", "P"] },
-      { feature: "Schema-to-code (Prisma, Drizzle, DBML, TS)", values: ["Y", "N", "N", "N", "N", "N", "N"] },
+      {
+        feature: "Auto-generated ER diagram",
+        values: ["Y", "Y", "Y", "Y", "Y", "Y", "P"],
+      },
+      {
+        feature: "Live updates as you edit SQL",
+        values: ["Y", "P", "N", "N", "N", "P", "N"],
+      },
+      {
+        feature: "Multiple node types (views, enums, etc.)",
+        values: ["Y", "P", "P", "P", "N", "P", "P"],
+      },
+      {
+        feature: "Schema grouping & clustering",
+        values: ["Y", "Y", "N", "P", "P", "P", "P"],
+      },
+      {
+        feature: "FK path analysis",
+        values: ["Y", "N", "N", "N", "N", "N", "N"],
+      },
+      {
+        feature: "Visual table editor (on canvas)",
+        values: ["Y", "N", "N", "N", "N", "N", "N"],
+      },
+      {
+        feature: "Focus mode (subgraph, depth 1–5)",
+        values: ["Y", "N", "N", "N", "N", "N", "N"],
+      },
+      {
+        feature: "Visibility controls",
+        values: ["Y", "P", "P", "P", "P", "P", "N"],
+      },
+      {
+        feature: "Export PNG / SVG",
+        values: ["Y", "Y", "Y", "N", "Y", "Y", "P"],
+      },
+      {
+        feature: "Schema-to-code (Prisma, Drizzle, DBML, TS)",
+        values: ["Y", "N", "N", "N", "N", "N", "N"],
+      },
     ],
   },
   {
     group: "Schema Diff & History",
     rows: [
-      { feature: "Schema comparison (project vs live DB)", values: ["Y", "Y", "P", "P", "Y", "Y", "Y"] },
-      { feature: "Semantic diff (object-level)",          values: ["Y", "Y", "P", "P", "P", "P", "Y"] },
-      { feature: "Inline diff overlay in editor",         values: ["Y", "P", "N", "N", "N", "N", "N"] },
-      { feature: "Version snapshots with restore",         values: ["Y", "P", "N", "Y", "N", "P", "N"] },
-      { feature: "Compare two historical versions",        values: ["Y", "Y", "N", "N", "N", "P", "N"] },
+      {
+        feature: "Schema comparison (project vs live DB)",
+        values: ["Y", "Y", "P", "P", "Y", "Y", "Y"],
+      },
+      {
+        feature: "Semantic diff (object-level)",
+        values: ["Y", "Y", "P", "P", "P", "P", "Y"],
+      },
+      {
+        feature: "Inline diff overlay in editor",
+        values: ["Y", "P", "N", "N", "N", "N", "N"],
+      },
+      {
+        feature: "Version snapshots with restore",
+        values: ["Y", "P", "N", "Y", "N", "P", "N"],
+      },
+      {
+        feature: "Compare two historical versions",
+        values: ["Y", "Y", "N", "N", "N", "P", "N"],
+      },
     ],
   },
   {
     group: "Database & Migrations",
     rows: [
-      { feature: "Pull/import live schema",               values: ["Y", "Y", "Y", "Y", "Y", "Y", "Y"] },
-      { feature: "Apply/push migrations",                 values: ["Y", "Y", "P", "Y", "Y", "Y", "Y"] },
-      { feature: "Drift detection",                       values: ["Y", "N", "N", "N", "N", "N", "Y"] },
-      { feature: "Auto-generated rollback SQL",            values: ["Y", "N", "N", "P", "N", "P", "Y"] },
-      { feature: "Safe mode migration (multi-phase)",      values: ["Y", "N", "N", "N", "N", "N", "Y"] },
-      { feature: "Built-in terminal",                     values: ["Y", "Y", "Y", "Y", "Y", "P", "Y"] },
+      {
+        feature: "Pull/import live schema",
+        values: ["Y", "Y", "Y", "Y", "Y", "Y", "Y"],
+      },
+      {
+        feature: "Apply/push migrations",
+        values: ["Y", "Y", "P", "Y", "Y", "Y", "Y"],
+      },
+      {
+        feature: "Drift detection",
+        values: ["Y", "N", "N", "N", "N", "N", "Y"],
+      },
+      {
+        feature: "Auto-generated rollback SQL",
+        values: ["Y", "N", "N", "P", "N", "P", "Y"],
+      },
+      {
+        feature: "Safe mode migration (multi-phase)",
+        values: ["Y", "N", "N", "N", "N", "N", "Y"],
+      },
+      {
+        feature: "Built-in terminal",
+        values: ["Y", "Y", "Y", "Y", "Y", "P", "Y"],
+      },
     ],
   },
   {
     group: "Data Explorer",
     rows: [
-      { feature: "High-performance data grid",            values: ["Y", "Y", "Y", "Y", "Y", "Y", "N"] },
-      { feature: "Server-side sorting & filtering",        values: ["Y", "Y", "Y", "Y", "Y", "Y", "N"] },
-      { feature: "Column statistics & distributions",      values: ["Y", "P", "P", "N", "N", "P", "N"] },
-      { feature: "Multi-format export (CSV, JSON, Excel)", values: ["Y", "Y", "Y", "Y", "Y", "Y", "N"] },
+      {
+        feature: "High-performance data grid",
+        values: ["Y", "Y", "Y", "Y", "Y", "Y", "N"],
+      },
+      {
+        feature: "Server-side sorting & filtering",
+        values: ["Y", "Y", "Y", "Y", "Y", "Y", "N"],
+      },
+      {
+        feature: "Column statistics & distributions",
+        values: ["Y", "P", "P", "N", "N", "P", "N"],
+      },
+      {
+        feature: "Multi-format export (CSV, JSON, Excel)",
+        values: ["Y", "Y", "Y", "Y", "Y", "Y", "N"],
+      },
     ],
   },
   {
     group: "AI Features",
     rows: [
-      { feature: "AI SQL generation (natural language)",   values: ["Y", "Y", "N", "Y", "N", "N", "N"] },
-      { feature: "AI data analysis with charts",           values: ["Y", "N", "N", "Y", "N", "N", "N"] },
-      { feature: "AI schema design / generation",          values: ["Y", "P", "N", "Y", "N", "N", "N"] },
-      { feature: "AI reports export (PPT, PDF)",           values: ["Y", "N", "N", "Y", "N", "N", "N"] },
-      { feature: "Voice input for AI",                     values: ["Y", "N", "N", "N", "N", "N", "N"] },
-      { feature: "Multiple AI model tiers",                values: ["Y", "P", "N", "P", "N", "N", "N"] },
-      { feature: "Agentic AI (autonomous tool loop)",      values: ["Y", "P", "N", "P", "N", "N", "N"] },
-      { feature: "Per-table AI chat on ER diagram",        values: ["Y", "P", "N", "N", "N", "N", "N"] },
-      { feature: "AI memory across sessions",              values: ["Y", "N", "N", "N", "N", "N", "N"] },
+      {
+        feature: "AI SQL generation (natural language)",
+        values: ["Y", "Y", "N", "Y", "N", "N", "N"],
+      },
+      {
+        feature: "AI data analysis with charts",
+        values: ["Y", "N", "N", "Y", "N", "N", "N"],
+      },
+      {
+        feature: "AI schema design / generation",
+        values: ["Y", "P", "N", "Y", "N", "N", "N"],
+      },
+      {
+        feature: "AI reports export (PPT, PDF)",
+        values: ["Y", "N", "N", "Y", "N", "N", "N"],
+      },
+      {
+        feature: "Voice input for AI",
+        values: ["Y", "N", "N", "N", "N", "N", "N"],
+      },
+      {
+        feature: "Multiple AI model tiers",
+        values: ["Y", "P", "N", "P", "N", "N", "N"],
+      },
+      {
+        feature: "Agentic AI (autonomous tool loop)",
+        values: ["Y", "P", "N", "P", "N", "N", "N"],
+      },
+      {
+        feature: "Per-table AI chat on ER diagram",
+        values: ["Y", "P", "N", "N", "N", "N", "N"],
+      },
+      {
+        feature: "AI memory across sessions",
+        values: ["Y", "N", "N", "N", "N", "N", "N"],
+      },
     ],
   },
   {
     group: "Team & Collaboration",
     rows: [
-      { feature: "Team creation & invitation",            values: ["Y", "P", "N", "Y", "N", "P", "N"] },
-      { feature: "Role-based access control",              values: ["Y", "P", "N", "Y", "N", "P", "N"] },
-      { feature: "Shared DB connections (no cred sharing)", values: ["Y", "N", "N", "Y", "N", "N", "N"] },
-      { feature: "Audit trail",                            values: ["Y", "P", "N", "Y", "N", "P", "Y"] },
+      {
+        feature: "Team creation & invitation",
+        values: ["Y", "P", "N", "Y", "N", "P", "N"],
+      },
+      {
+        feature: "Role-based access control",
+        values: ["Y", "P", "N", "Y", "N", "P", "N"],
+      },
+      {
+        feature: "Shared DB connections (no cred sharing)",
+        values: ["Y", "N", "N", "Y", "N", "N", "N"],
+      },
+      { feature: "Audit trail", values: ["Y", "P", "N", "Y", "N", "P", "Y"] },
     ],
   },
 ];
@@ -263,16 +480,35 @@ const comparisonGroups: Array<{
  * Helper components
  * ───────────────────────────────────────────────────────────────────────────── */
 
-function CompareCell({ value, isSchemaWeaver }: { value: CellValue; isSchemaWeaver?: boolean }) {
+function CompareCell({
+  value,
+  isSchemaWeaver,
+}: {
+  value: CellValue;
+  isSchemaWeaver?: boolean;
+}) {
   if (value === "Y")
     return (
-      <span className={cn("inline-flex items-center justify-center w-6 h-6 rounded-full", isSchemaWeaver ? "bg-primary/20" : "bg-emerald-500/10")}>
-        <Check className={cn("w-3.5 h-3.5", isSchemaWeaver ? "text-primary" : "text-emerald-500")} />
+      <span
+        className={cn(
+          "inline-flex items-center justify-center w-6 h-6 rounded-full",
+          isSchemaWeaver ? "bg-primary/20" : "bg-emerald-500/10",
+        )}
+      >
+        <Check
+          className={cn(
+            "w-3.5 h-3.5",
+            isSchemaWeaver ? "text-primary" : "text-emerald-500",
+          )}
+        />
       </span>
     );
   if (value === "P")
     return (
-      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-500/10" title="Partial">
+      <span
+        className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-500/10"
+        title="Partial"
+      >
         <span className="w-2 h-2 rounded-full bg-amber-500" />
       </span>
     );
@@ -315,14 +551,14 @@ function ComparePage() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-primary">
-                <span className="w-6 h-px bg-primary" />
-                6 Unique Features
+                <span className="w-6 h-px bg-primary" />6 Unique Features
               </div>
               <h2 className="mt-4 font-display font-bold text-4xl sm:text-5xl tracking-tight">
                 Things only Schema Weaver does.
               </h2>
               <p className="mt-4 text-muted-foreground text-lg">
-                We researched 20 PostgreSQL tools — these capabilities exist only in Schema Weaver.
+                We researched 20 PostgreSQL tools — these capabilities exist
+                only in Schema Weaver.
               </p>
             </div>
 
@@ -336,7 +572,9 @@ function ComparePage() {
                   <div className="w-11 h-11 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
                     <f.icon className="w-5 h-5 text-primary" />
                   </div>
-                  <h3 className="mt-5 font-display font-semibold text-lg">{f.title}</h3>
+                  <h3 className="mt-5 font-display font-semibold text-lg">
+                    {f.title}
+                  </h3>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed flex-1">
                     {f.description}
                   </p>
@@ -362,7 +600,8 @@ function ComparePage() {
                 15 features most tools lack.
               </h2>
               <p className="mt-4 text-muted-foreground text-lg">
-                These capabilities are available in 3 or fewer of the 20 PostgreSQL tools we analyzed.
+                These capabilities are available in 3 or fewer of the 20
+                PostgreSQL tools we analyzed.
               </p>
             </div>
 
@@ -377,8 +616,12 @@ function ComparePage() {
                     <d.icon className="w-4 h-4 text-primary" />
                   </div>
                   <div className="min-w-0">
-                    <div className="font-medium text-sm text-foreground">{d.feature}</div>
-                    <div className="text-xs text-muted-foreground mt-0.5">{d.availableIn}</div>
+                    <div className="font-medium text-sm text-foreground">
+                      {d.feature}
+                    </div>
+                    <div className="text-xs text-muted-foreground mt-0.5">
+                      {d.availableIn}
+                    </div>
                   </div>
                   <Check className="w-5 h-5 text-primary ml-auto shrink-0" />
                 </div>
@@ -399,7 +642,8 @@ function ComparePage() {
                 Feature-by-feature matrix.
               </h2>
               <p className="mt-4 text-muted-foreground">
-                Schema Weaver vs the 6 most popular PostgreSQL tools. Data sourced from official documentation and product pages.
+                Schema Weaver vs the 6 most popular PostgreSQL tools. Data
+                sourced from official documentation and product pages.
               </p>
             </div>
 
@@ -459,13 +703,21 @@ function ComparePage() {
                           key={`${g.group}-${r.feature}`}
                           className="border-t border-border/60"
                         >
-                          <td className="p-4 text-foreground/90">{r.feature}</td>
+                          <td className="p-4 text-foreground/90">
+                            {r.feature}
+                          </td>
                           {r.values.map((v, vi) => (
                             <td
                               key={vi}
-                              className={cn("p-4 text-center", vi === 0 && "bg-primary/5")}
+                              className={cn(
+                                "p-4 text-center",
+                                vi === 0 && "bg-primary/5",
+                              )}
                             >
-                              <CompareCell value={v} isSchemaWeaver={vi === 0} />
+                              <CompareCell
+                                value={v}
+                                isSchemaWeaver={vi === 0}
+                              />
                             </td>
                           ))}
                         </tr>
@@ -477,8 +729,9 @@ function ComparePage() {
             </div>
 
             <p className="mt-4 text-xs text-muted-foreground text-center">
-              Comparison based on official documentation, product pages, and web research as of April 2026.
-              "Partial" means the feature exists in a limited or basic form.
+              Comparison based on official documentation, product pages, and web
+              research as of April 2026. "Partial" means the feature exists in a
+              limited or basic form.
             </p>
           </div>
         </section>
@@ -491,7 +744,8 @@ function ComparePage() {
               <span className="text-gradient-mesh">complete platform?</span>
             </h2>
             <p className="mt-4 text-muted-foreground text-lg">
-              Start free with 3,000 AI credits. No credit card required. Full SQL Editor, ER diagrams, migrations, and data explorer included.
+              Start free with 3,000 AI credits. No credit card required. Full
+              SQL Editor, ER diagrams, migrations, and data explorer included.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
               <Button variant="hero" size="xl" asChild>

@@ -20,7 +20,7 @@ const features = [
     title: "Dijkstra-Powered Path Analysis",
     body: "Instantly find the shortest JOIN path between any two tables in your schema. Use BFS for fewest hops or Dijkstra for weighted shortest paths that prioritize high-confidence relationships. Schema Weaver renders the resolved path, generates the SQL, and highlights the route on the diagram.",
     caption: "path-analysis.tsx — orders → customers",
-    image: "/images/sql-editor/path-analysis.png"
+    image: "/images/sql-editor/path-analysis.png",
   },
   {
     icon: Activity,
@@ -52,12 +52,12 @@ export function SqlEditorSection() {
             caption="sql-editor — main project view"
             glow="emerald"
           />
-          <div className="mt-6 grid grid-cols-3 gap-3">
+          <div className="mt-6 grid grid-cols-3 gap-1.5 sm:gap-3">
             <Stat label="Analysis layers" value="20" />
             <Stat label="Avg compile" value="<50ms" />
             <Stat label="PostgreSQL" value="12+" />
           </div>
-          
+
           <div className="hidden lg:block pt-8 border-t border-border">
             <ProductShot
               src="/images/sql-editor/path-analysis.png"
@@ -79,7 +79,9 @@ export function SqlEditorSection() {
                   <f.icon className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-display font-semibold text-lg">{f.title}</h3>
+                  <h3 className="font-display font-semibold text-lg">
+                    {f.title}
+                  </h3>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                     {f.body}
                   </p>
@@ -101,9 +103,13 @@ export function SqlEditorSection() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-border bg-card/60 px-4 py-3">
-      <div className="font-display text-2xl font-bold text-gradient-emerald">{value}</div>
-      <div className="text-[11px] uppercase tracking-wider text-muted-foreground mt-0.5">{label}</div>
+    <div className="rounded-lg border border-border bg-card/60 px-2 py-2.5 sm:px-4 sm:py-3 text-center sm:text-left">
+      <div className="font-display text-lg sm:text-2xl font-bold text-gradient-emerald">
+        {value}
+      </div>
+      <div className="text-[9px] sm:text-[11px] uppercase tracking-wider text-muted-foreground mt-0.5">
+        {label}
+      </div>
     </div>
   );
 }

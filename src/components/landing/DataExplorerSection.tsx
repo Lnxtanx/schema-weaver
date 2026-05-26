@@ -34,7 +34,14 @@ export function DataExplorerSection() {
         <>
           A High-Performance
           <br />
-          <span style={{ background: "var(--gradient-blue)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>
+          <span
+            style={{
+              background: "var(--gradient-blue)",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              color: "transparent",
+            }}
+          >
             PostgreSQL Data Workbench.
           </span>
         </>
@@ -57,14 +64,18 @@ export function DataExplorerSection() {
               <div className="w-10 h-10 rounded-lg bg-secondary/10 border border-secondary/20 flex items-center justify-center text-secondary">
                 <f.icon className="w-5 h-5" />
               </div>
-              <h3 className="mt-4 font-display font-semibold text-base">{f.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{f.body}</p>
+              <h3 className="mt-4 font-display font-semibold text-base">
+                {f.title}
+              </h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                {f.body}
+              </p>
             </div>
           ))}
         </div>
 
         {/* Stats banner */}
-        <div className="rounded-2xl border border-border bg-card/60 p-8 sm:p-10 grid sm:grid-cols-4 gap-6 text-center">
+        <div className="rounded-2xl border border-border bg-card/60 p-6 sm:p-10 grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
           {[
             ["Virtualized", "Handle massive tables"],
             ["Canvas-API", "Smart column sizing"],
@@ -72,8 +83,12 @@ export function DataExplorerSection() {
             ["Local", "No data leaves your DB"],
           ].map(([v, l]) => (
             <div key={l}>
-              <div className="font-display text-3xl sm:text-4xl font-bold text-gradient-mesh">{v}</div>
-              <div className="text-xs uppercase tracking-wider text-muted-foreground mt-2">{l}</div>
+              <div className="font-display text-3xl sm:text-4xl font-bold text-gradient-mesh">
+                {v}
+              </div>
+              <div className="text-xs uppercase tracking-wider text-muted-foreground mt-2">
+                {l}
+              </div>
             </div>
           ))}
         </div>
@@ -81,7 +96,10 @@ export function DataExplorerSection() {
         {/* Inline icon row */}
         <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-muted-foreground">
           <Table className="w-4 h-4" />
-          <span>Works with any PostgreSQL 12+ database — Supabase, Neon, RDS, Cloud SQL, self-hosted, all of it.</span>
+          <span>
+            Works with any PostgreSQL 12+ database — Supabase, Neon, RDS, Cloud
+            SQL, self-hosted, all of it.
+          </span>
         </div>
       </div>
     </Section>

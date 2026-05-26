@@ -9,7 +9,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { BookOpen, Github, LifeBuoy, Mail, MessageSquare, Send, Shield, Zap } from "lucide-react";
+import {
+  BookOpen,
+  Github,
+  LifeBuoy,
+  Mail,
+  MessageSquare,
+  Send,
+  Shield,
+  Zap,
+} from "lucide-react";
 
 export const Route = createFileRoute("/support")({
   head: () => ({
@@ -20,19 +29,28 @@ export const Route = createFileRoute("/support")({
         content:
           "Get help with Schema Weaver. Browse docs, ask the community, file a bug, or contact our support and sales teams. Enterprise support available.",
       },
-      { name: "keywords", content: "Schema Weaver support, contact sales, PostgreSQL help, database migration support, enterprise SLA, customer success" },
+      {
+        name: "keywords",
+        content:
+          "Schema Weaver support, contact sales, PostgreSQL help, database migration support, enterprise SLA, customer success",
+      },
       { property: "og:title", content: "Support — Schema Weaver" },
       {
         property: "og:description",
-        content: "Docs, community, bug reports, and direct contact with the Schema Weaver team.",
+        content:
+          "Docs, community, bug reports, and direct contact with the Schema Weaver team.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://schemaweaver.vivekmind.com/support" },
+      {
+        property: "og:url",
+        content: "https://schemaweaver.vivekmind.com/support",
+      },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Support — Schema Weaver" },
       {
         name: "twitter:description",
-        content: "Get help with Schema Weaver — docs, community, and direct support.",
+        content:
+          "Get help with Schema Weaver — docs, community, and direct support.",
       },
     ],
     links: [
@@ -88,8 +106,16 @@ const channels = [
 ];
 
 const slaCards = [
-  { icon: Zap, label: "Free & Team", value: "< 24h email response, business days" },
-  { icon: Shield, label: "Enterprise", value: "1h response, 99.99% uptime SLA" },
+  {
+    icon: Zap,
+    label: "Free & Team",
+    value: "< 24h email response, business days",
+  },
+  {
+    icon: Shield,
+    label: "Enterprise",
+    value: "1h response, 99.99% uptime SLA",
+  },
   { icon: Mail, label: "Direct Support", value: "support@vivekmind.com" },
 ];
 
@@ -101,7 +127,9 @@ function SupportPage() {
     setSubmitting(true);
     setTimeout(() => {
       setSubmitting(false);
-      toast.success("Message sent — we'll be in touch within one business day.");
+      toast.success(
+        "Message sent — we'll be in touch within one business day.",
+      );
       (e.target as HTMLFormElement).reset();
     }, 600);
   }
@@ -134,21 +162,41 @@ function SupportPage() {
                   <div className="w-11 h-11 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
                     <c.icon className="w-5 h-5 text-primary" />
                   </div>
-                  <h3 className="mt-5 font-display font-semibold text-lg">{c.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed flex-1">{c.body}</p>
+                  <h3 className="mt-5 font-display font-semibold text-lg">
+                    {c.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed flex-1">
+                    {c.body}
+                  </p>
                   <div className="mt-5">
                     {c.type === "link" ? (
                       c.href!.startsWith("/") ? (
-                        <Button variant="glass" size="sm" asChild className="w-full">
+                        <Button
+                          variant="glass"
+                          size="sm"
+                          asChild
+                          className="w-full"
+                        >
                           <Link to={c.href as "/pricing"}>{c.cta}</Link>
                         </Button>
                       ) : (
-                        <Button variant="glass" size="sm" asChild className="w-full">
-                          <a href={c.href} target="_blank" rel="noopener noreferrer">{c.cta}</a>
+                        <Button
+                          variant="glass"
+                          size="sm"
+                          asChild
+                          className="w-full"
+                        >
+                          <a
+                            href={c.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {c.cta}
+                          </a>
                         </Button>
                       )
                     ) : (
-                      <FeedbackDialog 
+                      <FeedbackDialog
                         defaultType={c.type as "feedback" | "bug"}
                         trigger={
                           <Button variant="glass" size="sm" className="w-full">
@@ -176,7 +224,9 @@ function SupportPage() {
                   <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
                     {s.label}
                   </div>
-                  <div className="mt-1 text-sm font-medium text-foreground/90">{s.value}</div>
+                  <div className="mt-1 text-sm font-medium text-foreground/90">
+                    {s.value}
+                  </div>
                 </div>
               </div>
             ))}
@@ -195,8 +245,12 @@ function SupportPage() {
                 Send us a message.
               </h2>
               <p className="mt-4 text-muted-foreground">
-                For sales, partnerships, or general questions. Email us directly at{" "}
-                <a href="mailto:support@vivekmind.com" className="text-primary hover:underline">
+                For sales, partnerships, or general questions. Email us directly
+                at{" "}
+                <a
+                  href="mailto:support@vivekmind.com"
+                  className="text-primary hover:underline"
+                >
                   support@vivekmind.com
                 </a>
                 .
@@ -210,16 +264,32 @@ function SupportPage() {
               <div className="grid sm:grid-cols-2 gap-5">
                 <div className="grid gap-2">
                   <Label htmlFor="name">Name</Label>
-                  <Input id="name" name="name" required placeholder="Ada Lovelace" />
+                  <Input
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="Ada Lovelace"
+                  />
                 </div>
                 <div className="grid gap-2">
                   <Label htmlFor="email">Work email</Label>
-                  <Input id="email" name="email" type="email" required placeholder="ada@company.com" />
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="ada@company.com"
+                  />
                 </div>
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="topic">Topic</Label>
-                <Input id="topic" name="topic" required placeholder="Enterprise pricing, security review, …" />
+                <Input
+                  id="topic"
+                  name="topic"
+                  required
+                  placeholder="Enterprise pricing, security review, …"
+                />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="message">Message</Label>
@@ -235,8 +305,14 @@ function SupportPage() {
                 <p className="text-xs text-muted-foreground">
                   We typically respond within 1 business day.
                 </p>
-                <Button variant="hero" size="lg" type="submit" disabled={submitting}>
-                  {submitting ? "Sending…" : "Send message"} <Send className="w-4 h-4" />
+                <Button
+                  variant="hero"
+                  size="lg"
+                  type="submit"
+                  disabled={submitting}
+                >
+                  {submitting ? "Sending…" : "Send message"}{" "}
+                  <Send className="w-4 h-4" />
                 </Button>
               </div>
             </form>

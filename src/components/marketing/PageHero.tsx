@@ -15,10 +15,7 @@ export function PageHero({
 }) {
   return (
     <section
-      className={cn(
-        "relative pt-36 pb-20 overflow-hidden bg-hero",
-        className,
-      )}
+      className={cn("relative pt-36 pb-20 overflow-hidden bg-hero", className)}
     >
       <div className="absolute inset-0 grid-bg opacity-40 [mask-image:radial-gradient(ellipse_at_top,black_20%,transparent_70%)]" />
       <div className="relative max-w-5xl mx-auto px-6 text-center">

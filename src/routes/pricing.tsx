@@ -60,7 +60,11 @@ export const Route = createFileRoute("/pricing")({
         content:
           "Transparent pricing for Schema Weaver. Free for solo developers with 3K AI credits. Starter from $15/mo, Pro at $29/mo, Power at $79/mo. Compare all features.",
       },
-      { name: "keywords", content: "Schema Weaver pricing, PostgreSQL tools pricing, AI SQL editor pricing, Resona AI credits, database platform cost" },
+      {
+        name: "keywords",
+        content:
+          "Schema Weaver pricing, PostgreSQL tools pricing, AI SQL editor pricing, Resona AI credits, database platform cost",
+      },
       { property: "og:title", content: "Pricing — Schema Weaver" },
       {
         property: "og:description",
@@ -68,14 +72,21 @@ export const Route = createFileRoute("/pricing")({
           "Free for individuals. Starter, Pro, and Power plans for teams. Compare every feature side by side.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://schemaweaver.vivekmind.com/pricing" },
+      {
+        property: "og:url",
+        content: "https://schemaweaver.vivekmind.com/pricing",
+      },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Pricing — Schema Weaver" },
       {
         name: "twitter:description",
-        content: "Free, Starter, Pro, and Power plans for the complete AI-powered PostgreSQL workspace.",
+        content:
+          "Free, Starter, Pro, and Power plans for the complete AI-powered PostgreSQL workspace.",
       },
-      { rel: "canonical", href: "https://schemaweaver.vivekmind.com/pricing" } as never,
+      {
+        rel: "canonical",
+        href: "https://schemaweaver.vivekmind.com/pricing",
+      } as never,
     ],
     links: [
       { rel: "canonical", href: "https://schemaweaver.vivekmind.com/pricing" },
@@ -96,28 +107,32 @@ export const Route = createFileRoute("/pricing")({
               name: "Free",
               price: "0",
               priceCurrency: "USD",
-              description: "3,000 AI credits/month, 8 fast models, full SQL Editor",
+              description:
+                "3,000 AI credits/month, 8 fast models, full SQL Editor",
             },
             {
               "@type": "Offer",
               name: "Starter",
               price: "15",
               priceCurrency: "USD",
-              description: "100,000 AI credits/month, 19 models (Fast + Smart tiers)",
+              description:
+                "100,000 AI credits/month, 19 models (Fast + Smart tiers)",
             },
             {
               "@type": "Offer",
               name: "Pro",
               price: "29",
               priceCurrency: "USD",
-              description: "200,000 AI credits/month, 36 models including Advanced tier",
+              description:
+                "200,000 AI credits/month, 36 models including Advanced tier",
             },
             {
               "@type": "Offer",
               name: "Power",
               price: "79",
               priceCurrency: "USD",
-              description: "500,000 AI credits/month, 39 models including Claude Opus",
+              description:
+                "500,000 AI credits/month, 39 models including Claude Opus",
             },
           ],
         }),
@@ -238,89 +253,226 @@ const tiers = [
 
 const compareGroups: Array<{
   group: string;
-  rows: Array<{ label: string; values: [boolean | string, boolean | string, boolean | string, boolean | string] }>;
+  rows: Array<{
+    label: string;
+    values: [
+      boolean | string,
+      boolean | string,
+      boolean | string,
+      boolean | string,
+    ];
+  }>;
 }> = [
   {
     group: "Resona AI",
     rows: [
-      { label: "Monthly credits", values: ["3,000", "100,000", "200,000", "500,000"] },
-      { label: "Daily credit limit", values: ["300", "10,000", "20,000", "50,000"] },
+      {
+        label: "Monthly credits",
+        values: ["3,000", "100,000", "200,000", "500,000"],
+      },
+      {
+        label: "Daily credit limit",
+        values: ["300", "10,000", "20,000", "50,000"],
+      },
       { label: "Concurrent agents", values: ["1", "2", "5", "5"] },
       { label: "Max tokens per run", values: ["50K", "100K", "200K", "500K"] },
-      { label: "Fast models (GPT-4o mini, etc.)", values: [true, true, true, true] },
-      { label: "Smart models (Claude Haiku, Gemini Flash)", values: [false, true, true, true] },
-      { label: "Advanced models (GPT-4o, Sonnet, Gemini Pro)", values: [false, false, true, true] },
-      { label: "Powerful models (Claude Opus)", values: [false, false, false, true] },
-      { label: "Agent run duration", values: ["2 min", "10 min", "20 min", "1 hour"] },
+      {
+        label: "Fast models (GPT-4o mini, etc.)",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Smart models (Claude Haiku, Gemini Flash)",
+        values: [false, true, true, true],
+      },
+      {
+        label: "Advanced models (GPT-4o, Sonnet, Gemini Pro)",
+        values: [false, false, true, true],
+      },
+      {
+        label: "Powerful models (Claude Opus)",
+        values: [false, false, false, true],
+      },
+      {
+        label: "Agent run duration",
+        values: ["2 min", "10 min", "20 min", "1 hour"],
+      },
     ],
   },
   {
     group: "SQL Editor",
     rows: [
-      { label: "Multi-file projects (Cloud, Local, Team)", values: [true, true, true, true] },
-      { label: "PostgreSQL syntax highlighting & autocomplete", values: [true, true, true, true] },
-      { label: "Multi-file tabs with autosave", values: [true, true, true, true] },
-      { label: "Split view (editor + ER diagram)", values: [true, true, true, true] },
-      { label: "20-layer Schema Compiler (A–F grading)", values: [true, true, true, true] },
-      { label: "Schema diff (side-by-side, unified, semantic)", values: [true, true, true, true] },
-      { label: "Inline diff overlay in editor", values: [true, true, true, true] },
-      { label: "Version history with restore", values: ["30 days", "30 days", true, "Unlimited"] },
-      { label: "Compare two historical versions", values: [true, true, true, true] },
-      { label: "AI workspace editing (55 tools, ReAct loop)", values: [true, true, true, true] },
+      {
+        label: "Multi-file projects (Cloud, Local, Team)",
+        values: [true, true, true, true],
+      },
+      {
+        label: "PostgreSQL syntax highlighting & autocomplete",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Multi-file tabs with autosave",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Split view (editor + ER diagram)",
+        values: [true, true, true, true],
+      },
+      {
+        label: "20-layer Schema Compiler (A–F grading)",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Schema diff (side-by-side, unified, semantic)",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Inline diff overlay in editor",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Version history with restore",
+        values: ["30 days", "30 days", true, "Unlimited"],
+      },
+      {
+        label: "Compare two historical versions",
+        values: [true, true, true, true],
+      },
+      {
+        label: "AI workspace editing (55 tools, ReAct loop)",
+        values: [true, true, true, true],
+      },
     ],
   },
   {
     group: "ER Diagram",
     rows: [
-      { label: "Live auto-generated diagram from SQL", values: [true, true, true, true] },
-      { label: "16 node types (views, functions, enums, RLS, roles)", values: [true, true, true, true] },
-      { label: "Schema grouping & namespace clustering", values: [true, true, true, true] },
-      { label: "FK path analysis (BFS / Dijkstra)", values: [true, true, true, true] },
-      { label: "Visibility controls & column view modes", values: [true, true, true, true] },
-      { label: "Per-table, per-schema & global AI chat on canvas", values: [true, true, true, true] },
+      {
+        label: "Live auto-generated diagram from SQL",
+        values: [true, true, true, true],
+      },
+      {
+        label: "16 node types (views, functions, enums, RLS, roles)",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Schema grouping & namespace clustering",
+        values: [true, true, true, true],
+      },
+      {
+        label: "FK path analysis (BFS / Dijkstra)",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Visibility controls & column view modes",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Per-table, per-schema & global AI chat on canvas",
+        values: [true, true, true, true],
+      },
       { label: "Export diagram (PNG / SVG)", values: [true, true, true, true] },
     ],
   },
   {
     group: "Database & Migrations",
     rows: [
-      { label: "Pull / Diff / Push workflow", values: [true, true, true, true] },
-      { label: "8-step migration pipeline with transaction wrapping", values: [true, true, true, true] },
-      { label: "Drift detection (external changes)", values: [true, true, true, true] },
-      { label: "Safe mode migration (multi-phase type changes)", values: [true, true, true, true] },
-      { label: "Rollback with auto-generated reverse SQL", values: [true, true, true, true] },
-      { label: "Migration history with hash chain integrity", values: [true, true, true, true] },
-      { label: "Built-in terminal (sw commands)", values: [true, true, true, true] },
+      {
+        label: "Pull / Diff / Push workflow",
+        values: [true, true, true, true],
+      },
+      {
+        label: "8-step migration pipeline with transaction wrapping",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Drift detection (external changes)",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Safe mode migration (multi-phase type changes)",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Rollback with auto-generated reverse SQL",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Migration history with hash chain integrity",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Built-in terminal (sw commands)",
+        values: [true, true, true, true],
+      },
     ],
   },
   {
     group: "Data Explorer",
     rows: [
       { label: "High-performance data grid", values: [true, true, true, true] },
-      { label: "Server-side sorting & filtering", values: [true, true, true, true] },
-      { label: "Column statistics (null %, distributions)", values: [true, true, true, true] },
-      { label: "Multi-format export", values: ["CSV", "All formats", "All formats", "All formats"] },
-      { label: "Full database export (ZIP archive)", values: [false, true, true, true] },
-      { label: "AI charts & visualizations (10+ chart types)", values: [true, true, true, true] },
-      { label: "Agentic data analysis (40+ tools)", values: [true, true, true, true] },
+      {
+        label: "Server-side sorting & filtering",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Column statistics (null %, distributions)",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Multi-format export",
+        values: ["CSV", "All formats", "All formats", "All formats"],
+      },
+      {
+        label: "Full database export (ZIP archive)",
+        values: [false, true, true, true],
+      },
+      {
+        label: "AI charts & visualizations (10+ chart types)",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Agentic data analysis (40+ tools)",
+        values: [true, true, true, true],
+      },
       { label: "Voice input for AI queries", values: [true, true, true, true] },
-      { label: "AI report generation (PPT, PDF, Markdown)", values: [true, true, true, true] },
+      {
+        label: "AI report generation (PPT, PDF, Markdown)",
+        values: [true, true, true, true],
+      },
     ],
   },
   {
     group: "Team & Collaboration",
     rows: [
-      { label: "Team creation & email invitation", values: [true, true, true, true] },
-      { label: "Role-based access (Owner / Member)", values: [true, true, true, true] },
-      { label: "Shared database connections (no credential sharing)", values: [true, true, true, true] },
-      { label: "Audit trail (who changed what, when)", values: [true, true, true, true] },
-      { label: "AES-256 credential encryption", values: [true, true, true, true] },
+      {
+        label: "Team creation & email invitation",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Role-based access (Owner / Member)",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Shared database connections (no credential sharing)",
+        values: [true, true, true, true],
+      },
+      {
+        label: "Audit trail (who changed what, when)",
+        values: [true, true, true, true],
+      },
+      {
+        label: "AES-256 credential encryption",
+        values: [true, true, true, true],
+      },
     ],
   },
   {
     group: "Support",
     rows: [
-      { label: "Support channel", values: ["Community", "Email", "Priority email", "Priority email"] },
+      {
+        label: "Support channel",
+        values: ["Community", "Email", "Priority email", "Priority email"],
+      },
     ],
   },
 ];
@@ -331,7 +483,8 @@ const compareGroups: Array<{
 
 function Cell({ value }: { value: boolean | string }) {
   if (value === true) return <Check className="w-4 h-4 text-primary mx-auto" />;
-  if (value === false) return <Minus className="w-4 h-4 text-muted-foreground/40 mx-auto" />;
+  if (value === false)
+    return <Minus className="w-4 h-4 text-muted-foreground/40 mx-auto" />;
   return <span className="text-xs text-foreground/80">{value}</span>;
 }
 
@@ -377,15 +530,21 @@ function PricingPage() {
                     </div>
                   )}
                   <div>
-                    <h3 className="font-display font-semibold text-xl">{t.name}</h3>
-                    <p className="mt-1 text-sm text-muted-foreground">{t.tagline}</p>
+                    <h3 className="font-display font-semibold text-xl">
+                      {t.name}
+                    </h3>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {t.tagline}
+                    </p>
                   </div>
                   <div className="mt-6">
                     <div className="flex items-baseline gap-2">
                       <span className="font-display font-bold text-5xl tracking-tight">
                         {t.price}
                       </span>
-                      <span className="text-sm text-muted-foreground">/ {t.cadence}</span>
+                      <span className="text-sm text-muted-foreground">
+                        / {t.cadence}
+                      </span>
                     </div>
                     {t.priceInr !== "₹0" && (
                       <p className="mt-1 text-sm text-muted-foreground/70">
@@ -437,12 +596,18 @@ function PricingPage() {
                     <th className="text-left font-medium text-muted-foreground p-4 w-1/4">
                       Feature
                     </th>
-                    <th className="text-center font-display font-semibold p-4">Free</th>
-                    <th className="text-center font-display font-semibold p-4">Starter</th>
+                    <th className="text-center font-display font-semibold p-4">
+                      Free
+                    </th>
+                    <th className="text-center font-display font-semibold p-4">
+                      Starter
+                    </th>
                     <th className="text-center font-display font-semibold p-4 text-primary">
                       Pro
                     </th>
-                    <th className="text-center font-display font-semibold p-4">Power</th>
+                    <th className="text-center font-display font-semibold p-4">
+                      Power
+                    </th>
                   </tr>
                 </thead>
                 <tbody>

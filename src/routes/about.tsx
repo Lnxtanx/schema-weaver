@@ -3,7 +3,15 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { PageHero } from "@/components/marketing/PageHero";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Compass, Heart, Lock, Sparkles, Telescope, Users } from "lucide-react";
+import {
+  ArrowRight,
+  Compass,
+  Heart,
+  Lock,
+  Sparkles,
+  Telescope,
+  Users,
+} from "lucide-react";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -14,15 +22,25 @@ export const Route = createFileRoute("/about")({
         content:
           "Schema Weaver was founded by Vivek.KY in January 2026 to solve the technical friction of schema building in the AI era. Learn about our solo-mission to build the world's first browser-native PostgreSQL operating system.",
       },
-      { name: "keywords", content: "Vivek.KY, Schema Weaver origin, database tools, PostgreSQL IDE, solo founder, VivekMind" },
-      { property: "og:title", content: "About Schema Weaver — Built by Vivek.KY" },
+      {
+        name: "keywords",
+        content:
+          "Vivek.KY, Schema Weaver origin, database tools, PostgreSQL IDE, solo founder, VivekMind",
+      },
+      {
+        property: "og:title",
+        content: "About Schema Weaver — Built by Vivek.KY",
+      },
       {
         property: "og:description",
         content:
           "The story of a solo mission to rebuild database infrastructure for the browser.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://schemaweaver.vivekmind.com/about" },
+      {
+        property: "og:url",
+        content: "https://schemaweaver.vivekmind.com/about",
+      },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "About — Schema Weaver" },
       {
@@ -79,10 +97,22 @@ const principles = [
 ];
 
 const milestones = [
-  { year: "Jan 3, 2026", text: "Project started as a solo mission by Vivek.KY. After facing friction with existing schema builders, the first lines of the browser-native parser were written." },
-  { year: "Feb 2026", text: "The 20-layer Schema Compiler prototype is completed, capable of A-F grading and modular DDL analysis." },
-  { year: "Mar 2026", text: "Resona AI integrated with Spatial intelligence, introducing anchored Table and Group nodes directly on the ER canvas." },
-  { year: "Today", text: "Schema Weaver evolves into a comprehensive PostgreSQL Operating System, used by engineers to design and explore production schemas." },
+  {
+    year: "Jan 3, 2026",
+    text: "Project started as a solo mission by Vivek.KY. After facing friction with existing schema builders, the first lines of the browser-native parser were written.",
+  },
+  {
+    year: "Feb 2026",
+    text: "The 20-layer Schema Compiler prototype is completed, capable of A-F grading and modular DDL analysis.",
+  },
+  {
+    year: "Mar 2026",
+    text: "Resona AI integrated with Spatial intelligence, introducing anchored Table and Group nodes directly on the ER canvas.",
+  },
+  {
+    year: "Today",
+    text: "Schema Weaver evolves into a comprehensive PostgreSQL Operating System, used by engineers to design and explore production schemas.",
+  },
 ];
 
 function AboutPage() {
@@ -122,19 +152,28 @@ function AboutPage() {
             </div>
             <div className="mt-8 space-y-6 text-lg sm:text-xl text-muted-foreground leading-relaxed">
               <p>
-                In early 2026, building complex PostgreSQL schemas still felt like an exercise in friction. 
-                Existing desktop clients like <span className="text-foreground font-medium">DBeaver</span> were powerful but heavy, 
-                and visualization tools like <span className="text-foreground font-medium">dbdiagram.io</span> were static drawings 
-                disconnected from live production reality.
+                In early 2026, building complex PostgreSQL schemas still felt
+                like an exercise in friction. Existing desktop clients like{" "}
+                <span className="text-foreground font-medium">DBeaver</span>{" "}
+                were powerful but heavy, and visualization tools like{" "}
+                <span className="text-foreground font-medium">
+                  dbdiagram.io
+                </span>{" "}
+                were static drawings disconnected from live production reality.
               </p>
               <p>
-                Vivek.KY started Schema Weaver on <span className="text-foreground font-medium">January 3rd, 2026</span> as a solo mission 
-                to build what was missing: a "PostgreSQL Operating System" that runs entirely in the browser, 
-                understands the graph-theory of your database, and integrates agentic AI as a core architectural layer.
+                Vivek.KY started Schema Weaver on{" "}
+                <span className="text-foreground font-medium">
+                  January 3rd, 2026
+                </span>{" "}
+                as a solo mission to build what was missing: a "PostgreSQL
+                Operating System" that runs entirely in the browser, understands
+                the graph-theory of your database, and integrates agentic AI as
+                a core architectural layer.
               </p>
               <p className="text-foreground font-medium">
-                We believe database tools should be as modular as your code, as fast as your IDE, 
-                and as intelligent as your best engineer.
+                We believe database tools should be as modular as your code, as
+                fast as your IDE, and as intelligent as your best engineer.
               </p>
             </div>
           </div>
@@ -158,8 +197,12 @@ function AboutPage() {
                   <div className="w-11 h-11 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
                     <p.icon className="w-5 h-5 text-primary" />
                   </div>
-                  <h3 className="mt-5 font-display font-semibold text-lg">{p.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.body}</p>
+                  <h3 className="mt-5 font-display font-semibold text-lg">
+                    {p.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    {p.body}
+                  </p>
                 </div>
               ))}
             </div>
@@ -178,12 +221,18 @@ function AboutPage() {
             </h2>
             <ol className="mt-12 relative border-l border-border ml-3">
               {milestones.map((m, i) => (
-                <li key={m.year} className="ml-6 pb-10 last:pb-0 animate-fade-up" style={{ animationDelay: `${i * 60}ms` }}>
+                <li
+                  key={m.year}
+                  className="ml-6 pb-10 last:pb-0 animate-fade-up"
+                  style={{ animationDelay: `${i * 60}ms` }}
+                >
                   <div className="absolute -left-2 w-4 h-4 rounded-full bg-primary shadow-glow-emerald" />
                   <div className="text-xs font-mono uppercase tracking-widest text-primary">
                     {m.year}
                   </div>
-                  <p className="mt-2 text-foreground/90 leading-relaxed">{m.text}</p>
+                  <p className="mt-2 text-foreground/90 leading-relaxed">
+                    {m.text}
+                  </p>
                 </li>
               ))}
             </ol>

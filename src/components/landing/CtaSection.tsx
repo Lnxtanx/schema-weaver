@@ -19,8 +19,9 @@ export function CtaSection() {
         </h2>
 
         <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
-          Join the teams using Schema Weaver to design, visualize, sync, and explore their
-          PostgreSQL databases. Free to start. No credit card. No strings.
+          Join the teams using Schema Weaver to design, visualize, sync, and
+          explore their PostgreSQL databases. Free to start. No credit card. No
+          strings.
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -30,7 +31,9 @@ export function CtaSection() {
             </a>
           </Button>
           <Button variant="glass" size="xl" asChild>
-            <a href="https://data-explorer.schemaweaver.vivekmind.com">Explore Data</a>
+            <a href="https://data-explorer.schemaweaver.vivekmind.com">
+              Explore Data
+            </a>
           </Button>
         </div>
       </div>

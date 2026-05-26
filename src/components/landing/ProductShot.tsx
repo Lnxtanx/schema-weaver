@@ -21,7 +21,12 @@ export function ProductShot({
 
   return (
     <div className={cn("relative", className)}>
-      <div className={cn("relative rounded-xl border border-border bg-card overflow-hidden", glowClass)}>
+      <div
+        className={cn(
+          "relative rounded-xl border border-border bg-card overflow-hidden",
+          glowClass,
+        )}
+      >
         <div className="flex items-center gap-2 h-8 px-3 border-b border-border bg-muted/50">
           <div className="flex gap-1.5">
             <div className="w-2.5 h-2.5 rounded-full bg-destructive/70" />
@@ -34,7 +39,11 @@ export function ProductShot({
             </div>
           )}
         </div>
-        <img src={src ?? productImage} alt={caption ?? "Schema Weaver interface"} className="w-full h-auto block" />
+        <img
+          src={src ?? productImage}
+          alt={caption ?? "Schema Weaver interface"}
+          className="w-full h-auto block"
+        />
       </div>
     </div>
   );

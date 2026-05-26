@@ -14,7 +14,10 @@ import { Footer } from "@/components/landing/Footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "PostgreSQL SQL Editor & ER Diagram Tool | Resona AI - Schema Weaver (SW)" },
+      {
+        title:
+          "PostgreSQL SQL Editor & ER Diagram Tool | Resona AI - Schema Weaver (SW)",
+      },
       {
         name: "description",
         content:
@@ -25,7 +28,11 @@ export const Route = createFileRoute("/")({
         content:
           "PostgreSQL SQL Editor, schemaweaver, ER diagram tool, agentic SQL, spatial AI, database migration tool, postgres visualization, DDL editor, sw-db, database AI agent, Resona AI",
       },
-      { property: "og:title", content: "PostgreSQL SQL Editor & ER Diagram Tool | Resona AI - Schema Weaver" },
+      {
+        property: "og:title",
+        content:
+          "PostgreSQL SQL Editor & ER Diagram Tool | Resona AI - Schema Weaver",
+      },
       {
         property: "og:description",
         content:
@@ -35,16 +42,17 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: "https://schemaweaver.vivekmind.com/" },
       { property: "og:site_name", content: "Schema Weaver (SW)" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "PostgreSQL SQL Editor & ER Diagram Tool | Resona AI" },
+      {
+        name: "twitter:title",
+        content: "PostgreSQL SQL Editor & ER Diagram Tool | Resona AI",
+      },
       {
         name: "twitter:description",
         content:
           "The agentic operating system for PostgreSQL. Modular schema design and Dijkstra-powered visualization — built by VivekMind.",
       },
     ],
-    links: [
-      { rel: "canonical", href: "https://schemaweaver.vivekmind.com/" },
-    ],
+    links: [{ rel: "canonical", href: "https://schemaweaver.vivekmind.com/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -63,10 +71,10 @@ export const Route = createFileRoute("/")({
           },
           description:
             "A browser-native PostgreSQL operating system for schema engineering. Includes modular DDL editor, live ER diagrams with Dijkstra-powered path analysis, and Resona AI for spatial database architecture.",
-          publisher: { 
-            "@type": "Organization", 
+          publisher: {
+            "@type": "Organization",
             name: "VivekMind",
-            url: "https://vivekmind.com"
+            url: "https://vivekmind.com",
           },
           featureList: [
             "Modular PostgreSQL SQL Editor",
@@ -74,8 +82,8 @@ export const Route = createFileRoute("/")({
             "Resona Spatial AI Assistant",
             "Dijkstra-powered Path Analysis",
             "Drift-aware Database Migrations",
-            "20-layer Schema Compiler"
-          ]
+            "20-layer Schema Compiler",
+          ],
         }),
       },
     ],

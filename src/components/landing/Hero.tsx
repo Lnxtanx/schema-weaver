@@ -11,37 +11,45 @@ export function Hero() {
         <div className="flex justify-center animate-fade-up">
           <div className="inline-flex items-center gap-2 bg-glass border border-border rounded-full px-4 py-1.5 text-xs">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse-glow" />
-            <span className="text-muted-foreground">Now with</span>
-            <img src="/resona.png" alt="" className="w-3.5 h-3.5 object-contain" />
-            <span className="text-foreground font-medium">Resona AI — Agentic Schema & Data Co-pilot</span>
+            <span className="text-foreground font-semibold">
+              Cursor for Databases
+            </span>
           </div>
         </div>
 
         {/* Heading */}
         <h1
-          className="mt-8 text-center font-display font-bold tracking-tight text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] animate-fade-up"
+          className="mt-8 text-center font-display font-bold tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl leading-[1.1] animate-fade-up max-w-4xl mx-auto"
           style={{ animationDelay: "60ms" }}
         >
-          The Complete{" "}
-          <span className="text-gradient-mesh">PostgreSQL</span>
-          <br />
-          Operating System.
+          You have a messy <span className="text-gradient-mesh">Postgres</span>{" "}
+          database you inherited.
         </h1>
 
         <p
-          className="mt-8 max-w-3xl mx-auto text-center text-lg sm:text-xl text-muted-foreground leading-relaxed animate-fade-up"
+          className="mt-6 max-w-3xl mx-auto text-center text-base sm:text-lg md:text-xl lg:text-2xl text-foreground font-semibold tracking-tight leading-relaxed animate-fade-up"
           style={{ animationDelay: "120ms" }}
         >
-          Design your schema, visualize relationships, safely migrate production, and explore your
-          data with an agentic AI co-pilot. Stop juggling DBeaver, PGAdmin, and brittle migration
-          scripts — <span className="text-foreground font-medium">Schema Weaver consolidates your entire database lifecycle</span> into a single,
-          high-performance workspace.
+          Connect it, pull the schema, and understand it visually in 60 seconds.
+        </p>
+
+        <p
+          className="mt-4 max-w-3xl mx-auto text-center text-base sm:text-lg text-muted-foreground leading-relaxed animate-fade-up"
+          style={{ animationDelay: "180ms" }}
+        >
+          Design your schema, visualize relationships, safely migrate
+          production, and explore your data with an agentic AI co-pilot. Stop
+          juggling DBeaver, PGAdmin, and brittle migration scripts —{" "}
+          <span className="text-foreground font-medium">
+            Schema Weaver consolidates your entire database lifecycle
+          </span>{" "}
+          into a single, high-performance workspace.
         </p>
 
         {/* CTAs */}
         <div
           className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 animate-fade-up"
-          style={{ animationDelay: "180ms" }}
+          style={{ animationDelay: "240ms" }}
         >
           <Button variant="hero" size="xl" asChild>
             <a href="https://sql-editor.schemaweaver.vivekmind.com">
@@ -59,7 +67,7 @@ export function Hero() {
 
         <p
           className="mt-4 text-center text-xs text-muted-foreground animate-fade-up"
-          style={{ animationDelay: "240ms" }}
+          style={{ animationDelay: "300ms" }}
         >
           No credit card required · Connect once. Available everywhere.
         </p>
@@ -67,7 +75,7 @@ export function Hero() {
         {/* Product hero image */}
         <div
           className="relative mt-20 animate-fade-up"
-          style={{ animationDelay: "300ms" }}
+          style={{ animationDelay: "360ms" }}
         >
           <div className="absolute -inset-x-20 -top-20 -bottom-20 bg-gradient-to-b from-primary/20 via-secondary/10 to-transparent blur-3xl opacity-70 -z-10" />
 
@@ -94,10 +102,18 @@ export function Hero() {
         {/* Trust strip */}
         <div className="mt-16 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-xs uppercase tracking-widest text-muted-foreground/70">
           <span>Built for modern database teams</span>
-          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">Privacy-First</span>
-          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">Zero-Exfiltration</span>
-          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">Local Analysis</span>
-          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">VivekMind Ecosystem</span>
+          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">
+            Privacy-First
+          </span>
+          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">
+            Zero-Exfiltration
+          </span>
+          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">
+            Local Analysis
+          </span>
+          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">
+            VivekMind Ecosystem
+          </span>
         </div>
       </div>
     </section>

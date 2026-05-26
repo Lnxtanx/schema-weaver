@@ -1,6 +1,11 @@
 import { Section } from "./Section";
 import { ProductShot } from "./ProductShot";
-import { ArrowDownToLine, ArrowUpFromLine, GitCompare, ShieldCheck } from "lucide-react";
+import {
+  ArrowDownToLine,
+  ArrowUpFromLine,
+  GitCompare,
+  ShieldCheck,
+} from "lucide-react";
 
 const steps = [
   {
@@ -36,7 +41,8 @@ export function SyncSection() {
       eyebrow="Database Lifecycle"
       title={
         <>
-          Pull. Diff. Push. <span className="text-gradient-emerald">Migrate.</span>
+          Pull. Diff. Push.{" "}
+          <span className="text-gradient-emerald">Migrate.</span>
         </>
       }
       description="The bridge between your local code and live production. Schema Weaver manages the sync so you don't have to write the same migration glue for the hundredth time."
@@ -65,10 +71,16 @@ export function SyncSection() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-baseline gap-3">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-primary">{s.label}</span>
-                    <h3 className="font-display font-semibold text-lg">{s.title}</h3>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-primary">
+                      {s.label}
+                    </span>
+                    <h3 className="font-display font-semibold text-lg">
+                      {s.title}
+                    </h3>
                   </div>
-                  <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{s.body}</p>
+                  <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
+                    {s.body}
+                  </p>
                 </div>
               </div>
             </li>
