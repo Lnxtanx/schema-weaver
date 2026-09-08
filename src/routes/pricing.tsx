@@ -245,6 +245,26 @@ const tiers = [
       "Priority support",
     ],
   },
+  {
+    name: "Team",
+    price: "$15",
+    priceInr: "₹1,199",
+    cadence: "per seat / month",
+    tagline: "Per-seat billing for whole workspaces.",
+    cta: "Start with 5 seats",
+    href: `${SQL_EDITOR_URL}?plan=team_monthly`,
+    highlight: false,
+    perks: [
+      "100,000 AI credits per seat / month",
+      "Per-seat pricing — add seats anytime",
+      "Same 19-model catalog as Starter",
+      "Member AI usage billed to the team plan",
+      "Team workspaces & role-based access",
+      "Shared database connections",
+      "Everything in Starter",
+      "Priority support",
+    ],
+  },
 ];
 
 /* ─────────────────────────────────────────────────────────────────────────────

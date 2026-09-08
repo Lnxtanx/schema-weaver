@@ -471,6 +471,7 @@ const comparisonGroups: Array<{
         feature: "Shared DB connections (no cred sharing)",
         values: ["Y", "N", "N", "Y", "N", "N", "N"],
       },
+      { feature: "Per-seat team billing ($15/seat)", values: ["Y", "P", "N", "P", "N", "N", "N"] },
       { feature: "Audit trail", values: ["Y", "P", "N", "Y", "N", "P", "Y"] },
     ],
   },
