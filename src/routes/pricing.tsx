@@ -251,7 +251,7 @@ const tiers = [
     priceInr: "₹1,199",
     cadence: "per seat / month",
     tagline: "Per-seat billing for whole workspaces.",
-    cta: "Start with 5 seats",
+    cta: "Start with 2 seats",
     href: `${SQL_EDITOR_URL}?plan=team_monthly`,
     highlight: false,
     perks: [
