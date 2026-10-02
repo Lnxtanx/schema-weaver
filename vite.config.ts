@@ -18,6 +18,9 @@ export default defineConfig(({ command }) => {
   }
 
   return {
+    server: {
+      port: 8002,
+    },
     resolve: {
       alias: {
         "@": `${process.cwd()}/src`,
