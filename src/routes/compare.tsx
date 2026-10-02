@@ -58,7 +58,7 @@ export const Route = createFileRoute("/compare")({
       { property: "og:type", content: "website" },
       {
         property: "og:url",
-        content: "https://schemaweaver.vivekmind.com/compare",
+        content: "https://schemaweaver.dev/compare",
       },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Schema Weaver vs Competitors" },
@@ -69,12 +69,10 @@ export const Route = createFileRoute("/compare")({
       },
       {
         rel: "canonical",
-        href: "https://schemaweaver.vivekmind.com/compare",
+        href: "https://schemaweaver.dev/compare",
       } as never,
     ],
-    links: [
-      { rel: "canonical", href: "https://schemaweaver.vivekmind.com/compare" },
-    ],
+    links: [{ rel: "canonical", href: "https://schemaweaver.dev/compare" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -84,7 +82,7 @@ export const Route = createFileRoute("/compare")({
           name: "Schema Weaver — Competitor Comparison",
           description:
             "Feature-by-feature comparison of Schema Weaver against 20 PostgreSQL tools across 48 capabilities.",
-          url: "https://schemaweaver.vivekmind.com/compare",
+          url: "https://schemaweaver.dev/compare",
         }),
       },
     ],
@@ -471,7 +469,10 @@ const comparisonGroups: Array<{
         feature: "Shared DB connections (no cred sharing)",
         values: ["Y", "N", "N", "Y", "N", "N", "N"],
       },
-      { feature: "Per-seat team billing ($15/seat)", values: ["Y", "P", "N", "P", "N", "N", "N"] },
+      {
+        feature: "Per-seat team billing ($15/seat)",
+        values: ["Y", "P", "N", "P", "N", "N", "N"],
+      },
       { feature: "Audit trail", values: ["Y", "P", "N", "Y", "N", "P", "Y"] },
     ],
   },
@@ -537,7 +538,7 @@ function ComparePage() {
         >
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Button variant="hero" size="xl" asChild>
-              <a href="https://sql-editor.schemaweaver.vivekmind.com">
+              <a href="https://data-explorer.schemaweaver.dev">
                 Try Schema Weaver free <ArrowRight className="w-4 h-4" />
               </a>
             </Button>
@@ -750,7 +751,7 @@ function ComparePage() {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
               <Button variant="hero" size="xl" asChild>
-                <a href="https://sql-editor.schemaweaver.vivekmind.com">
+                <a href="https://sql-editor.schemaweaver.dev">
                   Launch SQL Editor <ArrowRight className="w-4 h-4" />
                 </a>
               </Button>

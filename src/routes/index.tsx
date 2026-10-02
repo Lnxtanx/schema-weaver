@@ -39,7 +39,7 @@ export const Route = createFileRoute("/")({
           "A unified infrastructure workspace for designing, visualizing, and exploring PostgreSQL databases. Built for the AI era.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://schemaweaver.vivekmind.com/" },
+      { property: "og:url", content: "https://schemaweaver.dev/" },
       { property: "og:site_name", content: "Schema Weaver (SW)" },
       { name: "twitter:card", content: "summary_large_image" },
       {
@@ -52,7 +52,7 @@ export const Route = createFileRoute("/")({
           "The agentic operating system for PostgreSQL. Modular schema design and Dijkstra-powered visualization — built by VivekMind.",
       },
     ],
-    links: [{ rel: "canonical", href: "https://schemaweaver.vivekmind.com/" }],
+    links: [{ rel: "canonical", href: "https://schemaweaver.dev/" }],
     scripts: [
       {
         type: "application/ld+json",

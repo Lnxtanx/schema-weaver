@@ -80,6 +80,10 @@ export const Route = createRootRoute({
         children: `
           (function() {
             try {
+              if (window.location.hostname === 'schemaweaver.vivekmind.com') {
+                window.location.replace('https://schemaweaver.dev' + window.location.pathname + window.location.search + window.location.hash);
+                return;
+              }
               const theme = localStorage.getItem('theme') || 'light';
               if (theme === 'dark') {
                 document.documentElement.classList.add('dark');

@@ -19,14 +19,14 @@ export const Route = createFileRoute("/cancellation-policy")({
       },
       {
         property: "og:url",
-        content: "https://schemaweaver.vivekmind.com/cancellation-policy",
+        content: "https://schemaweaver.dev/cancellation-policy",
       },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {
         rel: "canonical",
-        href: "https://schemaweaver.vivekmind.com/cancellation-policy",
+        href: "https://schemaweaver.dev/cancellation-policy",
       },
     ],
   }),
@@ -65,7 +65,7 @@ function CancellationPolicyPage() {
                 <strong>Subscription Settings</strong>
                 in your workspace dashboard. Alternatively, you can request
                 cancellation by contacting our support team at{" "}
-                <strong>support@vivekmind.com</strong>.
+                <strong>support@schemaweaver.dev</strong>.
               </p>
             </section>
 
@@ -109,7 +109,9 @@ function CancellationPolicyPage() {
               <p>
                 Questions about your cancellation? Reach out at:
                 <br />
-                <strong className="text-primary">support@vivekmind.com</strong>
+                <strong className="text-primary">
+                  support@schemaweaver.dev
+                </strong>
               </p>
             </section>
           </div>

@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
-import { PageHero } from "@/components/marketing/PageHero";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -9,7 +9,16 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Check, Minus, Sparkles, ArrowRight } from "lucide-react";
+import {
+  Check,
+  Minus,
+  ArrowRight,
+  User,
+  Users,
+  Plus,
+  Minus as MinusIcon,
+  Sparkles,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -19,88 +28,82 @@ import { cn } from "@/lib/utils";
 const faqs = [
   {
     q: "Is there really a free tier?",
-    a: "Yes. Free is permanent, not a trial. It includes 3,000 AI credits/month, 8 fast models, the full SQL Editor, live ER diagrams, and the 20-layer Schema Compiler — perfect for solo developers and learners.",
+    a: "Yes. Free is a permanent plan (not a trial). It includes 3,000 AI credits per month, Flash and Deep modes, the full SQL Editor, live ER diagrams, the 20-layer Schema Compiler, and data grid export. Free users can also join teams as invited members with no paywall.",
   },
   {
-    q: "What are AI credits?",
-    a: "AI credits are the currency for using Resona AI models. Different models cost different amounts of credits — fast models cost 1–10 credits per 1K tokens, while powerful models like Claude Opus cost 100+ credits per 1K tokens. You choose the model, the credits are deducted automatically.",
+    q: "How does billing work?",
+    a: "Billing is pay-first with no auto-debit. When you purchase Pro or Team, your subscription stays active until the end of the billing period. We never automatically charge your card; you renew manually to continue.",
   },
   {
-    q: "Where does my data live?",
-    a: "Schema metadata (DDL, ER graph) is stored in our managed cloud, encrypted at rest. Row-level data from your databases is never persisted by Schema Weaver — queries stream directly from your database to your browser.",
+    q: "How does the Team plan and seat billing work?",
+    a: "The Team plan is $15 / seat / month with a minimum base of 2 seats ($30 / month). Seats can be added anytime — seat additions are prorated and not locked to renewal. Every member gets their own 100,000 AI credits per month.",
   },
   {
-    q: "Can I cancel anytime?",
-    a: "Yes. All paid plans are month-to-month. Cancel any time and keep using the Free plan with your existing projects (within Free limits).",
+    q: "What is the policy on Pro cancellations or changes?",
+    a: "Individual plans (Pro) are non-refundable and locked until the billing period ends (no mid-cycle switch, downgrade, or cancellation). Since there is no auto-debit, your plan simply expires at the end of the term unless you choose to renew.",
   },
   {
-    q: "Does Resona AI see my row-level data?",
-    a: "No. Resona AI receives schema metadata and your natural-language question, then generates SQL that runs in your browser against your database. Row-level data never leaves your infrastructure.",
+    q: "What are AI credits and modes?",
+    a: "AI credits power natural-language queries, AI charts, and data analysis in Data Explorer. Both Flash mode (fast everyday tasks) and Deep mode (deep multi-table reasoning and synthesis) are available across all tiers.",
   },
   {
-    q: "Do you offer discounts?",
-    a: "Yes — 50% off for verified students and educators, and 100% free for registered open-source projects. Reach out via the Support page.",
-  },
-  {
-    q: "What's the difference between model tiers?",
-    a: "Fast models (GPT-4o mini, Gemini Flash Lite, etc.) are great for everyday tasks. Smart models (Claude Haiku, Gemini Flash) offer better quality. Advanced models (GPT-4o, Claude Sonnet, Gemini Pro) handle complex schema work. Powerful models (Claude Opus) are for elite tasks. Higher tiers cost more credits per use.",
+    q: "Where does my data live? Does AI see my database rows?",
+    a: "Your row-level data never leaves your infrastructure. Queries execute locally or stream directly to your browser. AI models only reason over schema metadata and query summaries to generate SQL and visual insights.",
   },
 ];
 
 /* ─────────────────────────────────────────────────────────────────────────────
- * Route
+ * Route definition
  * ───────────────────────────────────────────────────────────────────────────── */
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
-      { title: "Pricing — Schema Weaver | AI-Powered PostgreSQL Platform" },
+      { title: "Pricing — Schema Weaver" },
       {
         name: "description",
         content:
-          "Transparent pricing for Schema Weaver. Free for solo developers with 3K AI credits. Starter from $15/mo, Pro at $29/mo, Power at $79/mo. Compare all features.",
+          "See pricing for Schema Weaver Data Explorer. Free with 3,000 AI credits, Pro at $29/mo, and Team at $15/seat/mo.",
       },
       {
         name: "keywords",
         content:
-          "Schema Weaver pricing, PostgreSQL tools pricing, AI SQL editor pricing, Resona AI credits, database platform cost",
+          "Schema Weaver pricing, Data Explorer pricing, PostgreSQL AI workspace, Resona AI credits, team database pricing",
       },
       { property: "og:title", content: "Pricing — Schema Weaver" },
       {
         property: "og:description",
         content:
-          "Free for individuals. Starter, Pro, and Power plans for teams. Compare every feature side by side.",
+          "Free, Pro ($29/mo), and Team ($15/seat/mo) plans for Schema Weaver Data Explorer.",
       },
       { property: "og:type", content: "website" },
       {
         property: "og:url",
-        content: "https://schemaweaver.vivekmind.com/pricing",
+        content: "https://schemaweaver.dev/pricing",
       },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Pricing — Schema Weaver" },
       {
         name: "twitter:description",
         content:
-          "Free, Starter, Pro, and Power plans for the complete AI-powered PostgreSQL workspace.",
+          "Free, Pro, and Team plans for the complete AI-powered PostgreSQL data workspace.",
       },
       {
         rel: "canonical",
-        href: "https://schemaweaver.vivekmind.com/pricing",
+        href: "https://schemaweaver.dev/pricing",
       } as never,
     ],
-    links: [
-      { rel: "canonical", href: "https://schemaweaver.vivekmind.com/pricing" },
-    ],
+    links: [{ rel: "canonical", href: "https://schemaweaver.dev/pricing" }],
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Product",
-          name: "Schema Weaver",
+          name: "Schema Weaver Data Explorer",
           description:
-            "AI-powered PostgreSQL platform with SQL editor, ER diagrams, agentic AI, and high-performance data explorer.",
-          brand: { "@type": "Brand", name: "VivekMind" },
+            "AI-powered PostgreSQL data explorer and SQL workspace with natural-language queries, live ER diagrams, AI charts, and team collaboration.",
+          brand: { "@type": "Brand", name: "Schema Weaver" },
           offers: [
             {
               "@type": "Offer",
@@ -108,15 +111,7 @@ export const Route = createFileRoute("/pricing")({
               price: "0",
               priceCurrency: "USD",
               description:
-                "3,000 AI credits/month, 8 fast models, full SQL Editor",
-            },
-            {
-              "@type": "Offer",
-              name: "Starter",
-              price: "15",
-              priceCurrency: "USD",
-              description:
-                "100,000 AI credits/month, 19 models (Fast + Smart tiers)",
+                "3,000 AI credits/month, full SQL editor, ER diagrams, and compiler",
             },
             {
               "@type": "Offer",
@@ -124,15 +119,15 @@ export const Route = createFileRoute("/pricing")({
               price: "29",
               priceCurrency: "USD",
               description:
-                "200,000 AI credits/month, 36 models including Advanced tier",
+                "200,000 AI credits/month, Flash & Deep modes, 5 concurrent agents, AI charts & reports",
             },
             {
               "@type": "Offer",
-              name: "Power",
-              price: "79",
+              name: "Team",
+              price: "15",
               priceCurrency: "USD",
               description:
-                "500,000 AI credits/month, 39 models including Claude Opus",
+                "$15/seat/month (min 2 seats), 100,000 AI credits per seat, shared database connections",
             },
           ],
         }),
@@ -154,310 +149,89 @@ export const Route = createFileRoute("/pricing")({
   component: PricingPage,
 });
 
-/* ─────────────────────────────────────────────────────────────────────────────
- * Tier card data
- *
- * CTA buttons redirect to SQL Editor with ?plan= param.
- * The SQL Editor handles login + Razorpay checkout.
- * ───────────────────────────────────────────────────────────────────────────── */
-
-const SQL_EDITOR_URL = "https://sql-editor.schemaweaver.vivekmind.com";
-
-const tiers = [
-  {
-    name: "Free",
-    price: "$0",
-    priceInr: "₹0",
-    cadence: "forever",
-    tagline: "For solo developers exploring PostgreSQL.",
-    cta: "Get started free",
-    href: SQL_EDITOR_URL,
-    highlight: false,
-    perks: [
-      "3,000 AI credits / month",
-      "8 fast models (GPT-4o mini, Gemini Flash Lite, etc.)",
-      "Multi-file SQL editor with autosave",
-      "Live ER diagram (16 node types)",
-      "20-layer Schema Compiler (A–F grading)",
-      "Schema diff & version history",
-      "Pull / Diff / Push migrations",
-      "High-performance data grid & export (CSV)",
-      "Community support",
-    ],
-  },
-  {
-    name: "Starter",
-    price: "$15",
-    priceInr: "₹1,199",
-    cadence: "per month",
-    tagline: "For developers who need smarter AI models.",
-    cta: "Choose Starter",
-    href: `${SQL_EDITOR_URL}?plan=starter`,
-    highlight: false,
-    perks: [
-      "100,000 AI credits / month",
-      "19 models — Fast + Smart tiers",
-      "2 concurrent agents · 10-min runs",
-      "Claude Haiku 4.5, Gemini Flash, DeepSeek V3.2",
-      "AI charts & data analysis",
-      "Multi-format export (CSV, JSON, Excel, SQL)",
-      "Everything in Free",
-      "Email support",
-    ],
-  },
-  {
-    name: "Pro",
-    price: "$29",
-    priceInr: "₹2,499",
-    cadence: "per month",
-    tagline: "For teams shipping production schema.",
-    cta: "Choose Pro",
-    href: `${SQL_EDITOR_URL}?plan=pro_monthly`,
-    highlight: true,
-    perks: [
-      "200,000 AI credits / month",
-      "36 models — Fast + Smart + Advanced tiers",
-      "5 concurrent agents · 20-min runs",
-      "GPT-4o, Claude Sonnet 4.6, Gemini 2.5 Pro",
-      "Team workspaces & role-based access",
-      "AI report generation (PPT, PDF)",
-      "Everything in Starter",
-      "Priority support",
-    ],
-  },
-  {
-    name: "Power",
-    price: "$79",
-    priceInr: "₹6,999",
-    cadence: "per month",
-    tagline: "For power users who need the best models.",
-    cta: "Choose Power",
-    href: `${SQL_EDITOR_URL}?plan=power_monthly`,
-    highlight: false,
-    perks: [
-      "500,000 AI credits / month",
-      "39 models — all tiers including Powerful",
-      "5 concurrent agents · 1-hour runs",
-      "Claude Opus 4.6, Kimi K2 Thinking",
-      "Unlimited version history",
-      "Shared database connections",
-      "Everything in Pro",
-      "Priority support",
-    ],
-  },
-  {
-    name: "Team",
-    price: "$15",
-    priceInr: "₹1,199",
-    cadence: "per seat / month",
-    tagline: "Per-seat billing for whole workspaces.",
-    cta: "Start with 2 seats",
-    href: `${SQL_EDITOR_URL}?plan=team_monthly`,
-    highlight: false,
-    perks: [
-      "100,000 AI credits per seat / month",
-      "Per-seat pricing — add seats anytime",
-      "Same 19-model catalog as Starter",
-      "Member AI usage billed to the team plan",
-      "Team workspaces & role-based access",
-      "Shared database connections",
-      "Everything in Starter",
-      "Priority support",
-    ],
-  },
-];
+const DATA_EXPLORER_URL = "https://data-explorer.schemaweaver.dev";
 
 /* ─────────────────────────────────────────────────────────────────────────────
- * Feature comparison table — comprehensive product showcase
+ * Comparison table data (3 Live Plans: Free, Pro, Team)
  * ───────────────────────────────────────────────────────────────────────────── */
 
 const compareGroups: Array<{
   group: string;
   rows: Array<{
     label: string;
-    values: [
-      boolean | string,
-      boolean | string,
-      boolean | string,
-      boolean | string,
-    ];
+    values: [boolean | string, boolean | string, boolean | string];
   }>;
 }> = [
   {
-    group: "Resona AI",
+    group: "Resona AI & Compute",
     rows: [
       {
-        label: "Monthly credits",
-        values: ["3,000", "100,000", "200,000", "500,000"],
+        label: "Monthly AI credits",
+        values: ["3,000", "200,000", "100,000 / seat"],
       },
       {
-        label: "Daily credit limit",
-        values: ["300", "10,000", "20,000", "50,000"],
+        label: "AI modes",
+        values: ["Flash & Deep", "Flash & Deep", "Flash & Deep"],
       },
-      { label: "Concurrent agents", values: ["1", "2", "5", "5"] },
-      { label: "Max tokens per run", values: ["50K", "100K", "200K", "500K"] },
+      { label: "Concurrent agents", values: ["1", "5", "2"] },
+      { label: "Natural-language to SQL", values: [true, true, true] },
       {
-        label: "Fast models (GPT-4o mini, etc.)",
-        values: [true, true, true, true],
-      },
-      {
-        label: "Smart models (Claude Haiku, Gemini Flash)",
-        values: [false, true, true, true],
-      },
-      {
-        label: "Advanced models (GPT-4o, Sonnet, Gemini Pro)",
-        values: [false, false, true, true],
-      },
-      {
-        label: "Powerful models (Claude Opus)",
-        values: [false, false, false, true],
-      },
-      {
-        label: "Agent run duration",
-        values: ["2 min", "10 min", "20 min", "1 hour"],
+        label: "Agentic data analysis",
+        values: [true, true, true],
       },
     ],
   },
   {
-    group: "SQL Editor",
+    group: "Data Explorer & Analytics",
     rows: [
       {
-        label: "Multi-file projects (Cloud, Local, Team)",
-        values: [true, true, true, true],
+        label: "High-performance data grid",
+        values: [true, true, true],
       },
-      {
-        label: "PostgreSQL syntax highlighting & autocomplete",
-        values: [true, true, true, true],
-      },
-      {
-        label: "Multi-file tabs with autosave",
-        values: [true, true, true, true],
-      },
-      {
-        label: "Split view (editor + ER diagram)",
-        values: [true, true, true, true],
-      },
-      {
-        label: "20-layer Schema Compiler (A–F grading)",
-        values: [true, true, true, true],
-      },
-      {
-        label: "Schema diff (side-by-side, unified, semantic)",
-        values: [true, true, true, true],
-      },
-      {
-        label: "Inline diff overlay in editor",
-        values: [true, true, true, true],
-      },
-      {
-        label: "Version history with restore",
-        values: ["30 days", "30 days", true, "Unlimited"],
-      },
-      {
-        label: "Compare two historical versions",
-        values: [true, true, true, true],
-      },
-      {
-        label: "AI workspace editing (55 tools, ReAct loop)",
-        values: [true, true, true, true],
-      },
-    ],
-  },
-  {
-    group: "ER Diagram",
-    rows: [
-      {
-        label: "Live auto-generated diagram from SQL",
-        values: [true, true, true, true],
-      },
-      {
-        label: "16 node types (views, functions, enums, RLS, roles)",
-        values: [true, true, true, true],
-      },
-      {
-        label: "Schema grouping & namespace clustering",
-        values: [true, true, true, true],
-      },
-      {
-        label: "FK path analysis (BFS / Dijkstra)",
-        values: [true, true, true, true],
-      },
-      {
-        label: "Visibility controls & column view modes",
-        values: [true, true, true, true],
-      },
-      {
-        label: "Per-table, per-schema & global AI chat on canvas",
-        values: [true, true, true, true],
-      },
-      { label: "Export diagram (PNG / SVG)", values: [true, true, true, true] },
-    ],
-  },
-  {
-    group: "Database & Migrations",
-    rows: [
-      {
-        label: "Pull / Diff / Push workflow",
-        values: [true, true, true, true],
-      },
-      {
-        label: "8-step migration pipeline with transaction wrapping",
-        values: [true, true, true, true],
-      },
-      {
-        label: "Drift detection (external changes)",
-        values: [true, true, true, true],
-      },
-      {
-        label: "Safe mode migration (multi-phase type changes)",
-        values: [true, true, true, true],
-      },
-      {
-        label: "Rollback with auto-generated reverse SQL",
-        values: [true, true, true, true],
-      },
-      {
-        label: "Migration history with hash chain integrity",
-        values: [true, true, true, true],
-      },
-      {
-        label: "Built-in terminal (sw commands)",
-        values: [true, true, true, true],
-      },
-    ],
-  },
-  {
-    group: "Data Explorer",
-    rows: [
-      { label: "High-performance data grid", values: [true, true, true, true] },
       {
         label: "Server-side sorting & filtering",
-        values: [true, true, true, true],
+        values: [true, true, true],
       },
       {
-        label: "Column statistics (null %, distributions)",
-        values: [true, true, true, true],
+        label: "Column statistics & distributions",
+        values: [true, true, true],
       },
       {
-        label: "Multi-format export",
-        values: ["CSV", "All formats", "All formats", "All formats"],
+        label: "Export formats",
+        values: ["CSV", "CSV, JSON, Excel, SQL", "CSV, JSON, Excel, SQL"],
       },
       {
-        label: "Full database export (ZIP archive)",
-        values: [false, true, true, true],
+        label: "AI charts & visualizations",
+        values: [false, true, true],
       },
       {
-        label: "AI charts & visualizations (10+ chart types)",
-        values: [true, true, true, true],
+        label: "AI report generation (PPT, PDF)",
+        values: [false, true, true],
+      },
+    ],
+  },
+  {
+    group: "SQL Editor & Schema Tools",
+    rows: [
+      {
+        label: "Full SQL editor with autosave",
+        values: [true, true, true],
       },
       {
-        label: "Agentic data analysis (40+ tools)",
-        values: [true, true, true, true],
+        label: "Live ER diagrams",
+        values: [true, true, true],
       },
-      { label: "Voice input for AI queries", values: [true, true, true, true] },
       {
-        label: "AI report generation (PPT, PDF, Markdown)",
-        values: [true, true, true, true],
+        label: "20-layer Schema Compiler",
+        values: [true, true, true],
+      },
+      {
+        label: "Schema diff & version history",
+        values: [true, true, true],
+      },
+      {
+        label: "Pull / Diff / Push migrations",
+        values: [true, true, true],
       },
     ],
   },
@@ -465,178 +239,441 @@ const compareGroups: Array<{
     group: "Team & Collaboration",
     rows: [
       {
-        label: "Team creation & email invitation",
-        values: [true, true, true, true],
+        label: "Team access model",
+        values: [
+          "Join as invited member",
+          "Workspaces (up to 5 members)",
+          "Per-seat workspaces (owner bills)",
+        ],
       },
       {
-        label: "Role-based access (Owner / Member)",
-        values: [true, true, true, true],
+        label: "Seats included",
+        values: ["Solo", "Solo", "2 to 1,000 seats"],
       },
       {
-        label: "Shared database connections (no credential sharing)",
-        values: [true, true, true, true],
+        label: "Add seats anytime (prorated)",
+        values: [false, false, true],
       },
       {
-        label: "Audit trail (who changed what, when)",
-        values: [true, true, true, true],
+        label: "Shared database connections",
+        values: [false, false, true],
       },
       {
-        label: "AES-256 credential encryption",
-        values: [true, true, true, true],
+        label: "Credit structure",
+        values: [
+          "Individual credits",
+          "Individual (not pooled)",
+          "Per-seat credits",
+        ],
       },
     ],
   },
   {
-    group: "Support",
+    group: "Support & Billing Policy",
     rows: [
       {
+        label: "Billing policy",
+        values: [
+          "Permanent Free",
+          "Pay-first, locked to period",
+          "Pay-first, seats addable anytime",
+        ],
+      },
+      {
+        label: "Auto-debit",
+        values: ["None", "No auto-debit", "No auto-debit"],
+      },
+      {
         label: "Support channel",
-        values: ["Community", "Email", "Priority email", "Priority email"],
+        values: ["Community", "Priority email", "Priority support"],
       },
     ],
   },
 ];
 
-/* ─────────────────────────────────────────────────────────────────────────────
- * Helper components
- * ───────────────────────────────────────────────────────────────────────────── */
-
 function Cell({ value }: { value: boolean | string }) {
   if (value === true) return <Check className="w-4 h-4 text-primary mx-auto" />;
   if (value === false)
     return <Minus className="w-4 h-4 text-muted-foreground/40 mx-auto" />;
-  return <span className="text-xs text-foreground/80">{value}</span>;
+  return (
+    <span className="text-xs text-foreground/85 font-medium">{value}</span>
+  );
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
- * Page component
+ * Page Component
  * ───────────────────────────────────────────────────────────────────────────── */
 
 function PricingPage() {
+  const [activeSlab, setActiveSlab] = useState<"individual" | "team">(
+    "individual",
+  );
+  const [teamSeats, setTeamSeats] = useState(2);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main>
-        <PageHero
-          eyebrow="Pricing"
-          title={
-            <>
-              Simple, transparent{" "}
-              <span className="text-gradient-mesh">AI‑powered pricing.</span>
-            </>
-          }
-          description="Start free with 3,000 AI credits. Scale when you're ready — no per-database fees, no hidden limits, no surprise overages."
-        />
+        {/* Simple & Clean Header with Schema Weaver brand colors */}
+        <section className="pt-36 pb-12 text-center px-6">
+          <p className="font-display font-semibold text-base sm:text-lg tracking-tight text-primary">
+            Schema Weaver
+          </p>
+          <h1 className="mt-3 font-display font-bold tracking-tight text-5xl sm:text-6xl text-foreground">
+            Pricing
+          </h1>
+          <p className="mt-4 text-base sm:text-lg text-muted-foreground max-w-xl mx-auto">
+            See pricing for our individual, team, and enterprise plans.
+          </p>
 
-        {/* Tier cards */}
-        <section className="relative -mt-10 pb-24">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
-              {tiers.map((t, i) => (
-                <div
-                  key={t.name}
-                  className={cn(
-                    "relative rounded-2xl border p-8 flex flex-col animate-fade-up",
-                    t.highlight
-                      ? "border-primary/40 bg-card shadow-glow-emerald"
-                      : "border-border bg-card/60 shadow-card-soft",
-                  )}
-                  style={{ animationDelay: `${i * 80}ms` }}
-                >
-                  {t.highlight && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full">
-                      <Sparkles className="w-3 h-3" />
-                      Most popular
-                    </div>
-                  )}
-                  <div>
-                    <h3 className="font-display font-semibold text-xl">
-                      {t.name}
-                    </h3>
-                    <p className="mt-1 text-sm text-muted-foreground">
-                      {t.tagline}
-                    </p>
-                  </div>
-                  <div className="mt-6">
-                    <div className="flex items-baseline gap-2">
-                      <span className="font-display font-bold text-5xl tracking-tight">
-                        {t.price}
-                      </span>
-                      <span className="text-sm text-muted-foreground">
-                        / {t.cadence}
-                      </span>
-                    </div>
-                    {t.priceInr !== "₹0" && (
-                      <p className="mt-1 text-sm text-muted-foreground/70">
-                        or {t.priceInr}/mo for India
-                      </p>
-                    )}
-                  </div>
-                  <Button
-                    variant={t.highlight ? "hero" : "glass"}
-                    size="lg"
-                    className="mt-6 w-full"
-                    asChild
-                  >
-                    <a href={t.href}>
-                      {t.cta} <ArrowRight className="w-4 h-4" />
-                    </a>
-                  </Button>
-                  <ul className="mt-8 space-y-3 text-sm">
-                    {t.perks.map((p) => (
-                      <li key={p} className="flex items-start gap-2.5">
-                        <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                        <span className="text-foreground/90">{p}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+          {/* Theme Pill Toggle */}
+          <div className="mt-8 inline-flex p-1.5 rounded-xl border border-border bg-card/80 backdrop-blur shadow-sm">
+            <button
+              onClick={() => setActiveSlab("individual")}
+              className={cn(
+                "flex items-center gap-2 px-6 py-2 rounded-lg text-sm font-medium transition-all",
+                activeSlab === "individual"
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground",
+              )}
+            >
+              <User className="w-4 h-4" />
+              <span>Individual</span>
+            </button>
+            <button
+              onClick={() => setActiveSlab("team")}
+              className={cn(
+                "flex items-center gap-2 px-6 py-2 rounded-lg text-sm font-medium transition-all",
+                activeSlab === "team"
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground",
+              )}
+            >
+              <Users className="w-4 h-4" />
+              <span>Business & Enterprise</span>
+            </button>
           </div>
         </section>
 
-        {/* Comparison table */}
-        <section className="py-24 border-t border-border">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="max-w-3xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-primary">
-                <span className="w-6 h-px bg-primary" />
-                Compare plans
+        {/* Tier cards section with Schema Weaver theme & glow */}
+        <section className="pb-24 px-6">
+          <div className="max-w-4xl mx-auto">
+            {activeSlab === "individual" ? (
+              /* ── Individual Slab: Free & Pro ───────────────────────────── */
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* FREE CARD */}
+                <div className="relative rounded-2xl border border-border bg-card/60 p-8 flex flex-col justify-between shadow-card-soft hover:border-primary/30 transition-all">
+                  <div>
+                    <h3 className="font-display font-bold text-2xl text-foreground">
+                      Free
+                    </h3>
+                    <p className="mt-1 text-sm text-muted-foreground min-h-[36px]">
+                      For solo developers exploring PostgreSQL.
+                    </p>
+
+                    <div className="mt-6 mb-6">
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="font-display font-bold text-5xl tracking-tight text-foreground">
+                          $0
+                        </span>
+                        <span className="text-sm text-muted-foreground">
+                          / month
+                        </span>
+                      </div>
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        Permanent free plan · No credit card required
+                      </p>
+                    </div>
+
+                    <Button
+                      variant="glass"
+                      size="lg"
+                      className="w-full rounded-xl"
+                      asChild
+                    >
+                      <a href={DATA_EXPLORER_URL}>
+                        Get started free{" "}
+                        <ArrowRight className="w-4 h-4 ml-1.5" />
+                      </a>
+                    </Button>
+
+                    <ul className="mt-8 space-y-3 text-sm border-t border-border/60 pt-6">
+                      {[
+                        "3,000 AI credits / month",
+                        "Full SQL editor with autosave",
+                        "Live ER diagram",
+                        "20-layer Schema Compiler",
+                        "Schema diff & version history",
+                        "Pull / Diff / Push migrations",
+                        "Data grid & CSV export",
+                        "Join teams as a member — invited by an owner, no upgrade needed",
+                        "Community support",
+                      ].map((p) => (
+                        <li key={p} className="flex items-start gap-2.5">
+                          <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                          <span className="text-foreground/90">{p}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* PRO CARD */}
+                <div className="relative rounded-2xl border border-primary/50 bg-card p-8 flex flex-col justify-between shadow-glow-emerald hover:border-primary transition-all">
+                  <div className="absolute -top-3 right-6 inline-flex items-center gap-1.5 bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full shadow-sm">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    Most popular
+                  </div>
+                  <div>
+                    <h3 className="font-display font-bold text-2xl text-foreground">
+                      Pro
+                    </h3>
+                    <p className="mt-1 text-sm text-muted-foreground min-h-[36px]">
+                      For power developers shipping production schema.
+                    </p>
+
+                    <div className="mt-6 mb-6">
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="font-display font-bold text-5xl tracking-tight text-foreground">
+                          $29
+                        </span>
+                        <span className="text-sm text-muted-foreground">
+                          / month
+                        </span>
+                      </div>
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        Billed monthly
+                      </p>
+                    </div>
+
+                    <Button
+                      variant="hero"
+                      size="lg"
+                      className="w-full rounded-xl"
+                      asChild
+                    >
+                      <a href={`${DATA_EXPLORER_URL}?plan=pro_monthly`}>
+                        Choose Pro <ArrowRight className="w-4 h-4 ml-1.5" />
+                      </a>
+                    </Button>
+
+                    <ul className="mt-8 space-y-3 text-sm border-t border-border/60 pt-6">
+                      {[
+                        "200,000 AI credits / month",
+                        "Flash & Deep modes",
+                        "5 concurrent agents",
+                        "AI charts & data analysis",
+                        "Multi-format export (CSV, JSON, Excel, SQL)",
+                        "AI report generation (PPT, PDF)",
+                        "Team sharing — workspaces & role-based access (credits are not pooled)",
+                        "Priority support",
+                        "Everything in Free",
+                      ].map((p) => (
+                        <li key={p} className="flex items-start gap-2.5">
+                          <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                          <span className="text-foreground/90 font-medium">
+                            {p}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
-              <h2 className="mt-4 font-display font-bold text-4xl sm:text-5xl tracking-tight">
-                Every feature, side by side.
+            ) : (
+              /* ── Business & Enterprise Slab: Team & Enterprise ────────── */
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* TEAM CARD */}
+                <div className="relative rounded-2xl border border-primary/50 bg-card p-8 flex flex-col justify-between shadow-glow-emerald hover:border-primary transition-all">
+                  <div>
+                    <h3 className="font-display font-bold text-2xl text-foreground">
+                      Team
+                    </h3>
+                    <p className="mt-1 text-sm text-muted-foreground min-h-[36px]">
+                      Per-seat billing for whole workspaces.
+                    </p>
+
+                    <div className="mt-6 mb-4">
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="font-display font-bold text-5xl tracking-tight text-foreground">
+                          $15
+                        </span>
+                        <span className="text-sm text-muted-foreground">
+                          / seat / month
+                        </span>
+                      </div>
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        Min 2 seats (${teamSeats * 15}/mo total)
+                      </p>
+                    </div>
+
+                    {/* Clean seat adjuster */}
+                    <div className="mb-6 p-3 rounded-xl bg-muted/40 border border-border/60 flex items-center justify-between text-xs">
+                      <span className="text-muted-foreground font-medium">
+                        Team seats:
+                      </span>
+                      <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setTeamSeats((s) => Math.max(2, s - 1))
+                          }
+                          disabled={teamSeats <= 2}
+                          className="w-7 h-7 rounded-md border border-border bg-card flex items-center justify-center text-foreground hover:bg-muted disabled:opacity-30 transition-colors"
+                        >
+                          <MinusIcon className="w-3.5 h-3.5" />
+                        </button>
+                        <span className="font-mono font-semibold text-foreground px-1">
+                          {teamSeats} seats
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setTeamSeats((s) => Math.min(1000, s + 1))
+                          }
+                          className="w-7 h-7 rounded-md border border-border bg-card flex items-center justify-center text-foreground hover:bg-muted transition-colors"
+                        >
+                          <Plus className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
+
+                    <Button
+                      variant="hero"
+                      size="lg"
+                      className="w-full rounded-xl"
+                      asChild
+                    >
+                      <a
+                        href={`${DATA_EXPLORER_URL}?plan=team_monthly&seats=${teamSeats}`}
+                      >
+                        Start with {teamSeats} Seats{" "}
+                        <ArrowRight className="w-4 h-4 ml-1.5" />
+                      </a>
+                    </Button>
+
+                    <ul className="mt-8 space-y-3 text-sm border-t border-border/60 pt-6">
+                      {[
+                        "100,000 AI credits per seat / month",
+                        "Per-seat billing — $15 / seat, base 2 seats",
+                        "Add seats anytime — prorated, not locked to renewal",
+                        "Team workspaces & role-based access",
+                        "Shared database connections",
+                        "Buyer becomes workspace owner; each member gets their own credits",
+                        "Flash & Deep modes (2 concurrent agents)",
+                        "Everything in Pro tooling",
+                      ].map((p) => (
+                        <li key={p} className="flex items-start gap-2.5">
+                          <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                          <span className="text-foreground/90 font-medium">
+                            {p}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* ENTERPRISE CARD */}
+                <div className="relative rounded-2xl border border-border bg-card/60 p-8 flex flex-col justify-between shadow-card-soft hover:border-primary/30 transition-all">
+                  <div>
+                    <h3 className="font-display font-bold text-2xl text-foreground">
+                      Enterprise
+                    </h3>
+                    <p className="mt-1 text-sm text-muted-foreground min-h-[36px]">
+                      For organizations requiring custom scale and security.
+                    </p>
+
+                    <div className="mt-6 mb-6">
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="font-display font-bold text-5xl tracking-tight text-foreground">
+                          Custom
+                        </span>
+                      </div>
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        Annual invoicing · Custom seat packages
+                      </p>
+                    </div>
+
+                    <Button
+                      variant="glass"
+                      size="lg"
+                      className="w-full rounded-xl"
+                      asChild
+                    >
+                      <Link to="/support">
+                        Contact Sales <ArrowRight className="w-4 h-4 ml-1.5" />
+                      </Link>
+                    </Button>
+
+                    <ul className="mt-8 space-y-3 text-sm border-t border-border/60 pt-6">
+                      {[
+                        "Up to 1,000+ seats with custom pooled or per-seat credits",
+                        "Dedicated VPC peering & private database connections",
+                        "Custom SLA with 99.99% uptime guarantee",
+                        "Enterprise SSO / SAML & SCIM directory sync",
+                        "Audit logging & compliance exports",
+                        "Dedicated Customer Success Manager",
+                      ].map((p) => (
+                        <li key={p} className="flex items-start gap-2.5">
+                          <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                          <span className="text-foreground/90">{p}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* Comparison table (Compact & Clean: Free, Pro, Team with brand emerald) */}
+        <section className="py-20 border-t border-border bg-muted/10">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="text-center">
+              <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-tight text-foreground">
+                Compare plans
               </h2>
+              <p className="mt-2 text-muted-foreground text-sm">
+                Every feature, side by side.
+              </p>
             </div>
 
-            <div className="mt-14 overflow-x-auto rounded-2xl border border-border">
-              <table className="w-full text-sm min-w-[860px]">
+            <div className="mt-12 overflow-x-auto rounded-xl border border-border bg-card shadow-sm">
+              <table className="w-full text-sm min-w-[680px]">
                 <thead className="bg-muted/40">
                   <tr>
-                    <th className="text-left font-medium text-muted-foreground p-4 w-1/4">
+                    <th className="text-left font-medium text-muted-foreground p-4 w-1/3">
                       Feature
                     </th>
-                    <th className="text-center font-display font-semibold p-4">
-                      Free
+                    <th className="text-center font-display font-semibold p-4 w-1/5">
+                      <div>Free</div>
+                      <div className="text-xs font-normal text-muted-foreground font-mono">
+                        $0
+                      </div>
                     </th>
-                    <th className="text-center font-display font-semibold p-4">
-                      Starter
+                    <th className="text-center font-display font-semibold p-4 w-1/5 text-primary bg-primary/5 border-x border-primary/20">
+                      <div>Pro</div>
+                      <div className="text-xs font-normal text-primary/80 font-mono">
+                        $29
+                      </div>
                     </th>
-                    <th className="text-center font-display font-semibold p-4 text-primary">
-                      Pro
-                    </th>
-                    <th className="text-center font-display font-semibold p-4">
-                      Power
+                    <th className="text-center font-display font-semibold p-4 w-1/5">
+                      <div>Team</div>
+                      <div className="text-xs font-normal text-muted-foreground font-mono">
+                        $15 / seat
+                      </div>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   {compareGroups.map((g) => (
-                    <>
-                      <tr key={`${g.group}-h`} className="bg-card/40">
+                    <div key={g.group} style={{ display: "contents" }}>
+                      <tr className="bg-muted/30">
                         <td
-                          colSpan={5}
-                          className="px-4 py-3 text-xs font-mono uppercase tracking-[0.18em] text-muted-foreground border-t border-border"
+                          colSpan={4}
+                          className="px-4 py-2.5 text-xs font-mono uppercase tracking-wider text-muted-foreground border-t border-border font-semibold"
                         >
                           {g.group}
                         </td>
@@ -644,24 +681,23 @@ function PricingPage() {
                       {g.rows.map((r) => (
                         <tr
                           key={`${g.group}-${r.label}`}
-                          className="border-t border-border/60"
+                          className="border-t border-border/60 hover:bg-muted/20 transition-colors"
                         >
-                          <td className="p-4 text-foreground/90">{r.label}</td>
-                          <td className="p-4 text-center">
+                          <td className="p-3.5 text-foreground/90 font-medium">
+                            {r.label}
+                          </td>
+                          <td className="p-3.5 text-center">
                             <Cell value={r.values[0]} />
                           </td>
-                          <td className="p-4 text-center">
+                          <td className="p-3.5 text-center bg-primary/5 border-x border-primary/20">
                             <Cell value={r.values[1]} />
                           </td>
-                          <td className="p-4 text-center bg-primary/5">
+                          <td className="p-3.5 text-center">
                             <Cell value={r.values[2]} />
-                          </td>
-                          <td className="p-4 text-center">
-                            <Cell value={r.values[3]} />
                           </td>
                         </tr>
                       ))}
-                    </>
+                    </div>
                   ))}
                 </tbody>
               </table>
@@ -670,26 +706,15 @@ function PricingPage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-24 border-t border-border bg-muted/20">
+        <section className="py-20 border-t border-border">
           <div className="max-w-3xl mx-auto px-6">
             <div className="text-center">
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-primary">
-                <span className="w-6 h-px bg-primary" />
-                FAQ
-              </div>
-              <h2 className="mt-4 font-display font-bold text-4xl sm:text-5xl tracking-tight">
-                Frequently asked questions.
+              <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-tight text-foreground">
+                Frequently asked questions
               </h2>
-              <p className="mt-4 text-muted-foreground">
-                Can't find what you're looking for?{" "}
-                <Link to="/support" className="text-primary hover:underline">
-                  Talk to our team
-                </Link>
-                .
-              </p>
             </div>
 
-            <Accordion type="single" collapsible className="mt-12">
+            <Accordion type="single" collapsible className="mt-10">
               {faqs.map((f) => (
                 <AccordionItem
                   key={f.q}

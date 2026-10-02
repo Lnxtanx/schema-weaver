@@ -115,7 +115,8 @@ export function FeedbackDialog({
       }
 
       const API_URL =
-        "https://api-node.schemaweaver.vivekmind.com/api/feedback";
+        (import.meta.env.VITE_API_URL as string | undefined) ||
+        "https://api-node.schemaweaver.dev/api/feedback";
 
       const response = await fetch(API_URL, {
         method: "POST",
@@ -142,7 +143,7 @@ export function FeedbackDialog({
       onOpenChange(false);
     } catch (error) {
       toast.error(
-        "Failed to submit. Please try again or email support@vivekmind.com",
+        "Failed to submit. Please try again or email support@schemaweaver.dev",
       );
     } finally {
       setSubmitting(false);

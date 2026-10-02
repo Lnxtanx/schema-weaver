@@ -11,9 +11,9 @@ const cols = [
     title: "Schema Weaver",
     links: [
       ["Overview", "/"],
-      ["SQL Editor", "https://sql-editor.schemaweaver.vivekmind.com"],
-      ["Data Explorer", "https://data-explorer.schemaweaver.vivekmind.com"],
-      ["Documentation", "https://docs.schemaweaver.vivekmind.com"],
+      ["Data Explorer", "https://data-explorer.schemaweaver.dev"],
+      ["SQL Editor", "https://sql-editor.schemaweaver.dev"],
+      ["Documentation", "https://docs.schemaweaver.dev"],
       ["Pricing", "/pricing"],
     ],
   },
@@ -21,7 +21,6 @@ const cols = [
     title: "Company",
     links: [
       ["VivekMind Home", "https://vivekmind.com"],
-      ["About", "/about"],
       ["Support", "/support"],
     ],
   },

@@ -26,14 +26,12 @@ export function CtaSection() {
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
           <Button variant="hero" size="xl" asChild>
-            <a href="https://sql-editor.schemaweaver.vivekmind.com">
-              Open SQL Editor <ArrowRight className="w-4 h-4" />
+            <a href="https://data-explorer.schemaweaver.dev">
+              Launch Data Explorer <ArrowRight className="w-4 h-4" />
             </a>
           </Button>
           <Button variant="glass" size="xl" asChild>
-            <a href="https://data-explorer.schemaweaver.vivekmind.com">
-              Explore Data
-            </a>
+            <a href="https://sql-editor.schemaweaver.dev">SQL Editor</a>
           </Button>
         </div>
       </div>

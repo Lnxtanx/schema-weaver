@@ -19,14 +19,14 @@ export const Route = createFileRoute("/refund-policy")({
       },
       {
         property: "og:url",
-        content: "https://schemaweaver.vivekmind.com/refund-policy",
+        content: "https://schemaweaver.dev/refund-policy",
       },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {
         rel: "canonical",
-        href: "https://schemaweaver.vivekmind.com/refund-policy",
+        href: "https://schemaweaver.dev/refund-policy",
       },
     ],
   }),
@@ -106,7 +106,9 @@ function RefundPolicyPage() {
                 If you have any questions regarding refunds, please contact us
                 at:
                 <br />
-                <strong className="text-primary">support@vivekmind.com</strong>
+                <strong className="text-primary">
+                  support@schemaweaver.dev
+                </strong>
               </p>
             </section>
           </div>

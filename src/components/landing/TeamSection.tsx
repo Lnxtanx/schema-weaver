@@ -68,7 +68,7 @@ export function TeamSection() {
 
           <div className="flex items-center gap-3 pt-2">
             <Button variant="hero" size="lg" asChild>
-              <a href="https://sql-editor.schemaweaver.vivekmind.com">
+              <a href="https://data-explorer.schemaweaver.dev">
                 Invite your team
               </a>
             </Button>

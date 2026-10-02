@@ -52,15 +52,15 @@ export function Hero() {
           style={{ animationDelay: "240ms" }}
         >
           <Button variant="hero" size="xl" asChild>
-            <a href="https://sql-editor.schemaweaver.vivekmind.com">
-              Launch SQL Editor — Free
+            <a href="https://data-explorer.schemaweaver.dev">
+              Launch Data Explorer — Free
               <ArrowRight className="w-4 h-4" />
             </a>
           </Button>
           <Button variant="glass" size="xl" asChild>
-            <a href="https://data-explorer.schemaweaver.vivekmind.com">
+            <a href="https://sql-editor.schemaweaver.dev">
               <BookOpen className="w-4 h-4" />
-              Explore Data
+              SQL Editor
             </a>
           </Button>
         </div>

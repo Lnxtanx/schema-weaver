@@ -43,7 +43,7 @@ export const Route = createFileRoute("/support")({
       { property: "og:type", content: "website" },
       {
         property: "og:url",
-        content: "https://schemaweaver.vivekmind.com/support",
+        content: "https://schemaweaver.dev/support",
       },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Support — Schema Weaver" },
@@ -53,9 +53,7 @@ export const Route = createFileRoute("/support")({
           "Get help with Schema Weaver — docs, community, and direct support.",
       },
     ],
-    links: [
-      { rel: "canonical", href: "https://schemaweaver.vivekmind.com/support" },
-    ],
+    links: [{ rel: "canonical", href: "https://schemaweaver.dev/support" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -63,7 +61,7 @@ export const Route = createFileRoute("/support")({
           "@context": "https://schema.org",
           "@type": "ContactPage",
           name: "Schema Weaver Support",
-          url: "https://schemaweaver.vivekmind.com/support",
+          url: "https://schemaweaver.dev/support",
           contactOption: ["Email", "Community"],
         }),
       },
@@ -78,7 +76,7 @@ const channels = [
     title: "Documentation",
     body: "Guides, references, and recipes for every feature in Schema Weaver.",
     cta: "Browse docs",
-    href: "https://docs.schemaweaver.vivekmind.com",
+    href: "https://docs.schemaweaver.dev",
     type: "link",
   },
   {
@@ -116,7 +114,7 @@ const slaCards = [
     label: "Enterprise",
     value: "1h response, 99.99% uptime SLA",
   },
-  { icon: Mail, label: "Direct Support", value: "support@vivekmind.com" },
+  { icon: Mail, label: "Direct Support", value: "support@schemaweaver.dev" },
 ];
 
 function SupportPage() {
@@ -248,10 +246,10 @@ function SupportPage() {
                 For sales, partnerships, or general questions. Email us directly
                 at{" "}
                 <a
-                  href="mailto:support@vivekmind.com"
+                  href="mailto:support@schemaweaver.dev"
                   className="text-primary hover:underline"
                 >
-                  support@vivekmind.com
+                  support@schemaweaver.dev
                 </a>
                 .
               </p>
