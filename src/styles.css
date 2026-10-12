@@ -1,4 +1,4 @@
-@import "tailwindcss" source(none);
+@import "tailwindcss";
 @source "../src";
 @import "tw-animate-css";
 
@@ -332,6 +332,19 @@
     background-size: 56px 56px;
   }
 
+  .grid-bg-emerald {
+    background-image:
+      linear-gradient(to right, oklch(0.48 0.16 162 / 16%) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(0.48 0.16 162 / 16%) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .dark .grid-bg-emerald {
+    background-image:
+      linear-gradient(to right, oklch(0.72 0.17 162 / 18%) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(0.72 0.17 162 / 18%) 1px, transparent 1px);
+  }
+
   .dot-bg {
     background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
     background-size: 24px 24px;
@@ -442,18 +455,318 @@
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
     opacity: 0.5;
   }
 
-  /* Soft scroll glow for premium feel */
+  /* Soft scroll glow and mobile guards */
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-x: clip;
+  }
+  body {
+    overflow-x: clip;
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+    -webkit-tap-highlight-color: transparent;
   }
   ::selection {
     background: oklch(0.72 0.17 162 / 35%);
     color: oklch(0.99 0.005 250);
   }
 }
+
+/* ── Blog article typography ────────────────────────────────────── */
+/* Styles for HTML content rendered via dangerouslySetInnerHTML     */
+
+.blog-content {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--foreground);
+}
+
+@media (max-width: 640px) {
+  .blog-content {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
+
+/* Paragraphs */
+.blog-content p {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  color: var(--muted-foreground);
+  line-height: 1.8;
+}
+
+.blog-content > p:first-child {
+  margin-top: 0;
+}
+
+/* Headings */
+.blog-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.625rem;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.3;
+  color: var(--foreground);
+  margin-top: 2.5em;
+  margin-bottom: 0.75em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid var(--border);
+}
+
+.blog-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  line-height: 1.35;
+  color: var(--foreground);
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+}
+
+.blog-content h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-top: 1.75em;
+  margin-bottom: 0.5em;
+}
+
+/* Links */
+.blog-content a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in oklch, var(--primary) 40%, transparent);
+  transition: text-decoration-color 0.2s ease;
+}
+
+.blog-content a:hover {
+  text-decoration-color: var(--primary);
+}
+
+/* Lists */
+.blog-content ul {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.75em;
+  list-style-type: disc;
+}
+
+.blog-content ol {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.75em;
+  list-style-type: decimal;
+}
+
+.blog-content li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  color: var(--muted-foreground);
+  line-height: 1.7;
+  padding-left: 0.375em;
+}
+
+.blog-content li::marker {
+  color: var(--primary);
+}
+
+/* Inline code */
+.blog-content code {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: var(--primary);
+  background: color-mix(in oklch, var(--primary) 10%, transparent);
+  padding: 0.2em 0.45em;
+  border-radius: 0.375rem;
+}
+
+/* Code blocks */
+.blog-content pre {
+  margin-top: 1.75em;
+  margin-bottom: 1.75em;
+  padding: 1.25em 1.5em;
+  background: oklch(0.16 0.015 260);
+  color: oklch(0.92 0.005 260);
+  border-radius: 0.75rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  border: 1px solid oklch(0.25 0.01 260);
+}
+
+.blog-content pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+  font-weight: 400;
+  border-radius: 0;
+}
+
+/* Blockquotes */
+.blog-content blockquote {
+  margin-top: 1.75em;
+  margin-bottom: 1.75em;
+  padding: 1em 1.5em;
+  border-left: 3px solid var(--primary);
+  background: color-mix(in oklch, var(--primary) 5%, transparent);
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-style: italic;
+  color: var(--muted-foreground);
+}
+
+.blog-content blockquote p {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+
+.blog-content blockquote p:first-child {
+  margin-top: 0;
+}
+
+.blog-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Images */
+.blog-content img {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border-radius: 0.75rem;
+  max-width: 100%;
+  height: auto;
+  cursor: zoom-in;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.blog-content img:hover {
+  box-shadow: 0 8px 30px -8px color-mix(in oklch, var(--primary) 15%, transparent);
+  transform: translateY(-1px);
+}
+
+/* Horizontal rules */
+.blog-content hr {
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* Tables */
+.blog-content table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 1.75em;
+  margin-bottom: 1.75em;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.blog-content thead th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted-foreground);
+  padding: 0.75em 1em;
+  border-bottom: 2px solid var(--border);
+}
+
+.blog-content tbody td {
+  padding: 0.75em 1em;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted-foreground);
+}
+
+/* Strong / Bold */
+.blog-content strong {
+  font-weight: 650;
+  color: var(--foreground);
+}
+
+/* Emphasis */
+.blog-content em {
+  font-style: italic;
+}
+
+/* Figures */
+.blog-content figure {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.blog-content figcaption {
+  margin-top: 0.75em;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  text-align: center;
+}
+
+/* ── Mermaid diagram blocks ─────────────────────────────────────── */
+.blog-content pre.mermaid,
+.blog-content div.mermaid {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  overflow-x: auto;
+  color: var(--foreground);
+  text-align: center;
+}
+
+.blog-content pre.mermaid code,
+.blog-content div.mermaid code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.blog-content .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Infinite Marquee Ticker ───────────────────────────────────── */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+

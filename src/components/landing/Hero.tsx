@@ -1,119 +1,187 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { ArrowRight, BookOpen, BarChart3, Database, Calendar } from "lucide-react";
 
-export function Hero() {
+interface HeroProps {
+  activeTab?: "explorer" | "editor";
+  onTabChange?: (tab: "explorer" | "editor") => void;
+}
+
+const dataExplorerTags = [
+  "Resona Voice",
+  "Resona AI",
+  "Live Data Grid",
+  "Executive Dashboards",
+  "Flash & Deep Modes",
+  "Read-Only by Design",
+  "Full Schema ZIP Export",
+  "Column Profiling",
+  "Direct Postgres Wire",
+  "Zero Credential Exfiltration",
+];
+
+const sqlEditorTags = [
+  "20-Layer Schema Compiler",
+  "ER Graph Intelligence",
+  "Dijkstra Path Analysis",
+  "Modular DDL",
+  "Schema Diff & Sync",
+  "Drift Detection",
+  "Safe Migrations",
+  "100% Client-Side Compiler",
+];
+
+export function Hero({ activeTab: controlledTab, onTabChange }: HeroProps) {
+  const [internalTab, setInternalTab] = useState<"explorer" | "editor">("explorer");
+  const activeTab = controlledTab ?? internalTab;
+  const setActiveTab = onTabChange ?? setInternalTab;
+  const tags = activeTab === "explorer" ? dataExplorerTags : sqlEditorTags;
+
   return (
-    <section className="relative pt-32 pb-20 overflow-hidden bg-hero">
-      <div className="absolute inset-0 grid-bg opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+    <section className="relative pt-28 md:pt-32 pb-16 overflow-hidden bg-background">
+      {/* Green Grid Lines Background (Initial 48px grid) */}
+      <div className="absolute inset-0 grid-bg-emerald opacity-80 [mask-image:radial-gradient(ellipse_at_top,black_60%,transparent_90%)] pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-6">
-        {/* Badge */}
-        <div className="flex justify-center animate-fade-up">
-          <div className="inline-flex items-center gap-2 bg-glass border border-border rounded-full px-4 py-1.5 text-xs">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse-glow" />
-            <span className="text-foreground font-semibold">
-              Cursor for Databases
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+        {/* Live Demo Pill Badge */}
+        <div className="flex justify-center mb-6">
+          <a
+            href="https://data-explorer.schemaweaver.dev?demo=true"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r from-orange-500/15 via-amber-500/20 to-orange-500/15 border border-orange-500/35 text-orange-300 hover:border-orange-400 hover:text-orange-200 transition-all shadow-md shadow-orange-950/20 cursor-pointer"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
             </span>
-          </div>
+            <span className="bg-orange-500/25 px-2 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-bold text-orange-200 border border-orange-400/30">
+              Live Database
+            </span>
+            <span>Explore 24/7 PostgreSQL instance without sign-up</span>
+            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 text-orange-400" />
+          </a>
         </div>
 
-        {/* Heading */}
-        <h1
-          className="mt-8 text-center font-display font-bold tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl leading-[1.1] animate-fade-up max-w-4xl mx-auto"
-          style={{ animationDelay: "60ms" }}
-        >
-          You have a messy <span className="text-gradient-mesh">Postgres</span>{" "}
-          database you inherited.
+        {/* Headline */}
+        <h1 className="text-center font-display font-bold tracking-tight text-2xl sm:text-5xl md:text-6xl lg:text-[4rem] leading-[1.15] max-w-5xl mx-auto text-foreground">
+          <span className="block">
+            The first <span className="text-gradient-mesh">voice-native</span> analytics
+          </span>
+          <span className="block mt-1 sm:mt-2">
+            workspace for PostgreSQL
+          </span>
         </h1>
 
-        <p
-          className="mt-6 max-w-3xl mx-auto text-center text-base sm:text-lg md:text-xl lg:text-2xl text-foreground font-semibold tracking-tight leading-relaxed animate-fade-up"
-          style={{ animationDelay: "120ms" }}
-        >
-          Connect it, pull the schema, and understand it visually in 60 seconds.
-        </p>
-
-        <p
-          className="mt-4 max-w-3xl mx-auto text-center text-base sm:text-lg text-muted-foreground leading-relaxed animate-fade-up"
-          style={{ animationDelay: "180ms" }}
-        >
-          Design your schema, visualize relationships, safely migrate
-          production, and explore your data with an agentic AI co-pilot. Stop
-          juggling DBeaver, PGAdmin, and brittle migration scripts —{" "}
-          <span className="text-foreground font-medium">
-            Schema Weaver consolidates your entire database lifecycle
-          </span>{" "}
-          into a single, high-performance workspace.
-        </p>
-
-        {/* CTAs */}
-        <div
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 animate-fade-up"
-          style={{ animationDelay: "240ms" }}
-        >
-          <Button variant="hero" size="xl" asChild>
-            <a href="https://data-explorer.schemaweaver.dev">
-              Launch Data Explorer — Free
-              <ArrowRight className="w-4 h-4" />
+        {/* Dual CTAs */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full px-2 sm:px-0">
+          <Button
+            variant="hero"
+            size="xl"
+            className="w-full sm:w-auto rounded-xl shadow-glow-emerald px-6 sm:px-8 text-center cursor-pointer"
+            asChild
+          >
+            <a
+              href={
+                activeTab === "explorer"
+                  ? "https://data-explorer.schemaweaver.dev?demo=true"
+                  : "https://sql-editor.schemaweaver.dev"
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {activeTab === "explorer"
+                ? "Try Live Demo — Instant"
+                : "Launch SQL Editor — Free"}
+              <ArrowRight className="w-4 h-4 ml-2" />
             </a>
           </Button>
-          <Button variant="glass" size="xl" asChild>
-            <a href="https://sql-editor.schemaweaver.dev">
-              <BookOpen className="w-4 h-4" />
-              SQL Editor
+
+          <Button
+            size="xl"
+            className="w-full sm:w-auto rounded-xl border border-blue-500/40 bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 hover:text-blue-300 hover:border-blue-400 shadow-lg shadow-blue-500/10 px-6 sm:px-7 text-center cursor-pointer transition-all font-semibold"
+            asChild
+          >
+            <a
+              href="https://calendar.app.google/1BLuy4FkJwWGLcwFA"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Calendar className="w-4 h-4 mr-2 text-blue-400" />
+              Book a Demo
             </a>
           </Button>
         </div>
 
-        <p
-          className="mt-4 text-center text-xs text-muted-foreground animate-fade-up"
-          style={{ animationDelay: "300ms" }}
-        >
-          No credit card required · Connect once. Available everywhere.
-        </p>
+        {/* Product Workspace Preview (High-Contrast Dark Window on Light Background) */}
+        <div className="relative mt-12 md:mt-16">
+          {/* Subtle ambient glow behind the container */}
+          <div className="absolute -inset-x-10 -top-10 -bottom-10 bg-primary/10 blur-3xl opacity-50 -z-10 rounded-full pointer-events-none" />
 
-        {/* Product hero image */}
-        <div
-          className="relative mt-20 animate-fade-up"
-          style={{ animationDelay: "360ms" }}
-        >
-          <div className="absolute -inset-x-20 -top-20 -bottom-20 bg-gradient-to-b from-primary/20 via-secondary/10 to-transparent blur-3xl opacity-70 -z-10" />
-
-          <div className="relative rounded-2xl border border-border bg-card shadow-elevated overflow-hidden">
-            {/* Window chrome */}
-            <div className="flex items-center gap-2 h-9 px-4 border-b border-border bg-muted/40">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-destructive/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <div className="w-3 h-3 rounded-full bg-primary/80" />
-              </div>
-              <div className="flex-1 text-center text-xs font-mono text-muted-foreground">
-                schema-weaver — sql-editor — production
-              </div>
+          {/* Interactive Switcher Tabs */}
+          <div className="flex justify-center mb-4">
+            <div className="inline-flex p-1 rounded-xl border border-border bg-card/90 backdrop-blur shadow-sm">
+              <button
+                onClick={() => setActiveTab("explorer")}
+                className={`flex items-center gap-2 px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+                  activeTab === "explorer"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <BarChart3 className="w-3.5 h-3.5" />
+                <span>Data Explorer</span>
+              </button>
+              <button
+                onClick={() => setActiveTab("editor")}
+                className={`flex items-center gap-2 px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+                  activeTab === "editor"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <Database className="w-3.5 h-3.5" />
+                <span>SQL Editor</span>
+              </button>
             </div>
-            <img
-              src="/images/sql-editor/sql-editor.png"
-              alt="Schema Weaver SQL Editor with live ER Diagram"
-              className="w-full h-auto block"
-            />
+          </div>
+
+          {/* High-contrast application window */}
+          <div className="relative rounded-2xl border border-slate-800 bg-[#0b101b] shadow-2xl overflow-hidden">
+            {/* Active Workspace Screenshot */}
+            <div className="relative bg-[#0b101b]">
+              {activeTab === "explorer" ? (
+                <img
+                  src="/images/de.png"
+                  alt="Schema Weaver Voice Data Explorer"
+                  className="w-full h-auto block"
+                />
+              ) : (
+                <img
+                  src="/images/sql-editor/sql-editor.png"
+                  alt="Schema Weaver SQL Editor with live ER Diagram"
+                  className="w-full h-auto block"
+                />
+              )}
+            </div>
           </div>
         </div>
 
-        {/* Trust strip */}
-        <div className="mt-16 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-xs uppercase tracking-widest text-muted-foreground/70">
-          <span>Built for modern database teams</span>
-          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">
-            Privacy-First
-          </span>
-          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">
-            Zero-Exfiltration
-          </span>
-          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">
-            Local Analysis
-          </span>
-          <span className="font-display text-base normal-case tracking-tight text-muted-foreground">
-            VivekMind Ecosystem
-          </span>
+        {/* Infinite Marquee Ticker */}
+        <div className="mt-14 relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+          <div className="animate-marquee flex items-center gap-6 select-none py-1.5">
+            {[...tags, ...tags].map((tag, idx) => (
+              <div
+                key={`${tag}-${idx}`}
+                className="flex items-center gap-6 shrink-0"
+              >
+                <span className="text-xs sm:text-sm font-mono text-muted-foreground/80 hover:text-foreground transition-colors tracking-wide">
+                  {tag}
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-border/80 shrink-0" />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

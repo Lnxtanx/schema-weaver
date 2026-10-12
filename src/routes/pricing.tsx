@@ -28,7 +28,7 @@ import { cn } from "@/lib/utils";
 const faqs = [
   {
     q: "Is there really a free tier?",
-    a: "Yes. Free is a permanent plan (not a trial). It includes 3,000 AI credits per month, Flash and Deep modes, the full SQL Editor, live ER diagrams, the 20-layer Schema Compiler, and data grid export. Free users can also join teams as invited members with no paywall.",
+    a: "Yes. Free is a permanent plan. It includes 3,000 AI credits per month, Flash and Deep modes, the full SQL Editor, live ER diagrams, the 20-layer Schema Compiler, shared database connections, and data grid export. Free users can also join teams as invited members with no paywall.",
   },
   {
     q: "How does billing work?",
@@ -86,7 +86,7 @@ export const Route = createFileRoute("/pricing")({
       {
         name: "twitter:description",
         content:
-          "Free, Pro, and Team plans for the complete AI-powered PostgreSQL data workspace.",
+          "Free, Pro, and Team plans for the first voice-native analytics workspace for PostgreSQL.",
       },
       {
         rel: "canonical",
@@ -168,6 +168,10 @@ const compareGroups: Array<{
       {
         label: "Monthly AI credits",
         values: ["3,000", "200,000", "100,000 / seat"],
+      },
+      {
+        label: "Voice AI & speech queries",
+        values: [true, true, true],
       },
       {
         label: "AI modes",
@@ -256,7 +260,7 @@ const compareGroups: Array<{
       },
       {
         label: "Shared database connections",
-        values: [false, false, true],
+        values: [true, true, true],
       },
       {
         label: "Credit structure",
@@ -368,7 +372,7 @@ function PricingPage() {
                       Free
                     </h3>
                     <p className="mt-1 text-sm text-muted-foreground min-h-[36px]">
-                      For solo developers exploring PostgreSQL.
+                      For solo developers to explore.
                     </p>
 
                     <div className="mt-6 mb-6">
@@ -381,7 +385,7 @@ function PricingPage() {
                         </span>
                       </div>
                       <p className="mt-1 text-xs text-muted-foreground">
-                        Permanent free plan · No credit card required
+                        Permanent free plan
                       </p>
                     </div>
 
@@ -400,13 +404,15 @@ function PricingPage() {
                     <ul className="mt-8 space-y-3 text-sm border-t border-border/60 pt-6">
                       {[
                         "3,000 AI credits / month",
+                        "Voice AI — query PostgreSQL by voice",
                         "Full SQL editor with autosave",
                         "Live ER diagram",
                         "20-layer Schema Compiler",
                         "Schema diff & version history",
                         "Pull / Diff / Push migrations",
                         "Data grid & CSV export",
-                        "Join teams as a member — invited by an owner, no upgrade needed",
+                        "Shared database connections",
+                        "Join teams as a member — invited by an owner",
                         "Community support",
                       ].map((p) => (
                         <li key={p} className="flex items-start gap-2.5">
@@ -429,7 +435,7 @@ function PricingPage() {
                       Pro
                     </h3>
                     <p className="mt-1 text-sm text-muted-foreground min-h-[36px]">
-                      For power developers shipping production schema.
+                      For power developers.
                     </p>
 
                     <div className="mt-6 mb-6">
@@ -460,12 +466,14 @@ function PricingPage() {
                     <ul className="mt-8 space-y-3 text-sm border-t border-border/60 pt-6">
                       {[
                         "200,000 AI credits / month",
+                        "Voice AI with real-time speech responses",
                         "Flash & Deep modes",
                         "5 concurrent agents",
                         "AI charts & data analysis",
                         "Multi-format export (CSV, JSON, Excel, SQL)",
                         "AI report generation (PPT, PDF)",
-                        "Team sharing — workspaces & role-based access (credits are not pooled)",
+                        "Team workspaces (up to 5 members, credits not pooled)",
+                        "Shared database connections",
                         "Priority support",
                         "Everything in Free",
                       ].map((p) => (
@@ -555,10 +563,12 @@ function PricingPage() {
                     <ul className="mt-8 space-y-3 text-sm border-t border-border/60 pt-6">
                       {[
                         "100,000 AI credits per seat / month",
+                        "Voice AI for all workspace members",
                         "Per-seat billing — $15 / seat, base 2 seats",
                         "Add seats anytime — prorated, not locked to renewal",
-                        "Team workspaces & role-based access",
+                        "Team workspaces with per-seat billing",
                         "Shared database connections",
+                        "Priority support",
                         "Buyer becomes workspace owner; each member gets their own credits",
                         "Flash & Deep modes (2 concurrent agents)",
                         "Everything in Pro tooling",
@@ -640,7 +650,12 @@ function PricingPage() {
               </p>
             </div>
 
-            <div className="mt-12 overflow-x-auto rounded-xl border border-border bg-card shadow-sm">
+            <div className="flex items-center gap-1.5 text-xs text-muted-foreground sm:hidden mt-8 mb-2 justify-end">
+              <span>Scroll to compare plans</span>
+              <ArrowRight className="w-3.5 h-3.5 animate-pulse text-primary" />
+            </div>
+
+            <div className="mt-2 sm:mt-12 overflow-x-auto rounded-xl border border-border bg-card shadow-sm scrollbar-thin">
               <table className="w-full text-sm min-w-[680px]">
                 <thead className="bg-muted/40">
                   <tr>

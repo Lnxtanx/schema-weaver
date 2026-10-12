@@ -5,6 +5,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { Toaster } from "sonner";
 
 import appCss from "../styles.css?url";
 
@@ -36,28 +37,47 @@ export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1, viewport-fit=cover",
+      },
+      { name: "theme-color", content: "#090d16" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      {
+        name: "apple-mobile-web-app-status-bar-style",
+        content: "black-translucent",
+      },
       {
         title:
-          "Schema Weaver (SW) | The Agentic Operating System for PostgreSQL",
+          "Schema Weaver — The First Voice-Native Analytics Workspace for PostgreSQL",
       },
       {
         name: "description",
         content:
-          "Schema Weaver (SW) is a unified, browser-native platform for PostgreSQL schema management. Modular SQL editor, live ER diagrams, and Resona AI for agentic DDL design.",
+          "Schema Weaver is the first voice-native analytics workspace for PostgreSQL. Browse live data in high-performance grids, talk to your database by voice, query in plain English, and generate instant AI charts.",
       },
       {
         property: "og:title",
         content:
-          "Schema Weaver (SW) | The Agentic Operating System for PostgreSQL",
+          "Schema Weaver — The First Voice-Native Analytics Workspace for PostgreSQL",
       },
       {
         property: "og:description",
         content:
-          "The complete infrastructure workspace for modern database teams. Design, visualize, and explore PostgreSQL.",
+          "The first voice-native analytics workspace for PostgreSQL. Explore live data, query by voice, and design schemas.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "twitter:title",
+        content:
+          "Schema Weaver — The First Voice-Native Analytics Workspace for PostgreSQL",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "The first voice-native analytics workspace for PostgreSQL. Explore live data, query by voice, and design schemas.",
+      },
     ],
     links: [
       {
@@ -84,12 +104,8 @@ export const Route = createRootRoute({
                 window.location.replace('https://schemaweaver.dev' + window.location.pathname + window.location.search + window.location.hash);
                 return;
               }
-              const theme = localStorage.getItem('theme') || 'light';
-              if (theme === 'dark') {
-                document.documentElement.classList.add('dark');
-              } else {
-                document.documentElement.classList.remove('dark');
-              }
+              document.documentElement.classList.add('dark');
+              localStorage.setItem('theme', 'dark');
             } catch (e) {}
           })();
         `,
@@ -103,7 +119,7 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <HeadContent />
       </head>
@@ -116,5 +132,16 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
-  return <Outlet />;
+  return (
+    <>
+      <Outlet />
+      <Toaster
+        richColors
+        position="bottom-right"
+        closeButton
+        theme="dark"
+        className="!bottom-[max(1rem,env(safe-area-inset-bottom))]"
+      />
+    </>
+  );
 }

@@ -75,7 +75,7 @@ export function DataExplorerSection() {
         </div>
 
         {/* Stats banner */}
-        <div className="rounded-2xl border border-border bg-card/60 p-6 sm:p-10 grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+        <div className="rounded-2xl border border-border bg-card/60 p-5 sm:p-10 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-center">
           {[
             ["Virtualized", "Handle massive tables"],
             ["Canvas-API", "Smart column sizing"],
@@ -83,10 +83,10 @@ export function DataExplorerSection() {
             ["Local", "No data leaves your DB"],
           ].map(([v, l]) => (
             <div key={l}>
-              <div className="font-display text-3xl sm:text-4xl font-bold text-gradient-mesh">
+              <div className="font-display text-2xl sm:text-4xl font-bold text-gradient-mesh">
                 {v}
               </div>
-              <div className="text-xs uppercase tracking-wider text-muted-foreground mt-2">
+              <div className="text-[11px] sm:text-xs uppercase tracking-wider text-muted-foreground mt-1.5 sm:mt-2">
                 {l}
               </div>
             </div>

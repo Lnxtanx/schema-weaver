@@ -8,6 +8,7 @@ export function Section({
   align = "center",
   children,
   className,
+  headerClassName,
 }: {
   id?: string;
   eyebrow?: string;
@@ -16,13 +17,14 @@ export function Section({
   align?: "center" | "left";
   children?: React.ReactNode;
   className?: string;
+  headerClassName?: string;
 }) {
   return (
-    <section id={id} className={cn("relative py-24 sm:py-32", className)}>
-      <div className="max-w-7xl mx-auto px-6">
+    <section id={id} className={cn("relative py-14 sm:py-24 lg:py-32", className)}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div
           className={cn(
-            "max-w-3xl",
+            headerClassName || "max-w-3xl",
             align === "center" && "mx-auto text-center",
           )}
         >
@@ -36,11 +38,11 @@ export function Section({
               {eyebrow}
             </div>
           )}
-          <h2 className="mt-4 font-display font-bold tracking-tight text-4xl sm:text-5xl lg:text-6xl leading-[1.1]">
+          <h2 className="mt-4 font-display font-bold tracking-tight text-2xl sm:text-4xl lg:text-5xl leading-[1.15]">
             {title}
           </h2>
           {description && (
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+            <p className="mt-4 sm:mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
               {description}
             </p>
           )}

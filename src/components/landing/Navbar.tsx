@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { FeedbackDialog } from "@/components/marketing/FeedbackDialog";
 import {
@@ -27,146 +26,98 @@ import {
 import {
   Menu,
   MessageSquare,
-  Sun,
-  Moon,
   Database,
   Terminal,
-  Sparkles,
-  RefreshCw,
-  Workflow,
-  ShieldCheck,
-  BarChart3,
-  Users,
+  BookOpen,
+  Globe,
   ArrowRight,
-  ExternalLink,
+  ArrowUpRight,
+  Calendar,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const products = [
   {
     title: "Data Explorer",
-    badge: "Primary",
-    description:
-      "Agentic AI SQL workspace, live data grids & auto-generated AI charts.",
+    description: "AI workspace, live data grids & automated chart synthesis.",
     href: "https://data-explorer.schemaweaver.dev",
     icon: Database,
     isExternal: true,
   },
   {
     title: "SQL Editor",
-    description:
-      "Multi-file editor with 20-layer Schema Compiler & live ER diagrams.",
+    description: "Multi-file editor with schema compiler & live ER diagrams.",
     href: "https://sql-editor.schemaweaver.dev",
     icon: Terminal,
     isExternal: true,
   },
   {
-    title: "Resona AI Engine",
-    description:
-      "Flash & Deep reasoning modes for autonomous natural-language SQL.",
-    href: "/#resona",
-    icon: Sparkles,
-    isExternal: false,
+    title: "Documentation",
+    description: "Guides, architecture specs, tutorials & developer docs.",
+    href: "https://docs.schemaweaver.dev",
+    icon: BookOpen,
+    isExternal: true,
   },
   {
-    title: "Schema Migrations",
-    description:
-      "Pull / Diff / Push pipeline with transaction rollback & drift detection.",
-    href: "/#sync",
-    icon: RefreshCw,
-    isExternal: false,
+    title: "VivekMind",
+    description: "AI systems, developer tools & cloud infrastructure.",
+    href: "https://vivekmind.com",
+    icon: Globe,
+    isExternal: true,
   },
 ];
 
-const solutions = [
-  {
-    title: "Visual Schema Design",
-    description:
-      "Interactive live ER diagrams with 16 node types, auto-clustering & FK paths.",
-    href: "/#er-diagram",
-    icon: Workflow,
-  },
-  {
-    title: "Safe Database Migrations",
-    description:
-      "Zero-downtime multi-phase migrations with hash-chain audit logging.",
-    href: "/#sync",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Natural-Language Analytics",
-    description:
-      "Turn plain English into complex PostgreSQL queries with instant exports.",
-    href: "/#data-explorer",
-    icon: BarChart3,
-  },
-  {
-    title: "Team Database Governance",
-    description:
-      "Per-seat workspaces, role-based access, and shared database connections.",
-    href: "/#team",
-    icon: Users,
-  },
-];
+
 
 export function Navbar() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const location = useLocation();
+  const pathname = location?.pathname || "";
 
-  useEffect(() => {
-    const isDark = document.documentElement.classList.contains("dark");
-    setTheme(isDark ? "dark" : "light");
-  }, []);
-
-  const toggleTheme = () => {
-    const nextTheme = theme === "light" ? "dark" : "light";
-    setTheme(nextTheme);
-    if (nextTheme === "dark") {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  };
-
-  const ThemeToggle = () => (
-    <Button
-      variant="ghost"
-      size="icon"
-      onClick={toggleTheme}
-      className="relative w-9 h-9 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-      aria-label="Toggle theme"
-    >
-      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-    </Button>
-  );
+  const isPricingActive = pathname === "/pricing";
+  const isCompareActive = pathname === "/compare";
+  const isSupportActive = pathname === "/support";
+  const isNewsActive = pathname.startsWith("/blog");
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-glass border-b border-border/40">
+      {/* Orange Live Demo Announcement Header Bar */}
+      <div className="bg-gradient-to-r from-orange-600 via-amber-600 to-orange-600 text-white px-4 py-1.5 text-xs text-center font-medium flex items-center justify-center gap-2 shadow-inner border-b border-orange-500/30">
+        <span className="relative flex h-2 w-2">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+        </span>
+        <span className="hidden sm:inline">Try Schema Weaver instantly on our live 24/7 PostgreSQL database — no sign-up required.</span>
+        <span className="sm:hidden">Live PostgreSQL demo online.</span>
+        <a
+          href="https://data-explorer.schemaweaver.dev?demo=true"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline font-bold hover:text-orange-100 ml-1 inline-flex items-center gap-0.5 cursor-pointer"
+        >
+          Launch Demo <ArrowUpRight className="w-3.5 h-3.5" />
+        </a>
+      </div>
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Brand Logo */}
-        <div className="flex items-center gap-2 shrink-0">
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center transition-transform group-hover:scale-105">
+        <div className="flex items-center gap-3 shrink-0">
+          <Link
+            to="/"
+            onClick={() => {
+              window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            }}
+            className="flex items-center gap-3 group cursor-pointer"
+          >
+            <div className="w-7 h-7 flex items-center justify-center transition-transform group-hover:scale-105 shrink-0">
               <img
                 src="/resona.png"
                 alt="Schema Weaver"
-                className="w-5 h-5 object-contain"
+                className="w-7 h-7 object-contain"
               />
             </div>
-            <span className="font-display font-semibold text-lg tracking-tight">
+            <span className="font-display font-bold text-xl tracking-tight text-foreground">
               Schema Weaver
             </span>
           </Link>
-          <a
-            href="https://vivekmind.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:inline text-xs text-muted-foreground border border-border rounded-md px-1.5 py-0.5 ml-1 hover:text-primary hover:border-primary/40 transition-all"
-          >
-            by VivekMind
-          </a>
         </div>
 
         {/* Desktop Navigation Menu (Mega-Menu) */}
@@ -177,152 +128,77 @@ export function Navbar() {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Products</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="w-[680px] p-0 flex flex-col bg-card">
-                    <div className="p-4 grid grid-cols-12 gap-4">
-                      {/* Featured Highlight Card */}
-                      <div className="col-span-5 rounded-xl bg-muted/70 dark:bg-muted/40 border border-primary/25 p-4 flex flex-col justify-between">
-                        <div>
-                          <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary/15 text-primary text-[10px] font-semibold tracking-wider uppercase font-mono mb-2.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse-glow" />
-                            Primary Workspace
-                          </div>
-                          <h4 className="font-display font-bold text-base text-foreground tracking-tight">
-                            Data Explorer
-                          </h4>
-                          <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
-                            The complete AI data workspace for PostgreSQL. Query
-                            in natural language, build AI charts, and explore
-                            live schemas.
-                          </p>
-                        </div>
-                        <div className="mt-4 pt-3 border-t border-primary/20">
-                          <a
-                            href="https://data-explorer.schemaweaver.dev"
-                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary/80 transition-colors group"
-                          >
-                            Launch Data Explorer
-                            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-                          </a>
-                        </div>
-                      </div>
-
-                      {/* Product Links */}
-                      <div className="col-span-7 flex flex-col justify-between gap-1">
-                        {products.map((item) => {
-                          const Icon = item.icon;
-                          const inner = (
-                            <div className="flex items-start gap-2.5 p-2 rounded-lg hover:bg-muted/60 transition-colors group text-left">
-                              <div className="p-1.5 rounded-md bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors shrink-0 mt-0.5">
-                                <Icon className="w-4 h-4" />
-                              </div>
-                              <div>
-                                <div className="text-xs font-semibold text-foreground group-hover:text-primary transition-colors flex items-center gap-1.5">
-                                  {item.title}
-                                  {item.badge && (
-                                    <span className="text-[9px] uppercase font-mono px-1.5 py-0.2 rounded bg-primary/15 text-primary font-semibold">
-                                      {item.badge}
-                                    </span>
-                                  )}
-                                  {item.isExternal && (
-                                    <ExternalLink className="w-3 h-3 text-muted-foreground/40 ml-0.5" />
-                                  )}
-                                </div>
-                                <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">
-                                  {item.description}
-                                </p>
-                              </div>
-                            </div>
-                          );
-
-                          return item.isExternal ? (
-                            <a key={item.title} href={item.href}>
-                              {inner}
-                            </a>
-                          ) : (
-                            <Link key={item.title} to={item.href}>
-                              {inner}
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    </div>
-
-                    {/* Bottom Utility Bar */}
-                    <div className="bg-muted/80 dark:bg-muted/50 border-t border-border px-4 py-2.5 rounded-b-2xl flex items-center justify-between text-xs text-muted-foreground">
-                      <span>Looking for guides & documentation?</span>
-                      <div className="flex items-center gap-3.5">
-                        <a
-                          href="https://docs.schemaweaver.dev"
-                          className="hover:text-primary transition-colors flex items-center gap-1 font-medium"
-                        >
-                          Documentation <ExternalLink className="w-3 h-3" />
-                        </a>
-                        <Link
-                          to="/compare"
-                          className="hover:text-primary transition-colors font-medium"
-                        >
-                          Compare Tools →
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-
-              {/* Solutions Mega-Menu */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="w-[580px] p-0 flex flex-col bg-card">
-                    <div className="p-4 grid grid-cols-2 gap-2.5">
-                      {solutions.map((item) => {
+                  <div className="w-[380px] p-2 flex flex-col bg-card">
+                    <div className="flex flex-col gap-1">
+                      {products.map((item) => {
                         const Icon = item.icon;
-                        return (
-                          <Link
-                            key={item.title}
-                            to={item.href}
-                            className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-muted/60 transition-colors group border border-transparent hover:border-border/60 text-left"
-                          >
-                            <div className="p-2 rounded-lg bg-secondary/10 text-secondary group-hover:bg-primary group-hover:text-primary-foreground transition-colors shrink-0 mt-0.5">
+                        const inner = (
+                          <div className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-muted/70 transition-colors group text-left cursor-pointer">
+                            <div className="w-8 h-8 rounded-md bg-muted/60 flex items-center justify-center text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0 mt-0.5">
                               <Icon className="w-4 h-4" />
                             </div>
-                            <div>
-                              <div className="text-xs font-semibold text-foreground group-hover:text-primary transition-colors">
-                                {item.title}
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center justify-between">
+                                <span className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors">
+                                  {item.title}
+                                </span>
+                                <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                               </div>
-                              <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">
+                              <p className="text-xs text-muted-foreground leading-relaxed mt-0.5">
                                 {item.description}
                               </p>
                             </div>
+                          </div>
+                        );
+
+                        return item.isExternal ? (
+                          <a
+                            key={item.title}
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block no-underline"
+                          >
+                            {inner}
+                          </a>
+                        ) : (
+                          <Link
+                            key={item.title}
+                            to={item.href}
+                            className="block no-underline"
+                          >
+                            {inner}
                           </Link>
                         );
                       })}
                     </div>
 
-                    {/* Bottom Utility Bar */}
-                    <div className="bg-muted/80 dark:bg-muted/50 border-t border-border px-4 py-2.5 rounded-b-2xl flex items-center justify-between text-xs text-muted-foreground">
-                      <span>Need custom VPC peering or enterprise SLAs?</span>
+                    <div className="mt-1 pt-1.5 border-t border-border/50">
                       <Link
-                        to="/support"
-                        className="hover:text-primary transition-colors flex items-center gap-1 font-medium text-foreground"
+                        to="/compare"
+                        className="flex items-center justify-between px-2.5 py-1.5 rounded-md text-xs text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors font-medium"
                       >
-                        Contact Enterprise Sales{" "}
-                        <ArrowRight className="w-3.5 h-3.5" />
+                        <span>Compare all tools</span>
+                        <ArrowRight className="w-3.5 h-3.5 text-muted-foreground/60" />
                       </Link>
                     </div>
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
+
+
               {/* Direct Links */}
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link
                     to="/pricing"
-                    activeProps={{ className: "text-foreground font-semibold" }}
                     className={cn(
                       navigationMenuTriggerStyle(),
-                      "bg-transparent cursor-pointer",
+                      "cursor-pointer transition-all",
+                      isPricingActive
+                        ? "text-primary font-semibold bg-primary/10 hover:bg-primary/15 hover:text-primary"
+                        : "bg-transparent text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     )}
                   >
                     Pricing
@@ -334,10 +210,12 @@ export function Navbar() {
                 <NavigationMenuLink asChild>
                   <Link
                     to="/compare"
-                    activeProps={{ className: "text-foreground font-semibold" }}
                     className={cn(
                       navigationMenuTriggerStyle(),
-                      "bg-transparent cursor-pointer",
+                      "cursor-pointer transition-all",
+                      isCompareActive
+                        ? "text-primary font-semibold bg-primary/10 hover:bg-primary/15 hover:text-primary"
+                        : "bg-transparent text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     )}
                   >
                     Compare
@@ -349,13 +227,32 @@ export function Navbar() {
                 <NavigationMenuLink asChild>
                   <Link
                     to="/support"
-                    activeProps={{ className: "text-foreground font-semibold" }}
                     className={cn(
                       navigationMenuTriggerStyle(),
-                      "bg-transparent cursor-pointer",
+                      "cursor-pointer transition-all",
+                      isSupportActive
+                        ? "text-primary font-semibold bg-primary/10 hover:bg-primary/15 hover:text-primary"
+                        : "bg-transparent text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     )}
                   >
                     Support
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link
+                    to="/blog"
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      "cursor-pointer transition-all",
+                      isNewsActive
+                        ? "text-primary font-semibold bg-primary/10 hover:bg-primary/15 hover:text-primary"
+                        : "bg-transparent text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                    )}
+                  >
+                    News
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
@@ -392,26 +289,34 @@ export function Navbar() {
                 </Button>
               }
             />
-            <Button
-              variant="ghost"
-              size="sm"
-              asChild
-              className="hidden sm:inline-flex cursor-pointer"
-            >
-              <a href="https://data-explorer.schemaweaver.dev">Sign in</a>
-            </Button>
           </div>
 
-          <ThemeToggle />
-
           <Button
-            variant="hero"
             size="sm"
             asChild
-            className="hidden md:inline-flex"
+            className="hidden md:inline-flex cursor-pointer text-xs font-semibold border border-blue-500/40 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 hover:border-blue-400 hover:text-blue-300 rounded-lg transition-all"
           >
-            <a href="https://data-explorer.schemaweaver.dev">
-              Launch Data Explorer
+            <a
+              href="https://calendar.app.google/1BLuy4FkJwWGLcwFA"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Calendar className="w-3.5 h-3.5 mr-1.5 text-blue-400" />
+              Book Demo
+            </a>
+          </Button>
+
+          <Button
+            size="sm"
+            asChild
+            className="hidden sm:inline-flex cursor-pointer border border-orange-500/40 bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-semibold rounded-lg shadow-md shadow-orange-950/20 transition-all"
+          >
+            <a
+              href="https://data-explorer.schemaweaver.dev?demo=true"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Try Live Demo
             </a>
           </Button>
 
@@ -432,15 +337,23 @@ export function Navbar() {
                 className="w-[320px] bg-card border-border overflow-y-auto"
               >
                 <SheetHeader className="text-left">
-                  <SheetTitle className="flex items-center gap-2 mt-4">
-                    <img
-                      src="/resona.png"
-                      alt=""
-                      className="w-6 h-6 object-contain"
-                    />
-                    <span className="font-display font-bold">
-                      Schema Weaver
-                    </span>
+                  <SheetTitle className="mt-4">
+                    <Link
+                      to="/"
+                      onClick={() => {
+                        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+                      }}
+                      className="flex items-center gap-3"
+                    >
+                      <img
+                        src="/resona.png"
+                        alt="Schema Weaver"
+                        className="w-7 h-7 object-contain"
+                      />
+                      <span className="font-display font-bold text-xl tracking-tight text-foreground">
+                        Schema Weaver
+                      </span>
+                    </Link>
                   </SheetTitle>
                 </SheetHeader>
 
@@ -454,28 +367,39 @@ export function Navbar() {
                       <AccordionTrigger className="text-base font-semibold py-3 text-foreground hover:no-underline">
                         Products
                       </AccordionTrigger>
-                      <AccordionContent className="pb-3 pt-1 flex flex-col gap-1.5">
+                      <AccordionContent className="pb-3 pt-1 flex flex-col gap-1">
                         {products.map((p) => {
                           const Icon = p.icon;
                           const inner = (
-                            <div className="flex items-center justify-between p-2 rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground">
-                              <div className="flex items-center gap-2.5">
-                                <Icon className="w-4 h-4 text-primary" />
-                                <span className="font-medium text-sm">
-                                  {p.title}
-                                </span>
+                            <div className="flex items-start gap-3 p-2 rounded-lg hover:bg-muted/60 transition-colors">
+                              <div className="w-8 h-8 rounded-md bg-muted/60 flex items-center justify-center text-muted-foreground shrink-0 mt-0.5">
+                                <Icon className="w-4 h-4" />
                               </div>
-                              {p.isExternal && (
-                                <ExternalLink className="w-3 h-3 opacity-60" />
-                              )}
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-center justify-between">
+                                  <span className="font-semibold text-sm text-foreground">
+                                    {p.title}
+                                  </span>
+                                  <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground/50" />
+                                </div>
+                                <p className="text-xs text-muted-foreground leading-snug mt-0.5">
+                                  {p.description}
+                                </p>
+                              </div>
                             </div>
                           );
                           return p.isExternal ? (
-                            <a key={p.title} href={p.href}>
+                            <a
+                              key={p.title}
+                              href={p.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="no-underline"
+                            >
                               {inner}
                             </a>
                           ) : (
-                            <Link key={p.title} to={p.href}>
+                            <Link key={p.title} to={p.href} className="no-underline">
                               {inner}
                             </Link>
                           );
@@ -483,54 +407,59 @@ export function Navbar() {
                       </AccordionContent>
                     </AccordionItem>
 
-                    <AccordionItem
-                      value="solutions"
-                      className="border-b border-border/60"
-                    >
-                      <AccordionTrigger className="text-base font-semibold py-3 text-foreground hover:no-underline">
-                        Solutions
-                      </AccordionTrigger>
-                      <AccordionContent className="pb-3 pt-1 flex flex-col gap-1.5">
-                        {solutions.map((s) => {
-                          const Icon = s.icon;
-                          return (
-                            <Link
-                              key={s.title}
-                              to={s.href}
-                              className="flex items-center gap-2.5 p-2 rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground"
-                            >
-                              <Icon className="w-4 h-4 text-secondary" />
-                              <span className="font-medium text-sm">
-                                {s.title}
-                              </span>
-                            </Link>
-                          );
-                        })}
-                      </AccordionContent>
-                    </AccordionItem>
                   </Accordion>
 
                   <Link
                     to="/pricing"
-                    className="py-2.5 text-base font-semibold text-muted-foreground hover:text-foreground transition-colors"
+                    className={cn(
+                      "py-2.5 px-3 rounded-lg text-base font-semibold transition-colors flex items-center justify-between",
+                      isPricingActive
+                        ? "text-primary bg-primary/10 font-bold"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted/40"
+                    )}
                   >
-                    Pricing
+                    <span>Pricing</span>
+                    {isPricingActive && <span className="w-1.5 h-1.5 rounded-full bg-primary" />}
                   </Link>
                   <Link
                     to="/compare"
-                    className="py-2.5 text-base font-semibold text-muted-foreground hover:text-foreground transition-colors"
+                    className={cn(
+                      "py-2.5 px-3 rounded-lg text-base font-semibold transition-colors flex items-center justify-between",
+                      isCompareActive
+                        ? "text-primary bg-primary/10 font-bold"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted/40"
+                    )}
                   >
-                    Compare
+                    <span>Compare</span>
+                    {isCompareActive && <span className="w-1.5 h-1.5 rounded-full bg-primary" />}
                   </Link>
                   <Link
                     to="/support"
-                    className="py-2.5 text-base font-semibold text-muted-foreground hover:text-foreground transition-colors"
+                    className={cn(
+                      "py-2.5 px-3 rounded-lg text-base font-semibold transition-colors flex items-center justify-between",
+                      isSupportActive
+                        ? "text-primary bg-primary/10 font-bold"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted/40"
+                    )}
                   >
-                    Support
+                    <span>Support</span>
+                    {isSupportActive && <span className="w-1.5 h-1.5 rounded-full bg-primary" />}
+                  </Link>
+                  <Link
+                    to="/blog"
+                    className={cn(
+                      "py-2.5 px-3 rounded-lg text-base font-semibold transition-colors flex items-center justify-between",
+                      isNewsActive
+                        ? "text-primary bg-primary/10 font-bold"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted/40"
+                    )}
+                  >
+                    <span>News</span>
+                    {isNewsActive && <span className="w-1.5 h-1.5 rounded-full bg-primary" />}
                   </Link>
                   <a
                     href="https://docs.schemaweaver.dev"
-                    className="py-2.5 text-base font-semibold text-muted-foreground hover:text-foreground transition-colors"
+                    className="py-2.5 px-3 rounded-lg text-base font-semibold text-muted-foreground hover:text-foreground hover:bg-muted/40 transition-colors"
                   >
                     Docs
                   </a>
@@ -550,17 +479,25 @@ export function Navbar() {
                       }
                     />
                     <Button
-                      variant="ghost"
                       asChild
-                      className="justify-start w-full h-11"
+                      className="w-full h-11 border border-blue-500/40 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 hover:border-blue-400 font-semibold"
                     >
-                      <a href="https://data-explorer.schemaweaver.dev">
-                        Sign in
+                      <a
+                        href="https://calendar.app.google/1BLuy4FkJwWGLcwFA"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Calendar className="w-4 h-4 mr-2 text-blue-400" />
+                        Book a Demo
                       </a>
                     </Button>
-                    <Button variant="hero" asChild className="w-full h-11">
-                      <a href="https://data-explorer.schemaweaver.dev">
-                        Launch Data Explorer
+                    <Button asChild className="w-full h-11 border border-orange-500/40 bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-semibold shadow-md shadow-orange-950/20">
+                      <a
+                        href="https://data-explorer.schemaweaver.dev?demo=true"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Try Live Demo
                       </a>
                     </Button>
                   </div>

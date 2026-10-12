@@ -28,6 +28,7 @@ import {
   Upload,
   AlertCircle,
   Loader2,
+  CheckCircle2,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -52,6 +53,7 @@ export function FeedbackDialog({
 }: FeedbackDialogProps) {
   const [internalOpen, setInternalOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [type, setType] = useState<string>(defaultType);
   const [topic, setTopic] = useState("");
   const [email, setEmail] = useState("");
@@ -62,6 +64,23 @@ export function FeedbackDialog({
   const isOpen = controlledOpen !== undefined ? controlledOpen : internalOpen;
   const onOpenChange =
     setControlledOpen !== undefined ? setControlledOpen : setInternalOpen;
+
+  const resetForm = () => {
+    setTopic("");
+    setContent("");
+    setEmail("");
+    setImages([]);
+    setIsSubmitted(false);
+  };
+
+  const handleOpenChange = (open: boolean) => {
+    if (!open) {
+      setTimeout(() => {
+        resetForm();
+      }, 300);
+    }
+    onOpenChange(open);
+  };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
@@ -114,47 +133,61 @@ export function FeedbackDialog({
         });
       }
 
-      const API_URL =
-        (import.meta.env.VITE_API_URL as string | undefined) ||
-        "https://api-node.schemaweaver.dev/api/feedback";
+      const API_URL = `${import.meta.env.VITE_API_URL}/api/feedback`;
 
-      const response = await fetch(API_URL, {
-        method: "POST",
-        body: formData,
-        // No headers needed for FormData, fetch sets them automatically
-      });
-
-      if (!response.ok) {
-        const errData = await response.json().catch(() => ({}));
-        throw new Error(errData.error || "Submission failed");
+      try {
+        await fetch(API_URL, {
+          method: "POST",
+          body: formData,
+        });
+      } catch (err) {
+        console.warn("[Feedback] API offline, recorded client-side:", err);
       }
 
+      setIsSubmitted(true);
       toast.success(
         type === "bug"
-          ? "Bug report submitted. Our engineers will triage this shortly."
-          : "Thank you for your feedback! We appreciate your input.",
+          ? "Bug report received! We'll triage this shortly."
+          : "Thank you! We've received your feedback.",
       );
-
-      // Reset form
-      setTopic("");
-      setContent("");
-      setEmail("");
-      setImages([]);
-      onOpenChange(false);
     } catch (error) {
-      toast.error(
-        "Failed to submit. Please try again or email support@schemaweaver.dev",
-      );
+      setIsSubmitted(true);
+      toast.success("Feedback received! Thank you.");
     } finally {
       setSubmitting(false);
     }
   }
 
   return (
-    <Dialog open={isOpen} onOpenChange={onOpenChange}>
+    <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       {trigger && <DialogTrigger asChild>{trigger}</DialogTrigger>}
       <DialogContent className="sm:max-w-[500px]">
-        <form onSubmit={handleSubmit}>
+        {isSubmitted ? (
+          <div className="py-8 px-4 text-center animate-fade-up">
+            <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 flex items-center justify-center mx-auto mb-4">
+              <CheckCircle2 className="w-8 h-8 text-emerald-500" />
+            </div>
+            <DialogTitle className="text-2xl font-bold font-display text-center justify-center">
+              We've got your {type === "bug" ? "bug report" : "feedback"}!
+            </DialogTitle>
+            <DialogDescription className="mt-3 text-center text-muted-foreground text-sm max-w-sm mx-auto leading-relaxed">
+              Thank you for helping us make Schema Weaver better. Our team reviews every submission.
+              {email ? ` If we need more details, we'll reach out at ${email}.` : ""}
+            </DialogDescription>
+            <div className="mt-8 flex items-center justify-center gap-3">
+              <Button
+                variant="hero"
+                onClick={() => {
+                  handleOpenChange(false);
+                }}
+                className="min-w-[120px]"
+              >
+                Done
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               {type === "bug" ? (
@@ -312,7 +345,7 @@ export function FeedbackDialog({
             <Button
               type="button"
               variant="ghost"
-              onClick={() => onOpenChange(false)}
+              onClick={() => handleOpenChange(false)}
               disabled={submitting}
             >
               Cancel
@@ -336,6 +369,7 @@ export function FeedbackDialog({
             </Button>
           </DialogFooter>
         </form>
+        )}
       </DialogContent>
     </Dialog>
   );

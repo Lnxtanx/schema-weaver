@@ -85,7 +85,7 @@ export function TeamSection() {
             glow="blue"
           />
 
-          <div className="mt-6 grid grid-cols-3 gap-3">
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
             <Mini icon={Users} label="Roles" value="4" />
             <Mini icon={Eye} label="Audit retention" value="∞" />
             <Mini icon={ShieldCheck} label="Encryption" value="AES-256" />
@@ -106,10 +106,10 @@ function Mini({
   value: string;
 }) {
   return (
-    <div className="rounded-lg border border-border bg-card/60 p-4">
+    <div className="rounded-lg border border-border bg-card/60 p-3 sm:p-4">
       <Icon className="w-4 h-4 text-muted-foreground" />
-      <div className="font-display text-lg font-bold mt-2">{value}</div>
-      <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
+      <div className="font-display text-base sm:text-lg font-bold mt-1.5 sm:mt-2 truncate">{value}</div>
+      <div className="text-[10px] uppercase tracking-wider text-muted-foreground truncate">
         {label}
       </div>
     </div>

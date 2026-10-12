@@ -1,6 +1,6 @@
 import { Section } from "./Section";
 import { ProductShot } from "./ProductShot";
-import { Activity, GitBranch, Layers, Network, Sparkles } from "lucide-react";
+import { Activity, GitBranch, Layers, Network, Terminal } from "lucide-react";
 
 const features = [
   {
@@ -52,7 +52,7 @@ export function SqlEditorSection() {
             caption="sql-editor — main project view"
             glow="emerald"
           />
-          <div className="mt-6 grid grid-cols-3 gap-1.5 sm:gap-3">
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
             <Stat label="Analysis layers" value="20" />
             <Stat label="Avg compile" value="<50ms" />
             <Stat label="PostgreSQL" value="12+" />
@@ -87,7 +87,7 @@ export function SqlEditorSection() {
                   </p>
                   {f.caption && (
                     <code className="inline-block mt-3 text-[11px] font-mono text-primary/80 bg-primary/5 border border-primary/20 rounded px-2 py-0.5">
-                      <Sparkles className="w-3 h-3 inline mr-1" />
+                      <Terminal className="w-3 h-3 inline mr-1 text-primary/70" />
                       {f.caption}
                     </code>
                   )}

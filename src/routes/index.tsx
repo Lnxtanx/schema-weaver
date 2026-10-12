@@ -1,14 +1,16 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
 import { SqlEditorSection } from "@/components/landing/SqlEditorSection";
-import { DataExplorerSection } from "@/components/landing/DataExplorerSection";
 import { ResonaSection } from "@/components/landing/ResonaSection";
 import { SyncSection } from "@/components/landing/SyncSection";
 import { CapabilitiesGrid } from "@/components/landing/CapabilitiesGrid";
 import { TeamSection } from "@/components/landing/TeamSection";
 import { Testimonials } from "@/components/landing/Testimonials";
 import { CtaSection } from "@/components/landing/CtaSection";
+import { ConnectorVideoSection } from "@/components/landing/ConnectorVideoSection";
+import { ResonaExplorerSection } from "@/components/landing/ResonaExplorerSection";
 import { Footer } from "@/components/landing/Footer";
 
 export const Route = createFileRoute("/")({
@@ -16,40 +18,41 @@ export const Route = createFileRoute("/")({
     meta: [
       {
         title:
-          "PostgreSQL SQL Editor & ER Diagram Tool | Resona AI - Schema Weaver (SW)",
+          "Schema Weaver — The First Voice-Native Analytics Workspace for PostgreSQL",
       },
       {
         name: "description",
         content:
-          "Design and visualize PostgreSQL with Schema Weaver (SW). The world's first Spatial AI assistant for database architecture. Features modular SQL editing, Dijkstra-powered path analysis, and drift-aware migrations.",
+          "Schema Weaver is the first voice-native analytics workspace for PostgreSQL. Browse live data in high-performance grids, talk to your database by voice, query in plain English, and build instant AI charts.",
       },
       {
         name: "keywords",
         content:
-          "PostgreSQL SQL Editor, schemaweaver, ER diagram tool, agentic SQL, spatial AI, database migration tool, postgres visualization, DDL editor, sw-db, database AI agent, Resona AI",
+          "Schema Weaver, voice-native analytics, PostgreSQL analytics, voice database query, Resona AI, agentic SQL, PostgreSQL visualization, live data grid, schema compiler, ER diagrams",
       },
       {
         property: "og:title",
         content:
-          "PostgreSQL SQL Editor & ER Diagram Tool | Resona AI - Schema Weaver",
+          "Schema Weaver — The First Voice-Native Analytics Workspace for PostgreSQL",
       },
       {
         property: "og:description",
         content:
-          "A unified infrastructure workspace for designing, visualizing, and exploring PostgreSQL databases. Built for the AI era.",
+          "Schema Weaver is the first voice-native analytics workspace for PostgreSQL. Talk to your database by voice, query in plain English, inspect live schemas, and build instant AI charts.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://schemaweaver.dev/" },
-      { property: "og:site_name", content: "Schema Weaver (SW)" },
+      { property: "og:site_name", content: "Schema Weaver" },
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "PostgreSQL SQL Editor & ER Diagram Tool | Resona AI",
+        content:
+          "Schema Weaver — The First Voice-Native Analytics Workspace for PostgreSQL",
       },
       {
         name: "twitter:description",
         content:
-          "The agentic operating system for PostgreSQL. Modular schema design and Dijkstra-powered visualization — built by VivekMind.",
+          "The first voice-native analytics workspace for PostgreSQL. Talk to your database, explore live tables, and generate AI charts.",
       },
     ],
     links: [{ rel: "canonical", href: "https://schemaweaver.dev/" }],
@@ -59,7 +62,7 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "SoftwareApplication",
-          name: "Schema Weaver (SW)",
+          name: "Schema Weaver",
           alternateName: "schemaweaver",
           applicationCategory: "DeveloperApplication",
           operatingSystem: "Web",
@@ -70,18 +73,18 @@ export const Route = createFileRoute("/")({
             ratingCount: "182",
           },
           description:
-            "A browser-native PostgreSQL operating system for schema engineering. Includes modular DDL editor, live ER diagrams with Dijkstra-powered path analysis, and Resona AI for spatial database architecture.",
+            "The first voice-native analytics workspace for PostgreSQL. Features voice-driven queries, high-performance data grids, live ER diagrams, and Resona AI.",
           publisher: {
             "@type": "Organization",
-            name: "VivekMind",
-            url: "https://vivekmind.com",
+            name: "Schema Weaver",
+            url: "https://schemaweaver.dev",
           },
           featureList: [
-            "Modular PostgreSQL SQL Editor",
-            "Live Interactive ER Diagrams",
-            "Resona Spatial AI Assistant",
-            "Dijkstra-powered Path Analysis",
-            "Drift-aware Database Migrations",
+            "Voice-Native Database Analytics",
+            "Voice-to-SQL & Natural Language Querying",
+            "High-Performance Live Data Grids",
+            "Automated AI Chart Synthesis",
+            "Interactive Live ER Diagrams",
             "20-layer Schema Compiler",
           ],
         }),
@@ -92,18 +95,29 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [activeTab, setActiveTab] = useState<"explorer" | "editor">("explorer");
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main>
-        <Hero />
-        <SqlEditorSection />
-        <DataExplorerSection />
-        <ResonaSection />
-        <SyncSection />
-        <CapabilitiesGrid />
-        <TeamSection />
-        <CtaSection />
+        <Hero activeTab={activeTab} onTabChange={setActiveTab} />
+        {activeTab === "editor" ? (
+          <>
+            <SqlEditorSection />
+            <ResonaSection />
+            <SyncSection />
+            <CapabilitiesGrid />
+            <TeamSection />
+            <CtaSection activeTab="editor" />
+          </>
+        ) : (
+          <>
+            <ConnectorVideoSection />
+            <ResonaExplorerSection />
+            <CtaSection activeTab="explorer" />
+          </>
+        )}
       </main>
       <Footer />
     </div>
