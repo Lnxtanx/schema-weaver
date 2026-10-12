@@ -148,13 +148,13 @@ export const Route = createFileRoute("/blog/")({
       {
         name: "description",
         content:
-          "Official news, product announcements, engineering deep-dives, and updates from the Schema Weaver team.",
+          "Official news, product announcements, engineering deep-dives, and product updates from the Schema Weaver team on voice-native PostgreSQL analytics.",
       },
       { property: "og:title", content: "Newsroom — Schema Weaver" },
       {
         property: "og:description",
         content:
-          "Official news, product announcements, engineering deep-dives, and updates from the Schema Weaver team.",
+          "Official news, product announcements, engineering deep-dives, and product updates from the Schema Weaver team on voice-native PostgreSQL analytics.",
       },
       { property: "og:url", content: `${SITE_URL}/blog` },
       { property: "og:type", content: "website" },
@@ -171,7 +171,7 @@ export const Route = createFileRoute("/blog/")({
       {
         name: "twitter:description",
         content:
-          "Official news, product announcements, engineering deep-dives, and updates from the Schema Weaver team.",
+          "Official news, product announcements, engineering deep-dives, and product updates from the Schema Weaver team on voice-native PostgreSQL analytics.",
       },
       { name: "twitter:image", content: `${SITE_URL}/resona.png` },
     ],
@@ -193,7 +193,7 @@ export const Route = createFileRoute("/blog/")({
           name: "Schema Weaver Newsroom",
           url: `${SITE_URL}/blog`,
           description:
-            "Official news, product announcements, engineering deep-dives, and updates from the Schema Weaver team.",
+            "Official news, product announcements, engineering deep-dives, and product updates from the Schema Weaver team on voice-native PostgreSQL analytics.",
           publisher: {
             "@type": "Organization",
             name: "Schema Weaver",

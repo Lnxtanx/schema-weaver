@@ -20,6 +20,17 @@ import { breadcrumbList } from "@/lib/seo/site";
 
 const SITE_URL = "https://schemaweaver.dev";
 
+/**
+ * CMS article HTML can contain its own <h1>. The page already renders the post
+ * title as the single <h1>, so demote any in-body headings to <h2> to keep
+ * exactly one H1 per document for SEO and accessibility.
+ */
+function withSingleH1(html: string): string {
+  return html
+    .replace(/<h1(\s[^>]*)?>/gi, "<h2$1>")
+    .replace(/<\/h1>/gi, "</h2>");
+}
+
 /* ── Blog Post Loading Skeleton ──────────────────────────────────── */
 function BlogPostSkeleton() {
   return (
@@ -801,7 +812,7 @@ function BlogPostPage() {
             <div
               ref={contentRef}
               className="blog-content"
-              dangerouslySetInnerHTML={{ __html: post.content }}
+              dangerouslySetInnerHTML={{ __html: withSingleH1(post.content) }}
             />
           </div>
 

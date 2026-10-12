@@ -78,8 +78,7 @@ export const Route = createRootRoute({
       },
       {
         property: "og:description",
-        content:
-          "The first voice-native analytics workspace for PostgreSQL. Explore live data, query by voice, and design schemas.",
+        content: DEFAULT_DESCRIPTION,
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: SITE_NAME },
@@ -98,8 +97,7 @@ export const Route = createRootRoute({
       },
       {
         name: "twitter:description",
-        content:
-          "The first voice-native analytics workspace for PostgreSQL. Explore live data, query by voice, and design schemas.",
+        content: DEFAULT_DESCRIPTION,
       },
       { name: "twitter:image", content: OG_IMAGE },
       { name: "twitter:image:alt", content: OG_IMAGE_ALT },
@@ -139,8 +137,8 @@ export const Route = createRootRoute({
           logo: {
             "@type": "ImageObject",
             url: LOGO_URL,
-            width: 512,
-            height: 512,
+            width: OG_IMAGE_WIDTH,
+            height: OG_IMAGE_HEIGHT,
           },
           description: DEFAULT_DESCRIPTION,
           sameAs: [

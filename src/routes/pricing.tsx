@@ -64,7 +64,7 @@ export const Route = createFileRoute("/pricing")({
       {
         name: "description",
         content:
-          "See pricing for Schema Weaver Data Explorer. Free with 3,000 AI credits, Pro at $29/mo, and Team at $15/seat/mo.",
+          "See Schema Weaver pricing: a free plan with 3,000 monthly AI credits, Pro at $29/mo, and Team at $15/seat/mo. No auto-debit, renew anytime.",
       },
       {
         name: "keywords",
