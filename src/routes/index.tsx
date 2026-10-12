@@ -12,18 +12,18 @@ import { CtaSection } from "@/components/landing/CtaSection";
 import { ConnectorVideoSection } from "@/components/landing/ConnectorVideoSection";
 import { ResonaExplorerSection } from "@/components/landing/ResonaExplorerSection";
 import { Footer } from "@/components/landing/Footer";
+import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "@/lib/seo/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
         title:
-          "Schema Weaver — The First Voice-Native Analytics Workspace for PostgreSQL",
+          DEFAULT_TITLE,
       },
       {
         name: "description",
-        content:
-          "Schema Weaver is the first voice-native analytics workspace for PostgreSQL. Browse live data in high-performance grids, talk to your database by voice, query in plain English, and build instant AI charts.",
+        content: DEFAULT_DESCRIPTION,
       },
       {
         name: "keywords",
@@ -32,13 +32,11 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:title",
-        content:
-          "Schema Weaver — The First Voice-Native Analytics Workspace for PostgreSQL",
+        content: DEFAULT_TITLE,
       },
       {
         property: "og:description",
-        content:
-          "Schema Weaver is the first voice-native analytics workspace for PostgreSQL. Talk to your database by voice, query in plain English, inspect live schemas, and build instant AI charts.",
+        content: DEFAULT_DESCRIPTION,
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://schemaweaver.dev/" },
@@ -46,13 +44,11 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content:
-          "Schema Weaver — The First Voice-Native Analytics Workspace for PostgreSQL",
+        content: DEFAULT_TITLE,
       },
       {
         name: "twitter:description",
-        content:
-          "The first voice-native analytics workspace for PostgreSQL. Talk to your database, explore live tables, and generate AI charts.",
+        content: DEFAULT_DESCRIPTION,
       },
     ],
     links: [{ rel: "canonical", href: "https://schemaweaver.dev/" }],

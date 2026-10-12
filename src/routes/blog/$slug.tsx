@@ -148,12 +148,19 @@ export const Route = createFileRoute("/blog/$slug")({
     }
 
     const metaTitle = post.meta_title || post.title;
+    const newsSuffix = " | Schema Weaver";
+    let seoTitle = metaTitle;
+    if (metaTitle.length + newsSuffix.length <= 65) {
+      seoTitle = `${metaTitle}${newsSuffix}`;
+    } else if (metaTitle.length > 65) {
+      seoTitle = `${metaTitle.slice(0, 62).trim()}...`;
+    }
     let rawDescription =
       post.meta_description ||
       post.excerpt ||
       "Articles, product announcements, and latest updates from the Schema Weaver team.";
-    if (rawDescription.length > 160) {
-      rawDescription = rawDescription.slice(0, 157).trim() + "...";
+    if (rawDescription.length > 158) {
+      rawDescription = rawDescription.slice(0, 155).trim() + "...";
     }
     const metaDescription = rawDescription;
     const ogImage = post.og_image_url || post.thumbnail_url || `${SITE_URL}/resona.png`;
@@ -163,7 +170,7 @@ export const Route = createFileRoute("/blog/$slug")({
 
     return {
       meta: [
-        { title: `${metaTitle} — Schema Weaver News` },
+        { title: seoTitle },
         { name: "description", content: metaDescription },
         { property: "og:title", content: metaTitle },
         { property: "og:description", content: metaDescription },

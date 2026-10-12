@@ -29,13 +29,12 @@ export const Route = createFileRoute("/compare")({
   head: () => ({
     meta: [
       {
-        title:
-          "Compare — Schema Weaver vs Power BI, Tableau, Metabase, Outerbase, Draxlr & ThoughtSpot",
+        title: "Schema Weaver vs Power BI, Tableau, Metabase & ThoughtSpot",
       },
       {
         name: "description",
         content:
-          "An authentic technical and pricing comparison of Schema Weaver against Power BI, Tableau, Metabase, Outerbase, Draxlr, and ThoughtSpot across data visualization, AI querying, and live PostgreSQL capabilities.",
+          "Compare Schema Weaver against Power BI, Tableau, Metabase, Outerbase, and ThoughtSpot for live PostgreSQL visualization, AI querying, and pricing.",
       },
       {
         name: "keywords",
