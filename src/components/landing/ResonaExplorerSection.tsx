@@ -162,10 +162,10 @@ export function ResonaExplorerSection() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-1.5 shrink-0">
           <h2 className="font-display font-bold tracking-tight text-xl sm:text-2xl md:text-3xl text-foreground leading-tight">
-            Resona AI.
+            Resona AI
           </h2>
           <p className="mt-0.5 text-xs sm:text-sm font-semibold text-gradient-mesh tracking-tight">
-            Three Specialized Agents for Live PostgreSQL Data.
+            Three Specialized Agents for Live PostgreSQL Data
           </p>
         </div>
 

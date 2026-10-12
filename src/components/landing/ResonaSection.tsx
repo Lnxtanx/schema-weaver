@@ -9,7 +9,7 @@ export function ResonaSection() {
       eyebrow="Agentic & Spatial AI"
       title={
         <>
-          Resona AI.
+          Resona AI
           <br />
           <span className="text-gradient-mesh">
             The Spatial AI Database Architect.
