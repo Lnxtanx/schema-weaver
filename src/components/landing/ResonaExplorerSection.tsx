@@ -69,7 +69,6 @@ export function ResonaExplorerSection() {
           </span>
         </>
       }
-      description="Resona isn't a generic chat overlay — it's an intelligent analytics engine tailored specifically for PostgreSQL. It operates in three coordinated agent forms that share unified context memory to inspect, query, and visualize your live database."
     >
       {/* 3 Agents Showcase - Unified, Consistent Enterprise Design */}
       <div className="mt-14 space-y-10 lg:space-y-12">

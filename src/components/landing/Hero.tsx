@@ -38,7 +38,7 @@ export function Hero({ activeTab: controlledTab, onTabChange }: HeroProps) {
   const tags = activeTab === "explorer" ? dataExplorerTags : sqlEditorTags;
 
   return (
-    <section className="relative pt-20 md:pt-24 pb-16 overflow-hidden bg-background">
+    <section className="relative pt-32 sm:pt-36 md:pt-40 lg:pt-44 pb-16 overflow-hidden bg-background">
       {/* Green Grid Lines Background (Initial 48px grid) */}
       <div className="absolute inset-0 grid-bg-emerald opacity-80 [mask-image:radial-gradient(ellipse_at_top,black_60%,transparent_90%)] pointer-events-none" />
 
@@ -93,21 +93,28 @@ export function Hero({ activeTab: controlledTab, onTabChange }: HeroProps) {
           </Button>
         </div>
 
-        {/* Sign In Option in Mid */}
-        <div className="mt-4 flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
-          <span>Already have an account?</span>
-          <a
-            href={
-              activeTab === "explorer"
-                ? "https://data-explorer.schemaweaver.dev"
-                : "https://sql-editor.schemaweaver.dev"
-            }
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-foreground hover:text-primary underline underline-offset-4 transition-colors cursor-pointer"
+        {/* Sign In Button in Mid */}
+        <div className="mt-4 flex items-center justify-center">
+          <Button
+            variant="outline"
+            size="sm"
+            className="rounded-xl border-border/70 bg-card/60 hover:bg-card hover:border-primary/40 text-muted-foreground hover:text-foreground text-xs px-4 py-2 font-medium transition-all shadow-sm cursor-pointer"
+            asChild
           >
-            Sign in to your workspace →
-          </a>
+            <a
+              href={
+                activeTab === "explorer"
+                  ? "https://data-explorer.schemaweaver.dev"
+                  : "https://sql-editor.schemaweaver.dev"
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5"
+            >
+              <span>Sign in to workspace</span>
+              <ArrowRight className="w-3.5 h-3.5 text-muted-foreground" />
+            </a>
+          </Button>
         </div>
 
         {/* Product Workspace Preview (High-Contrast Dark Window on Light Background) */}
