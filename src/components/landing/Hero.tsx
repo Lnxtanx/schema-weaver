@@ -38,31 +38,11 @@ export function Hero({ activeTab: controlledTab, onTabChange }: HeroProps) {
   const tags = activeTab === "explorer" ? dataExplorerTags : sqlEditorTags;
 
   return (
-    <section className="relative pt-28 md:pt-32 pb-16 overflow-hidden bg-background">
+    <section className="relative pt-20 md:pt-24 pb-16 overflow-hidden bg-background">
       {/* Green Grid Lines Background (Initial 48px grid) */}
       <div className="absolute inset-0 grid-bg-emerald opacity-80 [mask-image:radial-gradient(ellipse_at_top,black_60%,transparent_90%)] pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
-        {/* Live Demo Pill Badge */}
-        <div className="flex justify-center mb-6">
-          <a
-            href="https://data-explorer.schemaweaver.dev?demo=true"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r from-orange-500/15 via-amber-500/20 to-orange-500/15 border border-orange-500/35 text-orange-300 hover:border-orange-400 hover:text-orange-200 transition-all shadow-md shadow-orange-950/20 cursor-pointer"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-            </span>
-            <span className="bg-orange-500/25 px-2 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-bold text-orange-200 border border-orange-400/30">
-              Live Database
-            </span>
-            <span>Explore 24/7 PostgreSQL instance without sign-up</span>
-            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 text-orange-400" />
-          </a>
-        </div>
-
         {/* Headline */}
         <h1 className="text-center font-display font-bold tracking-tight text-2xl sm:text-5xl md:text-6xl lg:text-[4rem] leading-[1.15] max-w-5xl mx-auto text-foreground">
           <span className="block">
@@ -111,6 +91,23 @@ export function Hero({ activeTab: controlledTab, onTabChange }: HeroProps) {
               Book a Demo
             </a>
           </Button>
+        </div>
+
+        {/* Sign In Option in Mid */}
+        <div className="mt-4 flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
+          <span>Already have an account?</span>
+          <a
+            href={
+              activeTab === "explorer"
+                ? "https://data-explorer.schemaweaver.dev"
+                : "https://sql-editor.schemaweaver.dev"
+            }
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-foreground hover:text-primary underline underline-offset-4 transition-colors cursor-pointer"
+          >
+            Sign in to your workspace →
+          </a>
         </div>
 
         {/* Product Workspace Preview (High-Contrast Dark Window on Light Background) */}
