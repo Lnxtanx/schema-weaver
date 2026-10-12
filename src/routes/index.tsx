@@ -89,6 +89,63 @@ export const Route = createFileRoute("/")({
           ],
         }),
       },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "What is Schema Weaver?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Schema Weaver is the first voice-native analytics and database workspace for PostgreSQL. It includes Data Explorer with Resona AI for speech-to-SQL, natural language reasoning, and automated charts, alongside a full SQL Editor with a 20-layer Schema Compiler and live ER diagrams.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Where does my data live? Does AI see my database rows?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Your row-level data never leaves your infrastructure. Queries execute locally or stream directly to your browser. AI models only reason over schema metadata and query summaries to formulate SQL and visual charts.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Can Schema Weaver accidentally modify or delete my PostgreSQL data?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "In Data Explorer, Resona AI enforces a strict AST-verified read-only gate that permanently blocks mutating statements such as DROP, DELETE, UPDATE, and INSERT. In the SQL Editor, developers retain full SQL authority with schema diff validation and safe DDL migration planning.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Do I need to open inbound firewall ports to connect my database?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "No. You can connect using the pg-connector daemon (npm i -g @schema-weaver/pg-connector). It connects via an outbound-only TLS tunnel, requiring zero open inbound firewall ports or public IP exposure, and connection credentials never leave your machine.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Is there a free tier available?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. Free is a permanent plan that includes 3,000 monthly AI credits, Flash and Deep modes, the full SQL Editor, live ER diagrams, the 20-layer Schema Compiler, shared database connections, and data grid export. A live demo is also accessible at https://data-explorer.schemaweaver.dev?demo=true with no sign-up required.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Which PostgreSQL versions and cloud providers are supported?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Schema Weaver supports PostgreSQL 12 through 16+, including Supabase, Neon, AWS RDS, DigitalOcean Managed Databases, Google Cloud SQL, Azure, Railway, Render, Timescale, and self-hosted Linux databases.",
+              },
+            },
+          ],
+        }),
+      },
     ],
   }),
   component: Index,

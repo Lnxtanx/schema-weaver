@@ -14,6 +14,7 @@ const agents = [
     id: "voice",
     title: "Resona Voice",
     tabLabel: "Voice Analytics",
+    mobileTabLabel: "Voice",
     badge: "Voice AI Agent",
     icon: Mic,
     headline: "Talk to PostgreSQL out loud.",
@@ -32,6 +33,7 @@ const agents = [
     id: "chat",
     title: "Resona AI",
     tabLabel: "Resona AI",
+    mobileTabLabel: "Resona AI",
     badge: "Autonomous AI Agent",
     icon: MessageSquare,
     headline: "Deep reasoning over live data.",
@@ -50,6 +52,7 @@ const agents = [
     id: "dashboard",
     title: "Resona Dashboard",
     tabLabel: "Executive Dashboards",
+    mobileTabLabel: "Dashboards",
     badge: "Dashboard Agent",
     icon: LayoutDashboard,
     headline: "Instant automated dashboards.",
@@ -158,20 +161,20 @@ export function ResonaExplorerSection() {
       <div className="absolute inset-0 grid-bg-emerald opacity-15 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)] pointer-events-none" />
 
       {/* Sticky pinned container: comfortably fits entire card + header + tabs within viewport */}
-      <div className="sticky top-[88px] sm:top-[96px] h-[calc(100vh-92px)] sm:h-[calc(100vh-100px)] flex flex-col justify-center max-w-6xl mx-auto px-4 sm:px-6 py-1 sm:py-2">
+      <div className="sticky top-[72px] sm:top-[96px] h-[calc(100vh-76px)] sm:h-[calc(100vh-100px)] flex flex-col justify-center max-w-6xl mx-auto px-3 sm:px-6 py-1 sm:py-2">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-1.5 shrink-0">
-          <h2 className="font-display font-bold tracking-tight text-xl sm:text-2xl md:text-3xl text-foreground leading-tight">
+        <div className="text-center max-w-3xl mx-auto mb-1 sm:mb-1.5 shrink-0">
+          <h2 className="font-display font-bold tracking-tight text-lg sm:text-2xl md:text-3xl text-foreground leading-tight">
             Resona AI
           </h2>
-          <p className="mt-0.5 text-xs sm:text-sm font-semibold text-gradient-mesh tracking-tight">
+          <p className="mt-0.5 text-[11px] sm:text-sm font-semibold text-gradient-mesh tracking-tight">
             Three Specialized Agents for Live PostgreSQL Data
           </p>
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex items-center justify-center mb-2 sm:mb-2.5 shrink-0">
-          <div className="inline-flex p-1 sm:p-1.5 rounded-2xl border border-border/80 bg-card/80 backdrop-blur-md shadow-sm gap-1 max-w-full overflow-x-auto no-scrollbar">
+        <div className="flex items-center justify-center mb-1.5 sm:mb-2.5 shrink-0">
+          <div className="inline-flex p-1 sm:p-1.5 rounded-2xl border border-border/80 bg-card/80 backdrop-blur-md shadow-sm gap-0.5 sm:gap-1 max-w-full overflow-x-auto no-scrollbar">
             {agents.map((agent, index) => {
               const TabIcon = agent.icon;
               const isActive = index === activeIdx;
@@ -181,14 +184,15 @@ export function ResonaExplorerSection() {
                   key={agent.id}
                   onClick={() => handleTabClick(index)}
                   className={cn(
-                    "flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-medium transition-all shrink-0 cursor-pointer select-none",
+                    "flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1 sm:py-2 rounded-xl text-[11px] sm:text-sm font-medium transition-all shrink-0 cursor-pointer select-none",
                     isActive
                       ? "bg-primary text-primary-foreground shadow-glow-emerald font-semibold scale-[1.02]"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted/60"
                   )}
                 >
-                  <TabIcon className="w-3.5 sm:w-4 h-3.5 sm:h-4 shrink-0" />
-                  <span className="whitespace-nowrap">{agent.tabLabel}</span>
+                  <TabIcon className="w-3 sm:w-4 h-3 sm:h-4 shrink-0" />
+                  <span className="hidden sm:inline whitespace-nowrap">{agent.tabLabel}</span>
+                  <span className="sm:hidden whitespace-nowrap">{agent.mobileTabLabel}</span>
                 </button>
               );
             })}
@@ -200,33 +204,33 @@ export function ResonaExplorerSection() {
           <div className="absolute -inset-x-8 -top-8 -bottom-8 bg-primary/10 blur-3xl opacity-30 -z-10 rounded-full pointer-events-none" />
 
           <div className="relative rounded-2xl border border-slate-800 bg-[#0b101b] shadow-2xl overflow-hidden transition-all duration-300">
-            <div className="flex flex-col lg:flex-row items-stretch min-h-[380px] sm:min-h-[420px] lg:h-[440px] xl:h-[450px]">
-              {/* Slightly less width for text (29% on desktop) */}
+            <div className="flex flex-col lg:flex-row items-stretch min-h-0 lg:h-[440px] xl:h-[450px]">
+              {/* Slightly less width for text (29% on desktop, compact on mobile) */}
               <div
                 className={cn(
-                  "w-full lg:w-[29%] flex flex-col justify-center text-left p-4 sm:p-5 lg:p-6 space-y-2 sm:space-y-2.5 shrink-0 transition-all duration-300",
+                  "w-full lg:w-[29%] flex flex-col justify-center text-left p-3.5 sm:p-5 lg:p-6 space-y-1.5 sm:space-y-2.5 shrink-0 transition-all duration-300",
                   isTextOnRight ? "lg:order-2" : "lg:order-1"
                 )}
               >
                 <div className="inline-flex items-center gap-1.5">
-                  <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">
-                    <Icon className="w-3.5 h-3.5" />
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-lg flex items-center justify-center bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">
+                    <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                   </div>
                   <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-muted-foreground font-semibold">
                     {activeAgent.badge}
                   </span>
                 </div>
 
-                <h3 className="font-display text-lg sm:text-xl lg:text-2xl font-bold text-foreground tracking-tight leading-tight">
+                <h3 className="font-display text-base sm:text-lg lg:text-2xl font-bold text-foreground tracking-tight leading-snug">
                   {activeAgent.headline}
                 </h3>
 
-                <p className="text-xs sm:text-[13px] text-muted-foreground leading-relaxed">
+                <p className="text-xs sm:text-[13px] text-muted-foreground leading-relaxed line-clamp-2 sm:line-clamp-none">
                   {activeAgent.summary}
                 </p>
 
-                {/* Concise Highlights */}
-                <ul className="space-y-1 sm:space-y-1.5 pt-0.5 text-xs sm:text-[13px] text-foreground/90">
+                {/* Concise Highlights: visible on tablet/desktop, hidden on small mobile to maximize screenshot space */}
+                <ul className="hidden sm:block space-y-1 sm:space-y-1.5 pt-0.5 text-xs sm:text-[13px] text-foreground/90">
                   {activeAgent.points.map((point, i) => (
                     <li key={i} className="flex items-start gap-1.5">
                       <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
@@ -235,11 +239,11 @@ export function ResonaExplorerSection() {
                   ))}
                 </ul>
 
-                <div className="pt-1">
+                <div className="pt-0.5 sm:pt-1">
                   <Button
                     variant="hero"
                     size="sm"
-                    className="rounded-xl gap-2 text-xs sm:text-sm shadow-glow-emerald cursor-pointer h-8 sm:h-9 px-3.5"
+                    className="rounded-xl gap-1.5 text-xs sm:text-sm shadow-glow-emerald cursor-pointer h-7 sm:h-9 px-3 sm:px-3.5"
                     asChild
                   >
                     <a
@@ -248,16 +252,16 @@ export function ResonaExplorerSection() {
                       rel="noopener noreferrer"
                     >
                       {activeAgent.ctaText}
-                      <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                      <ArrowRight className="w-3 h-3 ml-0.5" />
                     </a>
                   </Button>
                 </div>
               </div>
 
-              {/* More width for image (71% on desktop) - stretched height to fill container and centered */}
+              {/* More width for image (71% on desktop, dedicated height on mobile) - centered and stretched */}
               <div
                 className={cn(
-                  "w-full lg:w-[71%] relative min-h-[280px] sm:min-h-[340px] lg:min-h-0 lg:h-full overflow-hidden bg-[#090d16] transition-all duration-300",
+                  "w-full lg:w-[71%] relative h-[210px] sm:h-[280px] lg:h-full overflow-hidden bg-[#090d16] transition-all duration-300",
                   isTextOnRight
                     ? "lg:order-1 border-b lg:border-b-0 lg:border-r border-slate-800/80"
                     : "lg:order-2 border-t lg:border-t-0 lg:border-l border-slate-800/80"
