@@ -30,7 +30,7 @@ export function ResonaSection() {
             <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-primary font-bold">
               <img
                 src="/resona.png"
-                alt=""
+                alt="Resona AI"
                 className="w-3.5 h-3.5 object-contain"
               />
               Table AI
@@ -57,7 +57,7 @@ export function ResonaSection() {
             <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-secondary font-bold">
               <img
                 src="/resona.png"
-                alt=""
+                alt="Resona AI"
                 className="w-3.5 h-3.5 object-contain border border-secondary/20 rounded-sm bg-secondary/5"
               />
               Group AI
@@ -84,7 +84,7 @@ export function ResonaSection() {
             <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-muted-foreground font-bold">
               <img
                 src="/resona.png"
-                alt=""
+                alt="Resona AI"
                 className="w-3.5 h-3.5 object-contain grayscale opacity-70"
               />
               Global AI

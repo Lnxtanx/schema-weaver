@@ -8,11 +8,10 @@
 export const SITE_URL = "https://schemaweaver.dev";
 export const SITE_NAME = "Schema Weaver";
 
-export const DEFAULT_TITLE =
-  "Schema Weaver — The First Voice-Native Analytics Workspace for PostgreSQL";
+export const DEFAULT_TITLE = "Schema Weaver — Voice-Native Analytics for PostgreSQL";
 
 export const DEFAULT_DESCRIPTION =
-  "Schema Weaver is the first voice-native analytics workspace for PostgreSQL. Browse live data in high-performance grids, talk to your database by voice, query in plain English, and generate instant AI charts.";
+  "Schema Weaver is the first voice-native analytics workspace for PostgreSQL. Browse live data, query by voice, and generate AI charts in seconds.";
 
 export const OG_IMAGE = `${SITE_URL}/resona.png`;
 export const OG_IMAGE_WIDTH = 300;
