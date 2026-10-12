@@ -1,11 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, BookOpen, BarChart3, Database, Calendar } from "lucide-react";
+import { ArrowRight, BookOpen, BarChart3, Database, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface HeroProps {
   activeTab?: "explorer" | "editor";
   onTabChange?: (tab: "explorer" | "editor") => void;
 }
+
+const explorerImages = [
+  "/images/de/resona-ai/ds-ai/ds-generated.png",
+  "/images/de/resona-ai/va/on-ds.png",
+  "/images/voice.png",
+  "/images/de.png",
+];
 
 const dataExplorerTags = [
   "Resona Voice",
@@ -36,6 +44,20 @@ export function Hero({ activeTab: controlledTab, onTabChange }: HeroProps) {
   const activeTab = controlledTab ?? internalTab;
   const setActiveTab = onTabChange ?? setInternalTab;
   const tags = activeTab === "explorer" ? dataExplorerTags : sqlEditorTags;
+
+  // Auto-advancing image carousel in the first section
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (activeTab !== "explorer" || isPaused) return;
+
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % explorerImages.length);
+    }, 3600);
+
+    return () => clearInterval(timer);
+  }, [activeTab, isPaused]);
 
   return (
     <section className="relative pt-32 sm:pt-36 md:pt-40 lg:pt-44 pb-16 overflow-hidden bg-background">
@@ -153,13 +175,53 @@ export function Hero({ activeTab: controlledTab, onTabChange }: HeroProps) {
           {/* High-contrast application window */}
           <div className="relative rounded-2xl border border-slate-800 bg-[#0b101b] shadow-2xl overflow-hidden">
             {/* Active Workspace Screenshot */}
-            <div className="relative bg-[#0b101b]">
+            <div
+              className="relative bg-[#0b101b] group/hero-preview"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
               {activeTab === "explorer" ? (
-                <img
-                  src="/images/de.png"
-                  alt="Schema Weaver Voice Data Explorer"
-                  className="w-full h-auto block"
-                />
+                <div className="relative">
+                  <img
+                    key={explorerImages[currentSlide]}
+                    src={explorerImages[currentSlide]}
+                    alt="Schema Weaver Voice Data Explorer"
+                    className="w-full h-auto block animate-fade-in transition-all duration-300"
+                  />
+
+                  {/* Prev / Next Arrows */}
+                  <button
+                    onClick={() => setCurrentSlide((prev) => (prev - 1 + explorerImages.length) % explorerImages.length)}
+                    aria-label="Previous image"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-black/90 text-white border border-white/10 flex items-center justify-center backdrop-blur-sm opacity-0 group-hover/hero-preview:opacity-100 transition-opacity duration-200 cursor-pointer shadow-lg z-10"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => setCurrentSlide((prev) => (prev + 1) % explorerImages.length)}
+                    aria-label="Next image"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-black/90 text-white border border-white/10 flex items-center justify-center backdrop-blur-sm opacity-0 group-hover/hero-preview:opacity-100 transition-opacity duration-200 cursor-pointer shadow-lg z-10"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+
+                  {/* Dot Indicators */}
+                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 z-10">
+                    {explorerImages.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setCurrentSlide(i)}
+                        aria-label={`Go to slide ${i + 1}`}
+                        className={cn(
+                          "h-1.5 rounded-full transition-all duration-300 cursor-pointer",
+                          i === currentSlide
+                            ? "w-6 bg-emerald-400 shadow-glow-emerald"
+                            : "w-1.5 bg-slate-600 hover:bg-slate-400"
+                        )}
+                      />
+                    ))}
+                  </div>
+                </div>
               ) : (
                 <img
                   src="/images/sql-editor/sql-editor.png"

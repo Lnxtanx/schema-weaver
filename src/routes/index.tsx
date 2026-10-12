@@ -11,6 +11,7 @@ import { Testimonials } from "@/components/landing/Testimonials";
 import { CtaSection } from "@/components/landing/CtaSection";
 import { ConnectorVideoSection } from "@/components/landing/ConnectorVideoSection";
 import { ResonaExplorerSection } from "@/components/landing/ResonaExplorerSection";
+import { AudienceSection } from "@/components/landing/AudienceSection";
 import { Footer } from "@/components/landing/Footer";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "@/lib/seo/site";
 
@@ -116,6 +117,7 @@ function Index() {
         <div className={activeTab === "explorer" ? undefined : "hidden"}>
           <ConnectorVideoSection />
           <ResonaExplorerSection />
+          <AudienceSection />
         </div>
         <CtaSection activeTab={activeTab} />
       </main>
