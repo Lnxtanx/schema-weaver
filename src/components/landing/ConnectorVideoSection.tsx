@@ -276,21 +276,21 @@ export function ConnectorVideoSection() {
   return (
     <section
       id="connector-walkthrough"
-      className="relative pt-6 sm:pt-10 pb-12 sm:pb-16 border-t border-border/40 bg-background overflow-hidden"
+      className="relative pt-8 sm:pt-12 pb-12 sm:pb-16 border-t border-border/40 bg-background overflow-hidden scroll-mt-28"
     >
       {/* Subtle background ambient mesh */}
       <div className="absolute inset-0 grid-bg-emerald opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)] pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <div className="max-w-5xl mx-auto text-center mb-6 sm:mb-8">
-          <h2 className="font-display font-bold tracking-tight text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] text-foreground whitespace-normal md:whitespace-nowrap">
+        <div className="max-w-5xl mx-auto text-center mb-6 sm:mb-8 px-1">
+          <h2 className="font-display font-bold tracking-tight text-xl sm:text-3xl md:text-4xl lg:text-[2.65rem] text-foreground leading-tight">
             Connect your database with{" "}
-            <span className="font-mono text-gradient-mesh font-bold whitespace-nowrap">
+            <span className="font-mono text-gradient-mesh font-bold inline-block whitespace-nowrap">
               pg&#8209;connector
             </span>
           </h2>
-          <p className="mt-2.5 sm:mt-3 text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="mt-2.5 sm:mt-3 text-xs sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Connect any PostgreSQL database — Localhost, Supabase, AWS RDS, Neon, or private VPC. Zero open ports. Credentials never leave your machine.
           </p>
         </div>
@@ -438,13 +438,13 @@ export function ConnectorVideoSection() {
                 </div>
 
                 {/* Control Action Buttons */}
-                <div className="flex items-center justify-between gap-2 text-white">
+                <div className="flex items-center justify-between gap-1.5 sm:gap-2 text-white">
                   {/* Left: Play/Pause, Replay, Time */}
-                  <div className="flex items-center gap-1.5">
+                  <div className="flex items-center gap-1 sm:gap-1.5">
                     <button
                       type="button"
                       onClick={togglePlay}
-                      className="p-1.5 rounded-lg text-white/90 hover:text-white hover:bg-white/15 transition-colors cursor-pointer"
+                      className="p-1 sm:p-1.5 rounded-lg text-white/90 hover:text-white hover:bg-white/15 transition-colors cursor-pointer"
                       title={isPlaying ? "Pause (Space)" : "Play (Space)"}
                     >
                       {isPlaying ? (
@@ -466,13 +466,13 @@ export function ConnectorVideoSection() {
                     <button
                       type="button"
                       onClick={handleReplay}
-                      className="p-1.5 rounded-lg text-white/80 hover:text-white hover:bg-white/15 transition-colors cursor-pointer"
+                      className="p-1 sm:p-1.5 rounded-lg text-white/80 hover:text-white hover:bg-white/15 transition-colors cursor-pointer"
                       title="Restart video"
                     >
                       <RotateCcw className="w-3.5 h-3.5" />
                     </button>
 
-                    <span className="text-[11px] font-mono text-white/80 select-none ml-1">
+                    <span className="text-[10px] sm:text-[11px] font-mono text-white/80 select-none ml-0.5 sm:ml-1 whitespace-nowrap">
                       {formatTime(currentTime)}{" "}
                       <span className="text-white/40">/</span>{" "}
                       {formatTime(duration)}
@@ -480,12 +480,12 @@ export function ConnectorVideoSection() {
                   </div>
 
                   {/* Right: Audio / Voice Controls & Fullscreen */}
-                  <div className="flex items-center gap-2">
-                    <div className="flex items-center gap-1.5 bg-black/40 px-2 py-1 rounded-lg border border-white/10 backdrop-blur-sm">
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <div className="flex items-center gap-1 sm:gap-1.5 bg-black/40 px-1.5 sm:px-2 py-1 rounded-lg border border-white/10 backdrop-blur-sm">
                       <button
                         type="button"
                         onClick={handleToggleMute}
-                        className="p-1 rounded text-white/90 hover:text-white transition-colors cursor-pointer"
+                        className="p-0.5 sm:p-1 rounded text-white/90 hover:text-white transition-colors cursor-pointer"
                         title={
                           isMuted
                             ? "Unmute voice narration (m)"
@@ -493,11 +493,11 @@ export function ConnectorVideoSection() {
                         }
                       >
                         {isMuted || volume === 0 ? (
-                          <VolumeX className="w-4 h-4 text-rose-400" />
+                          <VolumeX className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-rose-400" />
                         ) : volume <= 0.5 ? (
-                          <Volume1 className="w-4 h-4 text-white/90" />
+                          <Volume1 className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-white/90" />
                         ) : (
-                          <Volume2 className="w-4 h-4 text-primary" />
+                          <Volume2 className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-primary" />
                         )}
                       </button>
 
@@ -510,7 +510,7 @@ export function ConnectorVideoSection() {
                         onChange={(e) =>
                           handleVolumeChange(parseFloat(e.target.value))
                         }
-                        className="w-14 sm:w-20 h-1 bg-white/30 rounded-lg appearance-none cursor-pointer accent-primary"
+                        className="hidden sm:inline-block w-14 sm:w-20 h-1 bg-white/30 rounded-lg appearance-none cursor-pointer accent-primary"
                         title={`Voice Volume: ${Math.round(
                           (isMuted ? 0 : volume) * 100
                         )}%`}
@@ -520,15 +520,15 @@ export function ConnectorVideoSection() {
                     <button
                       type="button"
                       onClick={toggleFullscreen}
-                      className="p-1.5 rounded-lg text-white/90 hover:text-white hover:bg-white/15 transition-colors cursor-pointer"
+                      className="p-1 sm:p-1.5 rounded-lg text-white/90 hover:text-white hover:bg-white/15 transition-colors cursor-pointer"
                       title={
                         isFullscreen ? "Exit Fullscreen (f)" : "Fullscreen (f)"
                       }
                     >
                       {isFullscreen ? (
-                        <Minimize2 className="w-4 h-4" />
+                        <Minimize2 className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
                       ) : (
-                        <Maximize2 className="w-4 h-4" />
+                        <Maximize2 className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
                       )}
                     </button>
                   </div>
@@ -539,15 +539,19 @@ export function ConnectorVideoSection() {
         </div>
 
         {/* Clean, sleek developer quickstart bar below video */}
-        <div className="mt-6 flex flex-col md:flex-row items-center justify-between gap-4 p-3.5 sm:p-4 rounded-xl border border-border/70 bg-card/60 backdrop-blur-sm">
-          <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground min-w-0">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
-            <span className="font-semibold text-foreground">Quick Setup:</span>
-            <div className="inline-flex items-center gap-1.5 bg-muted/60 border border-border/80 px-2.5 py-1 rounded-lg">
-              <Terminal className="w-3.5 h-3.5 text-primary shrink-0" />
-              <span className="truncate text-foreground font-mono">
-                npm i -g @schema-weaver/pg-connector
-              </span>
+        <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl border border-border/70 bg-card/60 backdrop-blur-sm w-full max-w-full overflow-hidden">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 text-xs font-mono text-muted-foreground min-w-0 max-w-full">
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+              <span className="font-semibold text-foreground whitespace-nowrap text-xs">Quick Setup:</span>
+            </div>
+            <div className="flex items-center justify-between gap-1.5 bg-muted/60 border border-border/80 px-2.5 py-1.5 rounded-lg min-w-0 max-w-full overflow-hidden">
+              <div className="flex items-center gap-1.5 min-w-0 overflow-hidden">
+                <Terminal className="w-3.5 h-3.5 text-primary shrink-0" />
+                <span className="truncate text-foreground font-mono text-[11px] sm:text-xs">
+                  npm i -g @schema-weaver/pg-connector
+                </span>
+              </div>
               <button
                 type="button"
                 onClick={() =>
@@ -556,7 +560,7 @@ export function ConnectorVideoSection() {
                     "install"
                   )
                 }
-                className="hover:text-foreground text-muted-foreground/60 transition-colors ml-1 cursor-pointer"
+                className="hover:text-foreground text-muted-foreground/70 transition-colors ml-1.5 shrink-0 cursor-pointer p-0.5 rounded hover:bg-muted"
                 title="Copy installation command"
               >
                 {copiedCmd === "install" ? (
@@ -568,7 +572,7 @@ export function ConnectorVideoSection() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3 shrink-0 text-xs">
+          <div className="flex items-center justify-end sm:justify-start shrink-0 text-xs pt-2 sm:pt-0 border-t sm:border-t-0 border-border/40 sm:border-transparent">
             <a
               href="https://docs.schemaweaver.dev/connector"
               target="_blank"
@@ -582,22 +586,22 @@ export function ConnectorVideoSection() {
         </div>
 
         {/* Database Catalog Carousel */}
-        <div className="mt-8 sm:mt-10 pt-5 sm:pt-6 border-t border-border/50">
+        <div className="mt-8 sm:mt-10 pt-5 sm:pt-6 border-t border-border/50 max-w-full overflow-hidden">
           <div className="flex items-center gap-2 mb-3 sm:mb-4 px-1">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-xs sm:text-sm font-mono uppercase tracking-wider text-muted-foreground font-medium">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+            <span className="text-[11px] sm:text-sm font-mono uppercase tracking-wider text-muted-foreground font-medium leading-tight">
               Universal PostgreSQL Compatibility · Localhost, Cloud & Self-Hosted
             </span>
           </div>
 
-          <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
-            <div className="animate-marquee flex items-center gap-3.5 select-none py-2 sm:py-2.5">
+          <div className="relative w-full max-w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]">
+            <div className="animate-marquee flex items-center gap-2.5 sm:gap-3.5 select-none py-2 sm:py-2.5">
               {[...supportedDatabases, ...supportedDatabases].map((db, idx) => (
                 <div
                   key={`${db.name}-${idx}`}
-                  className="flex items-center gap-3 px-4 sm:px-4.5 py-2.5 sm:py-3 min-w-[200px] sm:min-w-[230px] rounded-xl border border-border/80 bg-card/95 hover:border-primary/50 hover:bg-card hover:shadow-md transition-all shrink-0 select-none group"
+                  className="flex items-center gap-2.5 sm:gap-3 px-3 sm:px-4.5 py-2 sm:py-3 min-w-[170px] sm:min-w-[220px] rounded-xl border border-border/80 bg-card/95 hover:border-primary/50 hover:bg-card hover:shadow-md transition-all shrink-0 select-none group"
                 >
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-muted/80 border border-border/70 flex items-center justify-center p-1.5 sm:p-2 shrink-0 group-hover:scale-105 transition-transform shadow-2xs">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-muted/80 border border-border/70 flex items-center justify-center p-1.5 sm:p-2 shrink-0 group-hover:scale-105 transition-transform shadow-2xs">
                     <img
                       src={db.icon}
                       alt={db.name}

@@ -16,6 +16,7 @@ import { getOrCreateAnalyticsIdentity } from "@/lib/api/analytics";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { WifiOff, RefreshCw, AlertTriangle, ArrowLeft } from "lucide-react";
+import { breadcrumbList } from "@/lib/seo/site";
 
 const SITE_URL = "https://schemaweaver.dev";
 
@@ -139,7 +140,10 @@ export const Route = createFileRoute("/blog/$slug")({
     if (!post) {
       const title = loaderData?.isOffline ? "News Offline — Schema Weaver" : "News Not Found — Schema Weaver";
       return {
-        meta: [{ title }],
+        meta: [
+          { title },
+          { name: "robots", content: "noindex, nofollow" },
+        ],
       };
     }
 
@@ -153,6 +157,9 @@ export const Route = createFileRoute("/blog/$slug")({
     }
     const metaDescription = rawDescription;
     const ogImage = post.og_image_url || post.thumbnail_url || `${SITE_URL}/resona.png`;
+    const displayAuthorName = post.author_name
+      ? post.author_name.replace(/VivekMind/gi, "Schema Weaver")
+      : "Schema Weaver Team";
 
     return {
       meta: [
@@ -161,8 +168,10 @@ export const Route = createFileRoute("/blog/$slug")({
         { property: "og:title", content: metaTitle },
         { property: "og:description", content: metaDescription },
         { property: "og:image", content: ogImage },
+        { property: "og:image:alt", content: post.title },
         { property: "og:url", content: `${SITE_URL}/blog/${post.slug}` },
         { property: "og:type", content: "article" },
+        { property: "og:site_name", content: "Schema Weaver" },
         {
           property: "article:published_time",
           content: post.published_at ? new Date(post.published_at).toISOString() : undefined,
@@ -173,9 +182,7 @@ export const Route = createFileRoute("/blog/$slug")({
         },
         {
           property: "article:author",
-          content: post.author_name
-            ? post.author_name.replace(/VivekMind/gi, "Schema Weaver")
-            : "Schema Weaver Team",
+          content: displayAuthorName,
         },
         { property: "article:section", content: post.category },
         { property: "article:tag", content: post.tags?.join(", ") || undefined },
@@ -183,11 +190,67 @@ export const Route = createFileRoute("/blog/$slug")({
         { name: "twitter:title", content: metaTitle },
         { name: "twitter:description", content: metaDescription },
         { name: "twitter:image", content: ogImage },
-        { name: "twitter:image:width", content: "1200" },
-        { name: "twitter:image:height", content: "630" },
+        { name: "twitter:image:alt", content: post.title },
         { name: "keywords", content: [post.category, ...(post.tags || [])].join(", ") },
       ],
-      links: [{ rel: "canonical", href: `${SITE_URL}/blog/${post.slug}` }],
+      links: [
+        { rel: "canonical", href: `${SITE_URL}/blog/${post.slug}` },
+        {
+          rel: "alternate",
+          type: "application/rss+xml",
+          title: "Schema Weaver Newsroom",
+          href: `${SITE_URL}/rss.xml`,
+        },
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: post.title,
+            description: metaDescription,
+            image: [ogImage],
+            datePublished: post.published_at
+              ? new Date(post.published_at).toISOString()
+              : undefined,
+            dateModified: post.updated_at
+              ? new Date(post.updated_at).toISOString()
+              : undefined,
+            author: {
+              "@type": "Person",
+              name: displayAuthorName,
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Schema Weaver",
+              url: SITE_URL,
+              logo: {
+                "@type": "ImageObject",
+                url: `${SITE_URL}/resona.png`,
+              },
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `${SITE_URL}/blog/${post.slug}`,
+            },
+            articleSection: post.category,
+            keywords: [post.category, ...(post.tags || [])].join(", "),
+            wordCount: countWords(post.content || ""),
+            inLanguage: "en",
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(
+            breadcrumbList([
+              { name: "Home", path: "/" },
+              { name: "Newsroom", path: "/blog" },
+              { name: post.title, path: `/blog/${post.slug}` },
+            ]),
+          ),
+        },
+      ],
     };
   },
   loader: async ({ params }) => {
@@ -213,6 +276,11 @@ function estimateReadingTime(html: string): number {
   const text = html.replace(/<[^>]*>/g, "");
   const words = text.split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.ceil(words / 230));
+}
+
+function countWords(html: string): number {
+  const text = html.replace(/<[^>]*>/g, "");
+  return text.split(/\s+/).filter(Boolean).length;
 }
 
 /* ── Image Lightbox ─────────────────────────────────────────────── */
@@ -627,38 +695,6 @@ function BlogPostPage() {
             onClose={() => setLightboxSrc(null)}
           />
         )}
-
-        {/* JSON-LD Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BlogPosting",
-              headline: post.title,
-              description: post.excerpt || post.meta_description,
-              image: post.thumbnail_url || post.og_image_url,
-              datePublished: post.published_at,
-              dateModified: post.updated_at,
-              author: {
-                "@type": "Organization",
-                name: displayAuthor,
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Schema Weaver",
-                logo: {
-                  "@type": "ImageObject",
-                  url: `${SITE_URL}/resona.png`,
-                },
-              },
-              mainEntityOfPage: {
-                "@type": "WebPage",
-                "@id": postUrl,
-              },
-            }),
-          }}
-        />
 
         <article>
           {/* Header */}

@@ -111,7 +111,7 @@
   --blue: oklch(0.45 0.19 250);
   --blue-glow: oklch(0.52 0.19 250 / 20%);
   --surface-elevated: oklch(1 0 0);
-  --surface-glass: oklch(1 0 0 / 70%);
+  --surface-glass: oklch(0.99 0.003 250 / 92%);
 
   --gradient-hero:
     radial-gradient(
@@ -213,7 +213,7 @@
   --blue: oklch(0.65 0.18 250);
   --blue-glow: oklch(0.72 0.18 250);
   --surface-elevated: oklch(0.2 0.02 252);
-  --surface-glass: oklch(0.18 0.02 252 / 60%);
+  --surface-glass: oklch(0.14 0.015 250 / 92%);
 
   --gradient-hero:
     radial-gradient(
@@ -763,6 +763,7 @@
   display: flex;
   width: max-content;
   animation: marquee 28s linear infinite;
+  will-change: transform;
 }
 
 .animate-marquee:hover {

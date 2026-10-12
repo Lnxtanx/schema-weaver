@@ -10,6 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SupportRouteImport } from './routes/support'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RssDotxmlRouteImport } from './routes/rss[.]xml'
 import { Route as RefundPolicyRouteImport } from './routes/refund-policy'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as CompareRouteImport } from './routes/compare'
@@ -21,6 +23,16 @@ import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 const SupportRoute = SupportRouteImport.update({
   id: '/support',
   path: '/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RssDotxmlRoute = RssDotxmlRouteImport.update({
+  id: '/rss.xml',
+  path: '/rss.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RefundPolicyRoute = RefundPolicyRouteImport.update({
@@ -65,6 +77,8 @@ export interface FileRoutesByFullPath {
   '/compare': typeof CompareRoute
   '/pricing': typeof PricingRoute
   '/refund-policy': typeof RefundPolicyRoute
+  '/rss.xml': typeof RssDotxmlRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/support': typeof SupportRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -75,6 +89,8 @@ export interface FileRoutesByTo {
   '/compare': typeof CompareRoute
   '/pricing': typeof PricingRoute
   '/refund-policy': typeof RefundPolicyRoute
+  '/rss.xml': typeof RssDotxmlRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/support': typeof SupportRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog': typeof BlogIndexRoute
@@ -86,6 +102,8 @@ export interface FileRoutesById {
   '/compare': typeof CompareRoute
   '/pricing': typeof PricingRoute
   '/refund-policy': typeof RefundPolicyRoute
+  '/rss.xml': typeof RssDotxmlRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/support': typeof SupportRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -98,6 +116,8 @@ export interface FileRouteTypes {
     | '/compare'
     | '/pricing'
     | '/refund-policy'
+    | '/rss.xml'
+    | '/sitemap.xml'
     | '/support'
     | '/blog/$slug'
     | '/blog/'
@@ -108,6 +128,8 @@ export interface FileRouteTypes {
     | '/compare'
     | '/pricing'
     | '/refund-policy'
+    | '/rss.xml'
+    | '/sitemap.xml'
     | '/support'
     | '/blog/$slug'
     | '/blog'
@@ -118,6 +140,8 @@ export interface FileRouteTypes {
     | '/compare'
     | '/pricing'
     | '/refund-policy'
+    | '/rss.xml'
+    | '/sitemap.xml'
     | '/support'
     | '/blog/$slug'
     | '/blog/'
@@ -129,6 +153,8 @@ export interface RootRouteChildren {
   CompareRoute: typeof CompareRoute
   PricingRoute: typeof PricingRoute
   RefundPolicyRoute: typeof RefundPolicyRoute
+  RssDotxmlRoute: typeof RssDotxmlRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SupportRoute: typeof SupportRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -141,6 +167,20 @@ declare module '@tanstack/react-router' {
       path: '/support'
       fullPath: '/support'
       preLoaderRoute: typeof SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rss.xml': {
+      id: '/rss.xml'
+      path: '/rss.xml'
+      fullPath: '/rss.xml'
+      preLoaderRoute: typeof RssDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/refund-policy': {
@@ -201,6 +241,8 @@ const rootRouteChildren: RootRouteChildren = {
   CompareRoute: CompareRoute,
   PricingRoute: PricingRoute,
   RefundPolicyRoute: RefundPolicyRoute,
+  RssDotxmlRoute: RssDotxmlRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SupportRoute: SupportRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogIndexRoute: BlogIndexRoute,

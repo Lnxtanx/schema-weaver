@@ -13,6 +13,7 @@ import {
   BookOpen,
 } from "lucide-react";
 import { z } from "zod";
+import { breadcrumbList } from "@/lib/seo/site";
 
 const SITE_URL = "https://schemaweaver.dev";
 
@@ -159,8 +160,12 @@ export const Route = createFileRoute("/blog/")({
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en_US" },
       { property: "og:image", content: `${SITE_URL}/resona.png` },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
+      { property: "og:image:width", content: "300" },
+      { property: "og:image:height", content: "300" },
+      {
+        property: "og:image:alt",
+        content: "Schema Weaver Newsroom",
+      },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Newsroom — Schema Weaver" },
       {
@@ -170,7 +175,42 @@ export const Route = createFileRoute("/blog/")({
       },
       { name: "twitter:image", content: `${SITE_URL}/resona.png` },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/blog` }],
+    links: [
+      { rel: "canonical", href: `${SITE_URL}/blog` },
+      {
+        rel: "alternate",
+        type: "application/rss+xml",
+        title: "Schema Weaver Newsroom",
+        href: `${SITE_URL}/rss.xml`,
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          name: "Schema Weaver Newsroom",
+          url: `${SITE_URL}/blog`,
+          description:
+            "Official news, product announcements, engineering deep-dives, and updates from the Schema Weaver team.",
+          publisher: {
+            "@type": "Organization",
+            name: "Schema Weaver",
+            url: SITE_URL,
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbList([
+            { name: "Home", path: "/" },
+            { name: "Newsroom", path: "/blog" },
+          ]),
+        ),
+      },
+    ],
   }),
   loader: async (ctx: any) => {
     const s = ctx.search || {};

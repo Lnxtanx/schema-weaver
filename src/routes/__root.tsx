@@ -8,6 +8,20 @@ import {
 import { Toaster } from "sonner";
 
 import appCss from "../styles.css?url";
+import {
+  APPLE_TOUCH_ICON,
+  DEFAULT_DESCRIPTION,
+  DEFAULT_TITLE,
+  FAVICON,
+  LOGO_URL,
+  OG_IMAGE,
+  OG_IMAGE_ALT,
+  OG_IMAGE_HEIGHT,
+  OG_IMAGE_WIDTH,
+  SITE_NAME,
+  SITE_URL,
+  TWITTER_HANDLE,
+} from "@/lib/seo/site";
 
 function NotFoundComponent() {
   return (
@@ -48,18 +62,19 @@ export const Route = createRootRoute({
         content: "black-translucent",
       },
       {
-        title:
-          "Schema Weaver — The First Voice-Native Analytics Workspace for PostgreSQL",
+        name: "robots",
+        content:
+          "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
       },
+      { name: "author", content: SITE_NAME },
+      { title: DEFAULT_TITLE },
       {
         name: "description",
-        content:
-          "Schema Weaver is the first voice-native analytics workspace for PostgreSQL. Browse live data in high-performance grids, talk to your database by voice, query in plain English, and generate instant AI charts.",
+        content: DEFAULT_DESCRIPTION,
       },
       {
         property: "og:title",
-        content:
-          "Schema Weaver — The First Voice-Native Analytics Workspace for PostgreSQL",
+        content: DEFAULT_TITLE,
       },
       {
         property: "og:description",
@@ -67,22 +82,40 @@ export const Route = createRootRoute({
           "The first voice-native analytics workspace for PostgreSQL. Explore live data, query by voice, and design schemas.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: SITE_NAME },
+      { property: "og:locale", content: "en_US" },
+      { property: "og:url", content: `${SITE_URL}/` },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:width", content: String(OG_IMAGE_WIDTH) },
+      { property: "og:image:height", content: String(OG_IMAGE_HEIGHT) },
+      { property: "og:image:alt", content: OG_IMAGE_ALT },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: TWITTER_HANDLE },
+      { name: "twitter:creator", content: TWITTER_HANDLE },
       {
         name: "twitter:title",
-        content:
-          "Schema Weaver — The First Voice-Native Analytics Workspace for PostgreSQL",
+        content: DEFAULT_TITLE,
       },
       {
         name: "twitter:description",
         content:
           "The first voice-native analytics workspace for PostgreSQL. Explore live data, query by voice, and design schemas.",
       },
+      { name: "twitter:image", content: OG_IMAGE },
+      { name: "twitter:image:alt", content: OG_IMAGE_ALT },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
+      },
+      { rel: "icon", href: FAVICON },
+      { rel: "apple-touch-icon", href: APPLE_TOUCH_ICON },
+      {
+        rel: "alternate",
+        type: "application/rss+xml",
+        title: "Schema Weaver Newsroom",
+        href: `${SITE_URL}/rss.xml`,
       },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {
@@ -96,6 +129,43 @@ export const Route = createRootRoute({
       },
     ],
     scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: SITE_NAME,
+          url: SITE_URL,
+          logo: {
+            "@type": "ImageObject",
+            url: LOGO_URL,
+            width: 512,
+            height: 512,
+          },
+          description: DEFAULT_DESCRIPTION,
+          sameAs: [
+            "https://github.com/schema-weaver",
+            "https://linkedin.com/company/schemaweaver",
+            "https://www.reddit.com/r/schemaweaver/",
+          ],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: SITE_NAME,
+          alternateName: "schemaweaver",
+          url: SITE_URL,
+          inLanguage: "en",
+          publisher: {
+            "@type": "Organization",
+            name: SITE_NAME,
+            url: SITE_URL,
+          },
+        }),
+      },
       {
         children: `
           (function() {

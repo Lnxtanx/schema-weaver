@@ -20,6 +20,7 @@ import {
   Shield,
   Zap,
 } from "lucide-react";
+import { breadcrumbList } from "@/lib/seo/site";
 
 export const Route = createFileRoute("/support")({
   head: () => ({
@@ -63,8 +64,35 @@ export const Route = createFileRoute("/support")({
           "@type": "ContactPage",
           name: "Schema Weaver Support",
           url: "https://schemaweaver.dev/support",
-          contactOption: ["Email", "Community"],
+          mainEntity: {
+            "@type": "Organization",
+            name: "Schema Weaver",
+            url: "https://schemaweaver.dev",
+            contactPoint: [
+              {
+                "@type": "ContactPoint",
+                contactType: "customer support",
+                email: "support@schemaweaver.dev",
+                availableLanguage: ["English"],
+              },
+              {
+                "@type": "ContactPoint",
+                contactType: "sales",
+                email: "support@schemaweaver.dev",
+                availableLanguage: ["English"],
+              },
+            ],
+          },
         }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbList([
+            { name: "Home", path: "/" },
+            { name: "Support", path: "/support" },
+          ]),
+        ),
       },
     ],
   }),

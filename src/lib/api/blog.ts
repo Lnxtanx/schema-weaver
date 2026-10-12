@@ -135,6 +135,32 @@ export async function fetchBlogPosts(page: number = 1, limit: number = 10, categ
   }
 }
 
+/**
+ * Fetch every published post by walking pagination.
+ * Used by the dynamic sitemap and RSS feed generators.
+ */
+export async function fetchAllBlogPosts(): Promise<{
+  posts: BlogPost[];
+  isOffline: boolean;
+}> {
+  const perPage = 100;
+  const all: BlogPost[] = [];
+  let page = 1;
+  let totalPages = 1;
+
+  do {
+    const { posts, pagination, isOffline } = await fetchBlogPosts(page, perPage);
+    if (isOffline) {
+      return { posts: all, isOffline: true };
+    }
+    all.push(...posts);
+    totalPages = pagination.totalPages || 1;
+    page += 1;
+  } while (page <= totalPages && page <= 50);
+
+  return { posts: all, isOffline: false };
+}
+
 export interface FetchBlogPostResult {
   post: BlogPost | null;
   isNotFound?: boolean;

@@ -79,25 +79,25 @@ export function Navbar() {
   const isNewsActive = pathname.startsWith("/blog");
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-glass border-b border-border/40">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border/40 shadow-xs">
       {/* Orange Live Demo Announcement Header Bar */}
-      <div className="bg-gradient-to-r from-orange-600 via-amber-600 to-orange-600 text-white px-4 py-1.5 text-xs text-center font-medium flex items-center justify-center gap-2 shadow-inner border-b border-orange-500/30">
-        <span className="relative flex h-2 w-2">
+      <div className="bg-gradient-to-r from-orange-600 via-amber-600 to-orange-600 text-white px-3 sm:px-4 py-1.5 text-xs text-center font-medium flex items-center justify-center gap-1.5 sm:gap-2 shadow-inner border-b border-orange-500/30">
+        <span className="relative flex h-2 w-2 shrink-0">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
         </span>
         <span className="hidden sm:inline">Try Schema Weaver instantly on our live 24/7 PostgreSQL database — no sign-up required.</span>
-        <span className="sm:hidden">Live PostgreSQL demo online.</span>
+        <span className="sm:hidden text-[11px]">Live PostgreSQL demo online.</span>
         <a
           href="https://data-explorer.schemaweaver.dev?demo=true"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline font-bold hover:text-orange-100 ml-1 inline-flex items-center gap-0.5 cursor-pointer"
+          className="underline font-bold hover:text-orange-100 ml-1 inline-flex items-center gap-0.5 cursor-pointer text-[11px] sm:text-xs"
         >
           Launch Demo <ArrowUpRight className="w-3.5 h-3.5" />
         </a>
       </div>
-      <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Brand Logo */}
         <div className="flex items-center gap-3 shrink-0">
           <Link

@@ -66,11 +66,14 @@ export const Route = createFileRoute("/")({
           alternateName: "schemaweaver",
           applicationCategory: "DeveloperApplication",
           operatingSystem: "Web",
-          offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: "4.9",
-            ratingCount: "182",
+          url: "https://schemaweaver.dev/",
+          downloadUrl: "https://data-explorer.schemaweaver.dev",
+          screenshot: "https://schemaweaver.dev/images/de.png",
+          offers: {
+            "@type": "Offer",
+            price: "0",
+            priceCurrency: "USD",
+            url: "https://schemaweaver.dev/pricing",
           },
           description:
             "The first voice-native analytics workspace for PostgreSQL. Features voice-driven queries, high-performance data grids, live ER diagrams, and Resona AI.",
@@ -102,22 +105,23 @@ function Index() {
       <Navbar />
       <main>
         <Hero activeTab={activeTab} onTabChange={setActiveTab} />
-        {activeTab === "editor" ? (
-          <>
-            <SqlEditorSection />
-            <ResonaSection />
-            <SyncSection />
-            <CapabilitiesGrid />
-            <TeamSection />
-            <CtaSection activeTab="editor" />
-          </>
-        ) : (
-          <>
-            <ConnectorVideoSection />
-            <ResonaExplorerSection />
-            <CtaSection activeTab="explorer" />
-          </>
-        )}
+        {/*
+          Both tab panels are always rendered so their headings and copy are
+          present in the server-rendered HTML for crawlers. Only visibility is
+          toggled on the client, so search engines can index every section.
+        */}
+        <div className={activeTab === "editor" ? undefined : "hidden"}>
+          <SqlEditorSection />
+          <ResonaSection />
+          <SyncSection />
+          <CapabilitiesGrid />
+          <TeamSection />
+        </div>
+        <div className={activeTab === "explorer" ? undefined : "hidden"}>
+          <ConnectorVideoSection />
+          <ResonaExplorerSection />
+        </div>
+        <CtaSection activeTab={activeTab} />
       </main>
       <Footer />
     </div>

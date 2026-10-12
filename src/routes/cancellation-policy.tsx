@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
+import { breadcrumbList } from "@/lib/seo/site";
 
 export const Route = createFileRoute("/cancellation-policy")({
   head: () => ({
@@ -27,6 +28,26 @@ export const Route = createFileRoute("/cancellation-policy")({
       {
         rel: "canonical",
         href: "https://schemaweaver.dev/cancellation-policy",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Cancellation Policy — Schema Weaver",
+          url: "https://schemaweaver.dev/cancellation-policy",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbList([
+            { name: "Home", path: "/" },
+            { name: "Cancellation Policy", path: "/cancellation-policy" },
+          ]),
+        ),
       },
     ],
   }),

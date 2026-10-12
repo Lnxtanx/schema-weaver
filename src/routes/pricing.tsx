@@ -20,6 +20,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { breadcrumbList } from "@/lib/seo/site";
 
 /* ─────────────────────────────────────────────────────────────────────────────
  * FAQ data — hoisted so schema.org script can reference it.
@@ -88,13 +89,18 @@ export const Route = createFileRoute("/pricing")({
         content:
           "Free, Pro, and Team plans for the first voice-native analytics workspace for PostgreSQL.",
       },
-      {
-        rel: "canonical",
-        href: "https://schemaweaver.dev/pricing",
-      } as never,
     ],
     links: [{ rel: "canonical", href: "https://schemaweaver.dev/pricing" }],
     scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbList([
+            { name: "Home", path: "/" },
+            { name: "Pricing", path: "/pricing" },
+          ]),
+        ),
+      },
       {
         type: "application/ld+json",
         children: JSON.stringify({

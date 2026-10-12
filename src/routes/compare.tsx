@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { breadcrumbList } from "@/lib/seo/site";
 
 /* ─────────────────────────────────────────────────────────────────────────────
  * Route Metadata
@@ -55,10 +56,6 @@ export const Route = createFileRoute("/compare")({
         property: "og:url",
         content: "https://schemaweaver.dev/compare",
       },
-      {
-        rel: "canonical",
-        href: "https://schemaweaver.dev/compare",
-      } as never,
     ],
     links: [{ rel: "canonical", href: "https://schemaweaver.dev/compare" }],
     scripts: [
@@ -72,6 +69,15 @@ export const Route = createFileRoute("/compare")({
             "Technical and pricing comparison of Schema Weaver against Power BI, Tableau, Metabase, Outerbase, Draxlr, and ThoughtSpot.",
           url: "https://schemaweaver.dev/compare",
         }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbList([
+            { name: "Home", path: "/" },
+            { name: "Compare", path: "/compare" },
+          ]),
+        ),
       },
     ],
   }),
