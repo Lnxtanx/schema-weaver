@@ -12,10 +12,10 @@ import {
   Table,
   Users,
   ShieldCheck,
-  Terminal,
   CreditCard,
   DollarSign,
   Sparkles,
+  Zap,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -84,14 +84,13 @@ export const Route = createFileRoute("/compare")({
 });
 
 /* ─────────────────────────────────────────────────────────────────────────────
- * 6 Unique Innovations (Found Only in Schema Weaver)
+ * Unique Innovations (Found Only in Schema Weaver)
  * ───────────────────────────────────────────────────────────────────────────── */
 
 interface Innovation {
   icon: LucideIcon;
   title: string;
   description: string;
-  badge: string;
 }
 
 const uniqueInnovations: Innovation[] = [
@@ -100,42 +99,36 @@ const uniqueInnovations: Innovation[] = [
     title: "Resona AI",
     description:
       "A unified intelligence architecture with three specialized agents: Voice-to-Voice AI for real-time conversational database queries, Dashboard AI for 1-click executive dashboard synthesis, and Data Explorer AI for deep schema profiling, anomaly scans, and multi-artifact reasoning.",
-    badge: "0 of 6 tools",
   },
   {
     icon: LayoutDashboard,
     title: "1-Click Advanced Statistics & Dashboards",
     description:
       "Generate comprehensive statistical metrics and interactive executive dashboards in a single click. Automatically computes KPI distributions, quartile spreads, and trends across live PostgreSQL tables, complete with an 'Investigate Why' root-cause diagnosis engine.",
-    badge: "0 of 6 tools",
   },
   {
     icon: Table,
     title: "Live Data Explorer Grid & Exports",
     description:
       "High-performance virtualized grid for browsing, filtering, and analyzing live PostgreSQL data in real time. Inspect columns with instant statistical profiling and export live datasets across View (WYSIWYG), Table, or Database scopes into Google Sheets, Excel, CSV, JSON, and SQL.",
-    badge: "0 of 6 tools",
   },
   {
     icon: Users,
     title: "Seamless Team Database Collaboration",
     description:
       "Collaborate effortlessly across engineering and product teams on live databases without sharing raw credentials. Share interactive dashboards, saved queries, and virtual data views with granular role-based access control (RBAC), team workspaces, and transparent audit trails.",
-    badge: "0 of 6 tools",
   },
   {
     icon: ShieldCheck,
     title: "pg-connector & Credential Boundary",
     description:
       "Connect any PostgreSQL database (Localhost, Supabase, Neon, AWS RDS, GCP) through the open-source @schema-weaver/pg-connector daemon. Establishes an outbound-only TLS tunnel with zero open inbound ports, local AES-256 credential storage, and AST read-only query safety guards.",
-    badge: "0 of 6 tools",
   },
   {
-    icon: Terminal,
-    title: "SQL Editor & Spatial Canvas AI",
+    icon: Zap,
+    title: "Zero ETL & Zero Cloud Data Storage",
     description:
-      "A multi-tab PostgreSQL query editor paired with a live interactive ER canvas. Features Spatial AI nodes anchored directly to schema tables, automated Dijkstra foreign-key shortest pathfinding, and a real-time 20-layer schema health compiler.",
-    badge: "0 of 6 tools",
+      "Execute queries directly against your live PostgreSQL database in real time with zero extract lag and zero intermediate data warehousing. Schema Weaver never caches, stages, or retains your customer database records in the cloud.",
   },
 ];
 
@@ -175,182 +168,126 @@ interface ComparisonCategory {
 
 const categories: ComparisonCategory[] = [
   {
-    title: "Visualization & Dashboards",
-    tag: "Visualization",
+    title: "Resona AI (3 Specialized Agents)",
+    tag: "Resona AI",
     rows: [
       {
-        feature: "1-Click AI dashboard synthesis from raw schema",
-        detail: "Synthesizes multi-panel dashboards (KPI cards, charts, retention) in seconds.",
-        values: ["Y", "N", "N", "P", "N", "P", "P"],
+        feature: "Resona Voice: Full-duplex voice-to-voice agent",
+        detail: "Bidirectional audio streaming over live PostgreSQL with ambient orb and speech barge-in.",
+        values: ["Y", "N", "N", "N", "N", "N", "N"],
       },
       {
-        feature: "'Investigate Why' root cause anomaly diagnosis",
-        detail: "One-click drilldown into metric anomalies that diagnoses cohort behavior via ad-hoc SQL.",
+        feature: "Resona AI Chat: Autonomous multi-step ReAct agent",
+        detail: "Schema introspection, self-correcting SQL loops, @table mentions, and analytical reports.",
+        values: ["Y", "P", "P", "P", "P", "N", "P"],
+      },
+      {
+        feature: "Resona Dashboard AI: Autonomous multi-query execution loop",
+        detail: "Multi-query parallel planning ('Ran N queries' trace) to synthesize and refine executive cards.",
         values: ["Y", "P", "P", "N", "N", "N", "P"],
       },
       {
-        feature: "Interactive KPI cards, time-series & cohort matrices",
-        detail: "Auto-calculated trends, deltas, distributions, and customizable chart panels.",
-        values: ["Y", "Y", "Y", "Y", "P", "Y", "Y"],
-      },
-      {
-        feature: "Executive report export (PowerPoint, PDF)",
-        detail: "Package analytical findings and charts into boardroom-ready presentation decks.",
-        values: ["Y", "Y", "Y", "P", "N", "P", "Y"],
-      },
-      {
-        feature: "1-Click Google Sheets OAuth sync",
-        detail: "Push live database query results directly into a newly created Google Sheet.",
-        values: ["Y", "N", "N", "N", "N", "N", "N"],
-      },
-      {
-        feature: "Multi-format exports (CSV, Excel, JSON, SQL)",
-        detail: "Export data at View (WYSIWYG), Table, or full Database scope.",
-        values: ["Y", "Y", "Y", "Y", "P", "Y", "Y"],
-      },
-    ],
-  },
-  {
-    title: "AI & Conversational Querying",
-    tag: "AI & Voice",
-    rows: [
-      {
-        feature: "Native Voice-to-Voice database queries",
-        detail: "Full-duplex audio with zero cascaded STT-TTS delay and native verbal responses.",
-        values: ["Y", "N", "N", "N", "N", "N", "N"],
-      },
-      {
-        feature: "Speech barge-in & verbal interruption",
-        detail: "Interrupt the AI mid-sentence verbally without losing conversational context.",
-        values: ["Y", "N", "N", "N", "N", "N", "N"],
-      },
-      {
-        feature: "Natural language text-to-chart generation",
-        detail: "Ask questions in plain English to generate instant interactive visualizations.",
-        values: ["Y", "Y", "Y", "P", "Y", "Y", "Y"],
-      },
-      {
-        feature: "Autonomous ReAct analytical tool loop",
-        detail: "Multi-step SQL execution with bounded timeouts, retries, and budget controls.",
-        values: ["Y", "N", "N", "N", "P", "N", "P"],
-      },
-      {
         feature: "Dual execution tiers (Flash mode vs Deep thinking)",
-        detail: "Choose between rapid exploratory queries or deep extended reasoning with live traces.",
+        detail: "Instant toggle between rapid exploratory queries (Flash) and deep extended reasoning traces (Deep).",
         values: ["Y", "N", "N", "N", "N", "N", "N"],
       },
       {
-        feature: "Persistent business memory across sessions",
-        detail: "Remembers founder directives and custom metric definitions with code-gated safety.",
-        values: ["Y", "N", "N", "N", "N", "N", "N"],
-      },
-    ],
-  },
-  {
-    title: "Live Grid & Column Profiling",
-    tag: "Data Grid",
-    rows: [
-      {
-        feature: "Virtualized high-performance live data grid",
-        detail: "Smooth infinite scrolling through thousands of records with zero UI lag.",
-        values: ["Y", "Y", "Y", "Y", "Y", "Y", "P"],
-      },
-      {
-        feature: "Server-side multi-column sorting & filtering",
-        detail: "Pushes filter predicates down to PostgreSQL without pulling full tables into RAM.",
-        values: ["Y", "Y", "Y", "Y", "Y", "Y", "Y"],
-      },
-      {
-        feature: "Column distributions & quartile profiling",
-        detail: "Live calculation of null %, distinct counts, min/max, quartiles (Q25-Q75), and histograms.",
-        values: ["Y", "P", "P", "P", "N", "P", "N"],
-      },
-      {
-        feature: "Foreign key deep linking & cross-table drilling",
-        detail: "Click any FK cell to immediately jump to and inspect the referenced record.",
-        values: ["Y", "P", "P", "P", "P", "P", "N"],
-      },
-      {
-        feature: "Connector-enforced read-only guard (CERO)",
-        detail: "Validated locally by an AST parser to guarantee strict read-only safety.",
-        values: ["Y", "P", "P", "P", "N", "P", "P"],
-      },
-    ],
-  },
-  {
-    title: "SQL & Interactive ER Canvas",
-    tag: "SQL & ERD",
-    rows: [
-      {
-        feature: "Multi-file SQL project workspace with autosave",
-        detail: "Organize queries across folders and files with automatic local recovery.",
-        values: ["Y", "N", "N", "P", "P", "P", "N"],
-      },
-      {
-        feature: "PostgreSQL dialect autocomplete & formatting",
-        detail: "Dialect-aware autocomplete for tables, columns, joins, and functions.",
-        values: ["Y", "N", "N", "P", "Y", "P", "N"],
-      },
-      {
-        feature: "Live interactive ER diagram canvas",
-        detail: "Visualizes the entire database topology, foreign key relationships, and schemas.",
-        values: ["Y", "P", "P", "P", "N", "N", "N"],
-      },
-      {
-        feature: "Spatial AI on interactive ER diagram",
-        detail: "Visual AI nodes anchored to tables with edges, reasoning over graph relationships.",
-        values: ["Y", "N", "N", "N", "N", "N", "N"],
-      },
-      {
-        feature: "FK shortest-path graph traversal (Dijkstra / BFS)",
-        detail: "Finds the shortest JOIN path between two arbitrary tables automatically.",
-        values: ["Y", "N", "N", "N", "N", "N", "N"],
-      },
-      {
-        feature: "Schema-to-code export (Prisma, Drizzle, DBML, TS)",
-        detail: "Export visual database designs directly to modern ORM definitions.",
-        values: ["Y", "N", "N", "N", "N", "N", "N"],
-      },
-      {
-        feature: "20-Layer schema health grading (A–F score)",
-        detail: "Linting across indexes, constraints, RLS, storage, and partitions.",
+        feature: "Cross-agent persistent business memory & directives",
+        detail: "Shared memory across Voice, Chat, and Dashboards with founder directives & metric rules.",
         values: ["Y", "N", "N", "N", "N", "N", "N"],
       },
     ],
   },
   {
-    title: "Security, Connectivity & Privacy",
-    tag: "Security",
+    title: "Data Explorer & Live Grid",
+    tag: "Data Explorer",
     rows: [
       {
-        feature: "Zero open inbound ports (no public 5432 exposed)",
-        detail: "Outbound TLS daemon connects securely through firewalls without VPC peering.",
-        values: ["Y", "N", "N", "N", "N", "N", "N"],
+        feature: "Virtualized live PostgreSQL grid with canvas auto-sizing",
+        detail: "Infinite scrolling with canvas-measured smart auto column widths and double-click reset.",
+        values: ["Y", "P", "P", "P", "Y", "P", "P"],
       },
       {
-        feature: "Local Credential Boundary (passwords stay on local machine)",
-        detail: "Database passwords remain in a local AES-256 vault and never touch third-party cloud.",
-        values: ["Y", "N", "N", "N", "N", "N", "N"],
-      },
-      {
-        feature: "Live database connection (no heavy ETL warehouse setup)",
-        detail: "Queries live PostgreSQL directly without setting up separate warehouse sync pipelines.",
-        values: ["Y", "P", "P", "Y", "Y", "Y", "N"],
-      },
-      {
-        feature: "100% browser-native (zero desktop install required)",
-        detail: "Access the full database workspace instantly from any web browser.",
-        values: ["Y", "P", "P", "Y", "Y", "Y", "Y"],
-      },
-      {
-        feature: "Shared team dashboards without sharing credentials",
-        detail: "Invite teammates to query databases without sharing raw connection strings.",
+        feature: "Dual-mode filtering (Client in-memory + Server pushdown)",
+        detail: "One-click toggle between zero-latency client search and server-side SQL pushdown.",
         values: ["Y", "P", "P", "P", "P", "P", "P"],
       },
       {
-        feature: "Team role-based access control & audit trail",
-        detail: "Granular permissions (Owner, Editor, Viewer) with immutable audit history.",
-        values: ["Y", "Y", "Y", "P", "P", "P", "Y"],
+        feature: "Instant cell hover preview & rich multi-line inspector",
+        detail: "Zero-click hover tooltips for truncated strings and dedicated inspector for JSON & arrays.",
+        values: ["Y", "P", "P", "P", "Y", "P", "N"],
+      },
+      {
+        feature: "Live column statistical profiling & distribution metrics",
+        detail: "Live computation of null %, distinct counts, min/max, and quartile distributions in headers.",
+        values: ["Y", "P", "P", "P", "N", "P", "N"],
+      },
+      {
+        feature: "Multi-scope & multi-format exports (Google Sheets sync)",
+        detail: "Export at View, Table, or DB scope into 1-click Google Sheets sync, Excel, CSV, JSON, and SQL.",
+        values: ["Y", "P", "P", "P", "P", "P", "P"],
+      },
+    ],
+  },
+  {
+    title: "Dashboards & Executive Metrics",
+    tag: "Dashboards",
+    rows: [
+      {
+        feature: "1-Click autonomous dashboard synthesis from raw schema",
+        detail: "Auto-discovers tables, foreign keys, and metrics to synthesize executive dashboards in seconds.",
+        values: ["Y", "P", "P", "P", "N", "P", "P"],
+      },
+      {
+        feature: "Executive Read cards with actionable strategic recommendations",
+        detail: "Headline KPIs paired with written business diagnosis and actionable strategic recommendations.",
+        values: ["Y", "P", "P", "N", "N", "N", "P"],
+      },
+      {
+        feature: "'Investigate Why' root-cause anomaly diagnosis",
+        detail: "One-click drilldown into metric anomalies via autonomous targeted diagnostic SQL probes.",
+        values: ["Y", "P", "P", "N", "N", "N", "P"],
+      },
+      {
+        feature: "Interactive multi-panel visualizations & time-series trends",
+        detail: "Dynamic Line, Area, Donut, and Bar charts with period-over-period deltas and cumulative growth.",
+        values: ["Y", "Y", "Y", "Y", "P", "Y", "Y"],
+      },
+      {
+        feature: "Conversational dashboard tailoring & card controls",
+        detail: "Add, resize, adjust metrics, or reorder cards conversationally without drag-and-drop builders.",
+        values: ["Y", "P", "P", "N", "N", "N", "P"],
+      },
+    ],
+  },
+  {
+    title: "Team Collaboration & pg-connector Security",
+    tag: "Team & Security",
+    rows: [
+      {
+        feature: "Local Credential Boundary (LCB — Zero cloud passwords)",
+        detail: "Database passwords remain in your local AES-256 vault; never sent to or stored in any cloud.",
+        values: ["Y", "N", "N", "N", "N", "N", "N"],
+      },
+      {
+        feature: "Zero-Ingress outbound TLS daemon (0 open inbound ports)",
+        detail: "Reverse-polling daemon connects outbound over TLS 1.3; 0 open inbound ports or public IPs.",
+        values: ["Y", "P", "P", "N", "P", "N", "P"],
+      },
+      {
+        feature: "Connector-Enforced Read-Only execution guard (CERO)",
+        detail: "Local AST inspection at the daemon boundary strictly rejects writes and data mutations.",
+        values: ["Y", "P", "P", "P", "N", "P", "P"],
+      },
+      {
+        feature: "Zero ETL & zero cloud data storage architecture",
+        detail: "Direct queries with zero intermediate data warehousing or cloud row retention.",
+        values: ["Y", "P", "P", "Y", "Y", "Y", "P"],
+      },
+      {
+        feature: "Team collaboration with zero credential sharing",
+        detail: "Invite colleagues with Owner/Admin/Member RBAC without exposing raw database passwords.",
+        values: ["Y", "P", "P", "P", "P", "P", "P"],
       },
     ],
   },
@@ -467,11 +404,10 @@ function ComparePage() {
 
   const tags = [
     "All",
-    "Visualization",
-    "AI & Voice",
-    "Data Grid",
-    "SQL & ERD",
-    "Security",
+    "Resona AI",
+    "Data Explorer",
+    "Dashboards",
+    "Team & Security",
   ];
 
   const visibleCategories =
@@ -494,7 +430,7 @@ function ComparePage() {
             <span className="text-gradient-mesh">stacks up.</span>
           </h1>
           <p className="mt-3 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            An objective comparison of Schema Weaver against Metabase, Outerbase, Draxlr, and ThoughtSpot
+            An objective comparison of Schema Weaver against Power BI, Tableau, Metabase, Outerbase, Draxlr, and ThoughtSpot
             across data visualization, AI querying, and live PostgreSQL capabilities.
           </p>
 
@@ -512,7 +448,7 @@ function ComparePage() {
 
         </section>
 
-        {/* ── 6 Unique Architectural Innovations ─────────────────────────── */}
+        {/* ── Unique Architectural Innovations ─────────────────────────── */}
         <section className="py-8 sm:py-12 border-t border-border/60 bg-muted/5">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="mb-6">
@@ -531,13 +467,8 @@ function ComparePage() {
                   className="rounded-xl border border-border/70 bg-card/60 p-5 flex flex-col justify-between hover:border-primary/40 transition-colors shadow-xs"
                 >
                   <div>
-                    <div className="flex items-center justify-between gap-2">
-                      <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                        <item.icon className="w-4 h-4 text-primary" />
-                      </div>
-                      <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
-                        {item.badge}
-                      </span>
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                      <item.icon className="w-4 h-4 text-primary" />
                     </div>
                     <h3 className="mt-3.5 font-display font-semibold text-base text-foreground">
                       {item.title}
@@ -561,7 +492,7 @@ function ComparePage() {
                   Technical Benchmark
                 </span>
                 <h2 className="text-xl sm:text-2xl font-display font-bold tracking-tight text-foreground mt-1">
-                  30 capabilities benchmarked.
+                  20 capabilities benchmarked.
                 </h2>
               </div>
 
@@ -606,10 +537,10 @@ function ComparePage() {
 
             {/* Clean, Dense Table */}
             <div className="overflow-x-auto rounded-xl border border-border/70 bg-card/30 shadow-xs">
-              <table className="w-full text-xs min-w-[1020px] border-collapse">
+              <table className="w-full text-xs min-w-[1060px] border-collapse">
                 <thead>
                   <tr className="bg-muted/50 border-b border-border/70 sticky top-0 z-10 backdrop-blur">
-                    <th className="text-left font-semibold text-muted-foreground py-3 px-3.5 w-[280px]">
+                    <th className="text-left font-semibold text-muted-foreground py-3 px-3.5 w-[330px]">
                       Capability
                     </th>
                     {competitors.map((c) => (
@@ -655,7 +586,7 @@ function ComparePage() {
                             <div className="font-medium text-foreground text-xs">
                               {row.feature}
                             </div>
-                            <div className="text-[11px] text-muted-foreground leading-snug mt-0.5 line-clamp-1">
+                            <div className="text-[11px] text-muted-foreground leading-snug mt-0.5">
                               {row.detail}
                             </div>
                           </td>
