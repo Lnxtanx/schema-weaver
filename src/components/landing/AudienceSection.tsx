@@ -74,7 +74,7 @@ export function AudienceSection() {
     >
       {/* Connected Modular 3x3 Grid |--|--|--| */}
       <div className="mt-10 sm:mt-12 max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-800/80 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border/80 dark:bg-slate-800/80 rounded-2xl overflow-hidden border border-border/80 dark:border-slate-800 shadow-2xl">
           {roles.map((item, idx) => {
             const Icon = item.icon;
 
@@ -84,7 +84,7 @@ export function AudienceSection() {
                 href="https://data-explorer.schemaweaver.dev?demo=true"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#0b101b] p-6 sm:p-7 flex items-center justify-between hover:bg-[#0f1523] transition-all duration-200 group cursor-pointer"
+                className="bg-card dark:bg-[#0b101b] p-6 sm:p-7 flex items-center justify-between hover:bg-muted/60 dark:hover:bg-[#0f1523] transition-all duration-200 group cursor-pointer"
               >
                 <div className="flex items-center gap-3.5">
                   <div
@@ -95,12 +95,12 @@ export function AudienceSection() {
                   >
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="font-display text-base sm:text-lg font-bold text-foreground tracking-tight group-hover:text-white transition-colors">
+                  <h3 className="font-display text-base sm:text-lg font-bold text-foreground tracking-tight group-hover:text-primary dark:group-hover:text-white transition-colors">
                     {item.title}
                   </h3>
                 </div>
 
-                <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-emerald-400 group-hover:translate-x-0.5 transition-all shrink-0" />
+                <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-emerald-500 dark:group-hover:text-emerald-400 group-hover:translate-x-0.5 transition-all shrink-0" />
               </a>
             );
           })}

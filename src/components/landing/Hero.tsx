@@ -116,11 +116,11 @@ export function Hero({ activeTab: controlledTab, onTabChange }: HeroProps) {
         </div>
 
         {/* Sign In Button in Mid */}
-        <div className="mt-4 flex items-center justify-center">
+        <div className="mt-3.5 flex items-center justify-center">
           <Button
             variant="outline"
-            size="sm"
-            className="rounded-xl border-border/70 bg-card/60 hover:bg-card hover:border-primary/40 text-muted-foreground hover:text-foreground text-xs px-4 py-2 font-medium transition-all shadow-sm cursor-pointer"
+            size="xl"
+            className="w-full sm:w-auto rounded-xl border border-border/80 bg-card hover:bg-muted/80 text-foreground font-semibold px-6 sm:px-8 shadow-sm hover:border-primary/50 transition-all cursor-pointer"
             asChild
           >
             <a
@@ -131,10 +131,10 @@ export function Hero({ activeTab: controlledTab, onTabChange }: HeroProps) {
               }
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5"
+              className="flex items-center justify-center gap-2"
             >
               <span>Sign in to workspace</span>
-              <ArrowRight className="w-3.5 h-3.5 text-muted-foreground" />
+              <ArrowRight className="w-4 h-4 text-muted-foreground" />
             </a>
           </Button>
         </div>
@@ -173,10 +173,10 @@ export function Hero({ activeTab: controlledTab, onTabChange }: HeroProps) {
           </div>
 
           {/* High-contrast application window */}
-          <div className="relative rounded-2xl border border-slate-800 bg-[#0b101b] shadow-2xl overflow-hidden">
+          <div className="relative rounded-2xl border border-border/80 dark:border-slate-800 bg-card dark:bg-[#0b101b] shadow-2xl overflow-hidden">
             {/* Active Workspace Screenshot */}
             <div
-              className="relative bg-[#0b101b] group/hero-preview"
+              className="relative bg-card dark:bg-[#0b101b] group/hero-preview"
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
             >

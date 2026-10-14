@@ -203,7 +203,7 @@ export function ResonaExplorerSection() {
         <div className="relative shrink-0 w-full">
           <div className="absolute -inset-x-8 -top-8 -bottom-8 bg-primary/10 blur-3xl opacity-30 -z-10 rounded-full pointer-events-none" />
 
-          <div className="relative rounded-2xl border border-slate-800 bg-[#0b101b] shadow-2xl overflow-hidden transition-all duration-300">
+          <div className="relative rounded-2xl border border-border/80 dark:border-slate-800 bg-card dark:bg-[#0b101b] shadow-2xl overflow-hidden transition-all duration-300">
             <div className="flex flex-col lg:flex-row items-stretch min-h-0 lg:h-[440px] xl:h-[450px]">
               {/* Slightly less width for text (29% on desktop, compact on mobile) */}
               <div
@@ -213,7 +213,7 @@ export function ResonaExplorerSection() {
                 )}
               >
                 <div className="inline-flex items-center gap-1.5">
-                  <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-lg flex items-center justify-center bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-lg flex items-center justify-center bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 shrink-0">
                     <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                   </div>
                   <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-muted-foreground font-semibold">
@@ -233,7 +233,7 @@ export function ResonaExplorerSection() {
                 <ul className="hidden sm:block space-y-1 sm:space-y-1.5 pt-0.5 text-xs sm:text-[13px] text-foreground/90">
                   {activeAgent.points.map((point, i) => (
                     <li key={i} className="flex items-start gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                      <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                       <span className="leading-tight">{point}</span>
                     </li>
                   ))}
@@ -261,10 +261,10 @@ export function ResonaExplorerSection() {
               {/* More width for image (71% on desktop, dedicated height on mobile) - centered and stretched */}
               <div
                 className={cn(
-                  "w-full lg:w-[71%] relative h-[210px] sm:h-[280px] lg:h-full overflow-hidden bg-[#090d16] transition-all duration-300",
+                  "w-full lg:w-[71%] relative h-[210px] sm:h-[280px] lg:h-full overflow-hidden bg-slate-950 dark:bg-[#090d16] transition-all duration-300",
                   isTextOnRight
-                    ? "lg:order-1 border-b lg:border-b-0 lg:border-r border-slate-800/80"
-                    : "lg:order-2 border-t lg:border-t-0 lg:border-l border-slate-800/80"
+                    ? "lg:order-1 border-b lg:border-b-0 lg:border-r border-border/80 dark:border-slate-800/80"
+                    : "lg:order-2 border-t lg:border-t-0 lg:border-l border-border/80 dark:border-slate-800/80"
                 )}
               >
                 <img

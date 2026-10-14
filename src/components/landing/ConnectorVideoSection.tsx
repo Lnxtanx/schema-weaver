@@ -301,7 +301,7 @@ export function ConnectorVideoSection() {
           <div className="absolute -inset-x-8 -top-8 -bottom-8 bg-primary/10 blur-3xl opacity-40 -z-10 rounded-full pointer-events-none" />
 
           {/* High-contrast application window matching Hero */}
-          <div className="relative rounded-2xl border border-slate-800 bg-[#0b101b] shadow-2xl overflow-hidden">
+          <div className="relative rounded-2xl border border-border/80 dark:border-slate-800 bg-card dark:bg-[#0b101b] shadow-2xl overflow-hidden">
             {/* Video Container */}
             <div
               ref={containerRef}

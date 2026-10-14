@@ -55,11 +55,11 @@ export const Route = createRootRoute({
         name: "viewport",
         content: "width=device-width, initial-scale=1, viewport-fit=cover",
       },
-      { name: "theme-color", content: "#090d16" },
+      { name: "theme-color", content: "#ffffff" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       {
         name: "apple-mobile-web-app-status-bar-style",
-        content: "black-translucent",
+        content: "default",
       },
       {
         name: "robots",
@@ -172,8 +172,8 @@ export const Route = createRootRoute({
                 window.location.replace('https://schemaweaver.dev' + window.location.pathname + window.location.search + window.location.hash);
                 return;
               }
-              document.documentElement.classList.add('dark');
-              localStorage.setItem('theme', 'dark');
+              document.documentElement.classList.remove('dark');
+              try { localStorage.removeItem('theme'); } catch (e) {}
             } catch (e) {}
           })();
         `,
@@ -187,7 +187,7 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <HeadContent />
       </head>
@@ -207,7 +207,6 @@ function RootComponent() {
         richColors
         position="bottom-right"
         closeButton
-        theme="dark"
         className="!bottom-[max(1rem,env(safe-area-inset-bottom))]"
       />
     </>
