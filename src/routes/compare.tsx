@@ -34,12 +34,12 @@ export const Route = createFileRoute("/compare")({
       {
         name: "description",
         content:
-          "Compare Schema Weaver against Power BI, Tableau, Metabase, Outerbase, and ThoughtSpot for live PostgreSQL visualization, AI querying, and pricing.",
+          "Compare Schema Weaver against Power BI, Tableau, Metabase, Draxlr, and ThoughtSpot for live PostgreSQL visualization, AI querying, and pricing.",
       },
       {
         name: "keywords",
         content:
-          "Schema Weaver vs Power BI, Schema Weaver vs Tableau, Schema Weaver vs Metabase, Schema Weaver vs Outerbase, Schema Weaver vs Draxlr, PostgreSQL data visualization comparison, AI BI tools",
+          "Schema Weaver vs Power BI, Schema Weaver vs Tableau, Schema Weaver vs Metabase, Schema Weaver vs Draxlr, Schema Weaver vs ThoughtSpot, PostgreSQL data visualization comparison, AI BI tools",
       },
       {
         property: "og:title",
@@ -48,7 +48,7 @@ export const Route = createFileRoute("/compare")({
       {
         property: "og:description",
         content:
-          "See how Schema Weaver compares to Power BI, Tableau, Metabase, Outerbase, Draxlr, and ThoughtSpot in live PostgreSQL visualization, voice querying, and transparent pricing.",
+          "See how Schema Weaver compares to Power BI, Tableau, Metabase, Draxlr, and ThoughtSpot in live PostgreSQL visualization, voice querying, and transparent pricing.",
       },
       { property: "og:type", content: "website" },
       {
@@ -65,7 +65,7 @@ export const Route = createFileRoute("/compare")({
           "@type": "WebPage",
           name: "Schema Weaver — Competitor Comparison",
           description:
-            "Technical and pricing comparison of Schema Weaver against Power BI, Tableau, Metabase, Outerbase, Draxlr, and ThoughtSpot.",
+            "Technical and pricing comparison of Schema Weaver against Power BI, Tableau, Metabase, Draxlr, and ThoughtSpot.",
           url: "https://schemaweaver.dev/compare",
         }),
       },
@@ -149,7 +149,6 @@ const competitors: CompetitorMeta[] = [
   { name: "Power BI", role: "Enterprise BI" },
   { name: "Tableau", role: "Visual Analytics" },
   { name: "Metabase", role: "Open-Source BI" },
-  { name: "Outerbase", role: "AI Database Studio" },
   { name: "Draxlr", role: "Postgres Dashboards" },
   { name: "ThoughtSpot", role: "Search AI Analytics" },
 ];
@@ -174,27 +173,27 @@ const categories: ComparisonCategory[] = [
       {
         feature: "Resona Voice: Full-duplex voice-to-voice agent",
         detail: "Bidirectional audio streaming over live PostgreSQL with ambient orb and speech barge-in.",
-        values: ["Y", "N", "N", "N", "N", "N", "N"],
+        values: ["Y", "N", "N", "N", "N", "N"],
       },
       {
         feature: "Resona AI Chat: Autonomous multi-step ReAct agent",
         detail: "Schema introspection, self-correcting SQL loops, @table mentions, and analytical reports.",
-        values: ["Y", "P", "P", "P", "P", "N", "P"],
+        values: ["Y", "P", "P", "P", "N", "P"],
       },
       {
         feature: "Resona Dashboard AI: Autonomous multi-query execution loop",
         detail: "Multi-query parallel planning ('Ran N queries' trace) to synthesize and refine executive cards.",
-        values: ["Y", "P", "P", "N", "N", "N", "P"],
+        values: ["Y", "P", "P", "N", "N", "P"],
       },
       {
         feature: "Dual execution tiers (Flash mode vs Deep thinking)",
         detail: "Instant toggle between rapid exploratory queries (Flash) and deep extended reasoning traces (Deep).",
-        values: ["Y", "N", "N", "N", "N", "N", "N"],
+        values: ["Y", "N", "N", "N", "N", "N"],
       },
       {
         feature: "Cross-agent persistent business memory & directives",
         detail: "Shared memory across Voice, Chat, and Dashboards with founder directives & metric rules.",
-        values: ["Y", "N", "N", "N", "N", "N", "N"],
+        values: ["Y", "N", "N", "N", "N", "N"],
       },
     ],
   },
@@ -205,27 +204,27 @@ const categories: ComparisonCategory[] = [
       {
         feature: "Virtualized live PostgreSQL grid with canvas auto-sizing",
         detail: "Infinite scrolling with canvas-measured smart auto column widths and double-click reset.",
-        values: ["Y", "P", "P", "P", "Y", "P", "P"],
+        values: ["Y", "P", "P", "P", "P", "P"],
       },
       {
         feature: "Dual-mode filtering (Client in-memory + Server pushdown)",
         detail: "One-click toggle between zero-latency client search and server-side SQL pushdown.",
-        values: ["Y", "P", "P", "P", "P", "P", "P"],
+        values: ["Y", "P", "P", "P", "P", "P"],
       },
       {
         feature: "Instant cell hover preview & rich multi-line inspector",
         detail: "Zero-click hover tooltips for truncated strings and dedicated inspector for JSON & arrays.",
-        values: ["Y", "P", "P", "P", "Y", "P", "N"],
+        values: ["Y", "P", "P", "P", "P", "N"],
       },
       {
         feature: "Live column statistical profiling & distribution metrics",
         detail: "Live computation of null %, distinct counts, min/max, and quartile distributions in headers.",
-        values: ["Y", "P", "P", "P", "N", "P", "N"],
+        values: ["Y", "P", "P", "P", "P", "N"],
       },
       {
         feature: "Multi-scope & multi-format exports (Google Sheets sync)",
         detail: "Export at View, Table, or DB scope into 1-click Google Sheets sync, Excel, CSV, JSON, and SQL.",
-        values: ["Y", "P", "P", "P", "P", "P", "P"],
+        values: ["Y", "P", "P", "P", "P", "P"],
       },
     ],
   },
@@ -236,27 +235,27 @@ const categories: ComparisonCategory[] = [
       {
         feature: "1-Click autonomous dashboard synthesis from raw schema",
         detail: "Auto-discovers tables, foreign keys, and metrics to synthesize executive dashboards in seconds.",
-        values: ["Y", "P", "P", "P", "N", "P", "P"],
+        values: ["Y", "P", "P", "P", "P", "P"],
       },
       {
         feature: "Executive Read cards with actionable strategic recommendations",
         detail: "Headline KPIs paired with written business diagnosis and actionable strategic recommendations.",
-        values: ["Y", "P", "P", "N", "N", "N", "P"],
+        values: ["Y", "P", "P", "N", "N", "P"],
       },
       {
         feature: "'Investigate Why' root-cause anomaly diagnosis",
         detail: "One-click drilldown into metric anomalies via autonomous targeted diagnostic SQL probes.",
-        values: ["Y", "P", "P", "N", "N", "N", "P"],
+        values: ["Y", "P", "P", "N", "N", "P"],
       },
       {
         feature: "Interactive multi-panel visualizations & time-series trends",
         detail: "Dynamic Line, Area, Donut, and Bar charts with period-over-period deltas and cumulative growth.",
-        values: ["Y", "Y", "Y", "Y", "P", "Y", "Y"],
+        values: ["Y", "Y", "Y", "Y", "Y", "Y"],
       },
       {
         feature: "Conversational dashboard tailoring & card controls",
         detail: "Add, resize, adjust metrics, or reorder cards conversationally without drag-and-drop builders.",
-        values: ["Y", "P", "P", "N", "N", "N", "P"],
+        values: ["Y", "P", "P", "N", "N", "P"],
       },
     ],
   },
@@ -267,27 +266,27 @@ const categories: ComparisonCategory[] = [
       {
         feature: "Local Credential Boundary (LCB — Zero cloud passwords)",
         detail: "Database passwords remain in your local AES-256 vault; never sent to or stored in any cloud.",
-        values: ["Y", "N", "N", "N", "N", "N", "N"],
+        values: ["Y", "N", "N", "N", "N", "N"],
       },
       {
         feature: "Zero-Ingress outbound TLS daemon (0 open inbound ports)",
         detail: "Reverse-polling daemon connects outbound over TLS 1.3; 0 open inbound ports or public IPs.",
-        values: ["Y", "P", "P", "N", "P", "N", "P"],
+        values: ["Y", "P", "P", "N", "N", "P"],
       },
       {
         feature: "Connector-Enforced Read-Only execution guard (CERO)",
         detail: "Local AST inspection at the daemon boundary strictly rejects writes and data mutations.",
-        values: ["Y", "P", "P", "P", "N", "P", "P"],
+        values: ["Y", "P", "P", "P", "P", "P"],
       },
       {
         feature: "Zero ETL & zero cloud data storage architecture",
         detail: "Direct queries with zero intermediate data warehousing or cloud row retention.",
-        values: ["Y", "P", "P", "Y", "Y", "Y", "P"],
+        values: ["Y", "P", "P", "Y", "Y", "P"],
       },
       {
         feature: "Team collaboration with zero credential sharing",
         detail: "Invite colleagues with Owner/Admin/Member RBAC without exposing raw database passwords.",
-        values: ["Y", "P", "P", "P", "P", "P", "P"],
+        values: ["Y", "P", "P", "P", "P", "P"],
       },
     ],
   },
@@ -318,44 +317,44 @@ const pricingComparisons: PricingTierComparison[] = [
     highlight: true,
   },
   {
-    name: "Draxlr",
-    freeTier: "Limited Free",
-    freeDetails: "Limited to 5 queries and 1 dashboard.",
-    entryPaid: "$39 / mo (Starter)",
-    paidModel: "Tiered query & dashboard limits ($99/mo Pro, $299/mo Scale).",
-    setupComplexity: "Requires public connection string and firewall IP allowlisting.",
+    name: "Power BI",
+    freeTier: "Free Desktop Only",
+    freeDetails: "Local authoring only. Cloud sharing, web dashboards, and mobile require paid licenses.",
+    entryPaid: "$10 / user / mo (Pro)",
+    paidModel: "Requires Microsoft 365 tenant. Premium per User is $20/user/mo; Fabric capacity starts at $4,995/mo.",
+    setupComplexity: "Requires on-premises Data Gateway on Windows Server or cloud VNet gateway for private DBs.",
   },
   {
-    name: "ThoughtSpot",
-    freeTier: "30-Day Trial Only",
-    freeDetails: "No permanent free tier.",
-    entryPaid: "$95 / mo (Team)",
-    paidModel: "Query consumption credits + high annual enterprise contracts.",
-    setupComplexity: "Requires pre-configured cloud data warehouse (Snowflake, BigQuery).",
-  },
-  {
-    name: "Outerbase",
-    freeTier: "Limited Free",
-    freeDetails: "Basic query limits. Hosted SaaS acquired by Cloudflare.",
-    entryPaid: "$20 / user / mo",
-    paidModel: "Monthly per-user subscription for hosted features.",
-    setupComplexity: "Requires sharing database connection credentials with cloud servers.",
+    name: "Tableau",
+    freeTier: "Tableau Public / Trial",
+    freeDetails: "Public data only (no private data security). 14-day trial for Tableau Cloud.",
+    entryPaid: "$15 / user / mo (Viewer)",
+    paidModel: "Tiered per-seat licensing: Viewer ($15), Explorer ($42), Creator ($75/mo, billed annually at $900/yr).",
+    setupComplexity: "Requires Tableau Bridge on Windows Server or direct firewall port 5432 exposure to Tableau Cloud.",
   },
   {
     name: "Metabase",
     freeTier: "Self-Hosted OSS Free",
-    freeDetails: "Free open-source binary, but you must pay for server, hosting, and DevOps.",
-    entryPaid: "$85 / mo (Cloud)",
-    paidModel: "Starts at $85/mo for 5 users ($5/user after). Pro is $500/month.",
-    setupComplexity: "Requires Docker/JVM hosting or opening database ports to Metabase Cloud.",
+    freeDetails: "Free open-source AGPL binary, but you must pay for hosting, infrastructure, and DevOps maintenance.",
+    entryPaid: "$100 / mo (Starter)",
+    paidModel: "$100/mo ($90/mo annual) includes 5 users ($6/user/mo after). Pro is $575/mo ($517.50/mo annual).",
+    setupComplexity: "Requires Docker/JVM hosting or opening database ports/bastion tunnels to Metabase Cloud.",
   },
   {
-    name: "Tableau",
-    freeTier: "14-Day Trial Only",
-    freeDetails: "No permanent free plan. Full trial expires after 14 days.",
-    entryPaid: "$75 / user / mo ($900/yr)",
-    paidModel: "Mandatory annual contracts ($900/yr per Creator license minimum).",
-    setupComplexity: "Requires Tableau Server or direct cloud firewall port exposure.",
+    name: "Draxlr",
+    freeTier: "7-Day Trial Only",
+    freeDetails: "7-day free trial of Premium plan. No permanent free tier.",
+    entryPaid: "$25 / mo (Lite)",
+    paidModel: "Tiered plans: Lite $25/mo (1 DB, 1 user), Premium $75/mo (2 DBs, 10 users), Power $250/mo, Enterprise $500/mo.",
+    setupComplexity: "Requires public PostgreSQL connection string and firewall IP allowlisting.",
+  },
+  {
+    name: "ThoughtSpot",
+    freeTier: "Free for 1 Year (Developer)",
+    freeDetails: "Free 1-year developer tier for up to 10 users and 25M rows of data.",
+    entryPaid: "$25 / user / mo (Essentials)",
+    paidModel: "Billed annually ($25/user/mo for 5-50 users). Pro is $50/user/mo (up to 1,000 users). Enterprise is custom.",
+    setupComplexity: "Requires pre-configured cloud data warehouse (Snowflake, BigQuery, Redshift, Databricks).",
   },
 ];
 
@@ -430,7 +429,7 @@ function ComparePage() {
             <span className="text-gradient-mesh">stacks up.</span>
           </h1>
           <p className="mt-3 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            An objective comparison of Schema Weaver against Power BI, Tableau, Metabase, Outerbase, Draxlr, and ThoughtSpot
+            An objective comparison of Schema Weaver against Power BI, Tableau, Metabase, Draxlr, and ThoughtSpot
             across data visualization, AI querying, and live PostgreSQL capabilities.
           </p>
 
@@ -537,7 +536,7 @@ function ComparePage() {
 
             {/* Clean, Dense Table */}
             <div className="overflow-x-auto rounded-xl border border-border/70 bg-card/30 shadow-xs">
-              <table className="w-full text-xs min-w-[1060px] border-collapse">
+              <table className="w-full text-xs min-w-[980px] border-collapse">
                 <thead>
                   <tr className="bg-muted/50 border-b border-border/70 sticky top-0 z-10 backdrop-blur">
                     <th className="text-left font-semibold text-muted-foreground py-3 px-3.5 w-[330px]">
@@ -611,6 +610,10 @@ function ComparePage() {
                 </tbody>
               </table>
             </div>
+
+            <p className="mt-3 text-[11px] text-muted-foreground/80">
+              * Note: Outerbase was acquired by Cloudflare in April 2025 and its standalone hosted cloud was discontinued in October 2025; it is excluded from this benchmark.
+            </p>
           </div>
         </section>
 
@@ -699,7 +702,7 @@ function ComparePage() {
             </div>
 
             <p className="mt-6 text-xs text-muted-foreground text-center">
-              Pricing verified from official public vendor pricing pages as of Q4 2026. Third-party cloud infrastructure and hosting costs are excluded.
+              Pricing sourced from vendor pricing pages on October 12, 2026. Verify current pricing directly with vendors.
             </p>
           </div>
         </section>
