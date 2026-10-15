@@ -108,15 +108,15 @@ const uniqueInnovations: Innovation[] = [
   },
   {
     icon: Table,
-    title: "Live Data Explorer Grid & Exports",
+    title: "1-Click Google Sheets Sync & DB Schema Exports",
     description:
-      "High-performance virtualized grid for browsing, filtering, and analyzing live PostgreSQL data in real time. Inspect columns with instant statistical profiling and export live datasets across View (WYSIWYG), Table, or Database scopes into Google Sheets, Excel, CSV, JSON, and SQL.",
+      "Export live PostgreSQL datasets at View (WYSIWYG), Table, or full Database scopes into 1-click Google Sheets OAuth sync, Excel, CSV, JSON, and SQL schema dumps with zero third-party ETL pipelines.",
   },
   {
     icon: Users,
-    title: "Seamless Team Database Collaboration",
+    title: "Zero-Cloud Credential Team Collaboration",
     description:
-      "Collaborate effortlessly across engineering and product teams on live databases without sharing raw credentials. Share interactive dashboards, saved queries, and virtual data views with granular role-based access control (RBAC), team workspaces, and transparent audit trails.",
+      "Collaborate across engineering and product teams on live PostgreSQL databases without storing raw passwords in any third-party cloud. Teammates query through the Local Credential Boundary with granular RBAC, team workspaces, and audit trails.",
   },
   {
     icon: ShieldCheck,
