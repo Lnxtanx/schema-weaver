@@ -39,25 +39,22 @@ const sqlEditorTags = [
   "100% Client-Side Compiler",
 ];
 
-export function Hero({ activeTab: controlledTab, onTabChange }: HeroProps) {
-  const [internalTab, setInternalTab] = useState<"explorer" | "editor">("explorer");
-  const activeTab = controlledTab ?? internalTab;
-  const setActiveTab = onTabChange ?? setInternalTab;
-  const tags = activeTab === "explorer" ? dataExplorerTags : sqlEditorTags;
+export function Hero() {
+  const tags = dataExplorerTags;
 
   // Auto-advancing image carousel in the first section
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    if (activeTab !== "explorer" || isPaused) return;
+    if (isPaused) return;
 
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % explorerImages.length);
     }, 3600);
 
     return () => clearInterval(timer);
-  }, [activeTab, isPaused]);
+  }, [isPaused]);
 
   return (
     <section className="relative pt-32 sm:pt-36 md:pt-40 lg:pt-44 pb-16 overflow-hidden bg-background">
@@ -84,17 +81,11 @@ export function Hero({ activeTab: controlledTab, onTabChange }: HeroProps) {
             asChild
           >
             <a
-              href={
-                activeTab === "explorer"
-                  ? "https://data-explorer.schemaweaver.dev?demo=true"
-                  : "https://sql-editor.schemaweaver.dev"
-              }
+              href="https://data-explorer.schemaweaver.dev?demo=true"
               target="_blank"
               rel="noopener noreferrer"
             >
-              {activeTab === "explorer"
-                ? "Try Live Demo — Instant"
-                : "Launch SQL Editor — Free"}
+              Try Live Demo — Instant
               <ArrowRight className="w-4 h-4 ml-2" />
             </a>
           </Button>
@@ -124,11 +115,7 @@ export function Hero({ activeTab: controlledTab, onTabChange }: HeroProps) {
             asChild
           >
             <a
-              href={
-                activeTab === "explorer"
-                  ? "https://data-explorer.schemaweaver.dev"
-                  : "https://sql-editor.schemaweaver.dev"
-              }
+              href="https://data-explorer.schemaweaver.dev"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2"
@@ -144,34 +131,6 @@ export function Hero({ activeTab: controlledTab, onTabChange }: HeroProps) {
           {/* Subtle ambient glow behind the container */}
           <div className="absolute -inset-x-10 -top-10 -bottom-10 bg-primary/10 blur-3xl opacity-50 -z-10 rounded-full pointer-events-none" />
 
-          {/* Interactive Switcher Tabs */}
-          <div className="flex justify-center mb-4">
-            <div className="inline-flex p-1 rounded-xl border border-border bg-card/90 backdrop-blur shadow-sm">
-              <button
-                onClick={() => setActiveTab("explorer")}
-                className={`flex items-center gap-2 px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
-                  activeTab === "explorer"
-                    ? "bg-primary text-primary-foreground shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <BarChart3 className="w-3.5 h-3.5" />
-                <span>Data Explorer</span>
-              </button>
-              <button
-                onClick={() => setActiveTab("editor")}
-                className={`flex items-center gap-2 px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
-                  activeTab === "editor"
-                    ? "bg-primary text-primary-foreground shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <Database className="w-3.5 h-3.5" />
-                <span>SQL Editor</span>
-              </button>
-            </div>
-          </div>
-
           {/* High-contrast application window */}
           <div className="relative rounded-2xl border border-border/80 dark:border-slate-800 bg-card dark:bg-[#0b101b] shadow-2xl overflow-hidden">
             {/* Active Workspace Screenshot */}
@@ -180,55 +139,47 @@ export function Hero({ activeTab: controlledTab, onTabChange }: HeroProps) {
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
             >
-              {activeTab === "explorer" ? (
-                <div className="relative">
-                  <img
-                    key={explorerImages[currentSlide]}
-                    src={explorerImages[currentSlide]}
-                    alt="Schema Weaver Voice Data Explorer"
-                    className="w-full h-auto block animate-fade-in transition-all duration-300"
-                  />
-
-                  {/* Prev / Next Arrows */}
-                  <button
-                    onClick={() => setCurrentSlide((prev) => (prev - 1 + explorerImages.length) % explorerImages.length)}
-                    aria-label="Previous image"
-                    className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-black/90 text-white border border-white/10 flex items-center justify-center backdrop-blur-sm opacity-0 group-hover/hero-preview:opacity-100 transition-opacity duration-200 cursor-pointer shadow-lg z-10"
-                  >
-                    <ChevronLeft className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={() => setCurrentSlide((prev) => (prev + 1) % explorerImages.length)}
-                    aria-label="Next image"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-black/90 text-white border border-white/10 flex items-center justify-center backdrop-blur-sm opacity-0 group-hover/hero-preview:opacity-100 transition-opacity duration-200 cursor-pointer shadow-lg z-10"
-                  >
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-
-                  {/* Dot Indicators */}
-                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 z-10">
-                    {explorerImages.map((_, i) => (
-                      <button
-                        key={i}
-                        onClick={() => setCurrentSlide(i)}
-                        aria-label={`Go to slide ${i + 1}`}
-                        className={cn(
-                          "h-1.5 rounded-full transition-all duration-300 cursor-pointer",
-                          i === currentSlide
-                            ? "w-6 bg-emerald-400 shadow-glow-emerald"
-                            : "w-1.5 bg-slate-600 hover:bg-slate-400"
-                        )}
-                      />
-                    ))}
-                  </div>
-                </div>
-              ) : (
+              <div className="relative">
                 <img
-                  src="/images/sql-editor/sql-editor.png"
-                  alt="Schema Weaver SQL Editor with live ER Diagram"
-                  className="w-full h-auto block"
+                  key={explorerImages[currentSlide]}
+                  src={explorerImages[currentSlide]}
+                  alt="Schema Weaver Voice Data Explorer"
+                  className="w-full h-auto block animate-fade-in transition-all duration-300"
                 />
-              )}
+
+                {/* Prev / Next Arrows */}
+                <button
+                  onClick={() => setCurrentSlide((prev) => (prev - 1 + explorerImages.length) % explorerImages.length)}
+                  aria-label="Previous image"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-black/90 text-white border border-white/10 flex items-center justify-center backdrop-blur-sm opacity-0 group-hover/hero-preview:opacity-100 transition-opacity duration-200 cursor-pointer shadow-lg z-10"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setCurrentSlide((prev) => (prev + 1) % explorerImages.length)}
+                  aria-label="Next image"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-black/90 text-white border border-white/10 flex items-center justify-center backdrop-blur-sm opacity-0 group-hover/hero-preview:opacity-100 transition-opacity duration-200 cursor-pointer shadow-lg z-10"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+
+                {/* Dot Indicators */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 z-10">
+                  {explorerImages.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentSlide(i)}
+                      aria-label={`Go to slide ${i + 1}`}
+                      className={cn(
+                        "h-1.5 rounded-full transition-all duration-300 cursor-pointer",
+                        i === currentSlide
+                          ? "w-6 bg-emerald-400 shadow-glow-emerald"
+                          : "w-1.5 bg-slate-600 hover:bg-slate-400"
+                      )}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>

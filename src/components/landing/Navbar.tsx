@@ -45,13 +45,6 @@ const products = [
     isExternal: true,
   },
   {
-    title: "SQL Editor",
-    description: "Multi-file editor with schema compiler & live ER diagrams.",
-    href: "https://sql-editor.schemaweaver.dev",
-    icon: Terminal,
-    isExternal: true,
-  },
-  {
     title: "Documentation",
     description: "Guides, architecture specs, tutorials & developer docs.",
     href: "https://docs.schemaweaver.dev",

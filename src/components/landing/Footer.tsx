@@ -11,7 +11,6 @@ const cols = [
       ["Overview", "/"],
       ["Compare", "/compare"],
       ["Data Explorer", "https://data-explorer.schemaweaver.dev"],
-      ["SQL Editor", "https://sql-editor.schemaweaver.dev"],
       ["Documentation", "https://docs.schemaweaver.dev"],
       ["Pricing", "/pricing"],
     ],
@@ -58,7 +57,7 @@ function PerplexityIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
 }
 
 const aiResearchPrompt = encodeURIComponent(
-  "Explain Schema Weaver (https://schemaweaver.dev). What is it, how does its voice-native analytics work with live PostgreSQL, and what are its key capabilities like Data Explorer (https://data-explorer.schemaweaver.dev) and SQL Editor (https://sql-editor.schemaweaver.dev)? Please reference the documentation at https://docs.schemaweaver.dev and explain how it compares to traditional BI tools."
+  "Explain Schema Weaver (https://schemaweaver.dev). What is it, how does its voice-native analytics work with live PostgreSQL, and what are its key capabilities like Data Explorer (https://data-explorer.schemaweaver.dev)? Please reference the documentation at https://docs.schemaweaver.dev and explain how it compares to traditional BI tools."
 );
 
 const aiSearchLinks = [

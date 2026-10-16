@@ -5,7 +5,7 @@ interface CtaSectionProps {
   activeTab?: "explorer" | "editor";
 }
 
-export function CtaSection({ activeTab = "explorer" }: CtaSectionProps) {
+export function CtaSection({ activeTab = "explorer" }: CtaSectionProps = {}) {
   return (
     <section className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-hero" />
@@ -13,39 +13,22 @@ export function CtaSection({ activeTab = "explorer" }: CtaSectionProps) {
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <h2 className="font-display font-bold tracking-tight text-2xl sm:text-4xl lg:text-5xl leading-[1.15]">
-          {activeTab === "explorer" ? (
-            <>
-              Explore live PostgreSQL data <br />
-              <span className="text-gradient-mesh">with voice and speed.</span>
-            </>
-          ) : (
-            <>
-              Ship your next migration <br />
-              <span className="text-gradient-mesh">with confidence.</span>
-            </>
-          )}
+          Explore live PostgreSQL data <br />
+          <span className="text-gradient-mesh">with voice and speed.</span>
         </h2>
 
         <p className="mt-4 sm:mt-5 max-w-2xl mx-auto text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed">
-          {activeTab === "explorer"
-            ? "Talk to your database by voice, inspect tables in high-performance grids, and build instant executive dashboards. Connects directly in seconds."
-            : "Join the teams using Schema Weaver to design, visualize, sync, and compile their PostgreSQL schemas. Free to start."}
+          Talk to your database by voice, inspect tables in high-performance grids, and build instant executive dashboards. Connects directly in seconds.
         </p>
 
         <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full px-2 sm:px-0">
           <Button variant="hero" size="xl" className="w-full sm:w-auto text-center shadow-glow-emerald" asChild>
             <a
-              href={
-                activeTab === "explorer"
-                  ? "https://data-explorer.schemaweaver.dev?demo=true"
-                  : "https://sql-editor.schemaweaver.dev"
-              }
+              href="https://data-explorer.schemaweaver.dev?demo=true"
               target="_blank"
               rel="noopener noreferrer"
             >
-              {activeTab === "explorer"
-                ? "Try Live Demo — Instant"
-                : "Launch SQL Editor — Free"}{" "}
+              Try Live Demo — Instant{" "}
               <ArrowRight className="w-4 h-4 ml-1.5" />
             </a>
           </Button>

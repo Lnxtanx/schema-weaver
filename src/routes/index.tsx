@@ -1,17 +1,10 @@
-import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
-import { SqlEditorSection } from "@/components/landing/SqlEditorSection";
-import { ResonaSection } from "@/components/landing/ResonaSection";
-import { SyncSection } from "@/components/landing/SyncSection";
-import { CapabilitiesGrid } from "@/components/landing/CapabilitiesGrid";
-import { TeamSection } from "@/components/landing/TeamSection";
-import { Testimonials } from "@/components/landing/Testimonials";
-import { CtaSection } from "@/components/landing/CtaSection";
 import { ConnectorVideoSection } from "@/components/landing/ConnectorVideoSection";
 import { ResonaExplorerSection } from "@/components/landing/ResonaExplorerSection";
 import { AudienceSection } from "@/components/landing/AudienceSection";
+import { CtaSection } from "@/components/landing/CtaSection";
 import { Footer } from "@/components/landing/Footer";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "@/lib/seo/site";
 
@@ -100,7 +93,7 @@ export const Route = createFileRoute("/")({
               name: "What is Schema Weaver?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Schema Weaver is the first voice-native analytics and database workspace for PostgreSQL. It includes Data Explorer with Resona AI for speech-to-SQL, natural language reasoning, and automated charts, alongside a full SQL Editor with a 20-layer Schema Compiler and live ER diagrams.",
+                text: "Schema Weaver is the first voice-native analytics and database workspace for PostgreSQL. It includes Data Explorer with Resona AI for speech-to-SQL, natural language reasoning, and automated charts alongside live ER diagrams and schema tools.",
               },
             },
             {
@@ -116,7 +109,7 @@ export const Route = createFileRoute("/")({
               name: "Can Schema Weaver accidentally modify or delete my PostgreSQL data?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "In Data Explorer, Resona AI enforces a strict AST-verified read-only gate that permanently blocks mutating statements such as DROP, DELETE, UPDATE, and INSERT. In the SQL Editor, developers retain full SQL authority with schema diff validation and safe DDL migration planning.",
+                text: "In Data Explorer, Resona AI enforces a strict AST-verified read-only gate that permanently blocks mutating statements such as DROP, DELETE, UPDATE, and INSERT.",
               },
             },
             {
@@ -132,7 +125,7 @@ export const Route = createFileRoute("/")({
               name: "Is there a free tier available?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Yes. Free is a permanent plan that includes 3,000 monthly AI credits, Flash and Deep modes, the full SQL Editor, live ER diagrams, the 20-layer Schema Compiler, shared database connections, and data grid export. A live demo is also accessible at https://data-explorer.schemaweaver.dev?demo=true with no sign-up required.",
+                text: "Yes. Free is a permanent plan that includes 3,000 monthly AI credits, Flash and Deep modes, shared database connections, and data grid export. A live demo is also accessible at https://data-explorer.schemaweaver.dev?demo=true with no sign-up required.",
               },
             },
             {
@@ -152,31 +145,15 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [activeTab, setActiveTab] = useState<"explorer" | "editor">("explorer");
-
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main>
-        <Hero activeTab={activeTab} onTabChange={setActiveTab} />
-        {/*
-          Both tab panels are always rendered so their headings and copy are
-          present in the server-rendered HTML for crawlers. Only visibility is
-          toggled on the client, so search engines can index every section.
-        */}
-        <div className={activeTab === "editor" ? undefined : "hidden"}>
-          <SqlEditorSection />
-          <ResonaSection />
-          <SyncSection />
-          <CapabilitiesGrid />
-          <TeamSection />
-        </div>
-        <div className={activeTab === "explorer" ? undefined : "hidden"}>
-          <ConnectorVideoSection />
-          <ResonaExplorerSection />
-          <AudienceSection />
-        </div>
-        <CtaSection activeTab={activeTab} />
+        <Hero />
+        <ConnectorVideoSection />
+        <ResonaExplorerSection />
+        <AudienceSection />
+        <CtaSection />
       </main>
       <Footer />
     </div>
