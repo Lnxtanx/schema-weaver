@@ -50,11 +50,6 @@ function NotFoundComponent() {
 export const Route = createRootRoute({
   head: () => ({
     meta: [
-      { charSet: "utf-8" },
-      {
-        name: "viewport",
-        content: "width=device-width, initial-scale=1, viewport-fit=cover",
-      },
       { name: "theme-color", content: "#ffffff" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       {
@@ -103,10 +98,6 @@ export const Route = createRootRoute({
       { name: "twitter:image:alt", content: OG_IMAGE_ALT },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
       { rel: "icon", href: FAVICON },
       { rel: "apple-touch-icon", href: APPLE_TOUCH_ICON },
       {
@@ -120,6 +111,11 @@ export const Route = createRootRoute({
         rel: "preconnect",
         href: "https://fonts.gstatic.com",
         crossOrigin: "anonymous",
+      },
+      {
+        rel: "preload",
+        as: "style",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap",
       },
       {
         rel: "stylesheet",
@@ -189,14 +185,27 @@ function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        {/* Microsoft Clarity tracking code for https://schemaweaver.dev/ */}
+        <meta charSet="utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+        {/* Critical primary stylesheet loaded first to block FOUC and eliminate unstyled flashes */}
+        <link rel="stylesheet" href={appCss} />
+        {/* Basic font & surface baseline to prevent FOUC before fonts hydrate */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `html,body{background-color:#ffffff;color:#09090b;font-family:Inter,system-ui,sans-serif;margin:0;padding:0}`,
+          }}
+        />
+        <HeadContent />
+        {/* Non-critical Microsoft Clarity tracking code - loaded after critical head & styles */}
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{
             __html: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "yycxfvxqrl");`,
           }}
         />
-        <HeadContent />
       </head>
       <body>
         {children}
