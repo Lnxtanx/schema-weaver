@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Mic,
   MessageSquare,
@@ -71,18 +71,6 @@ const agents = [
 
 export function ResonaExplorerSection() {
   const [activeIdx, setActiveIdx] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
-  // Auto-advance through agents smoothly every 5s unless hovered
-  useEffect(() => {
-    if (isPaused) return;
-
-    const timer = setInterval(() => {
-      setActiveIdx((prev) => (prev + 1) % agents.length);
-    }, 5000);
-
-    return () => clearInterval(timer);
-  }, [isPaused]);
 
   const handleTabClick = (index: number) => {
     setActiveIdx(index);
@@ -91,15 +79,13 @@ export function ResonaExplorerSection() {
   const activeAgent = agents[activeIdx];
   const Icon = activeAgent.icon;
 
-  // Alternating layout: 1st text on left, 2nd text on right, 3rd text on left
-  const isTextOnRight = activeIdx === 1;
+  // Consistent clean layout: text on left, image on right
+  const isTextOnRight = false;
 
   return (
     <section
       id="resona-ai"
       className="relative pt-8 pb-16 sm:pt-10 sm:pb-20 w-full bg-background border-t border-border/40 scroll-mt-28"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       {/* Subtle background ambient mesh */}
       <div className="absolute inset-0 grid-bg-emerald opacity-15 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)] pointer-events-none" />

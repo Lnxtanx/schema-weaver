@@ -139,32 +139,44 @@ export function Hero() {
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
             >
-              <div className="relative">
-                <img
-                  key={explorerImages[currentSlide]}
-                  src={explorerImages[currentSlide]}
-                  alt="Schema Weaver Voice Data Explorer"
-                  className="w-full h-auto block animate-fade-in transition-all duration-300"
-                />
+              {/* Fixed aspect ratio container to permanently prevent layout shifts / collapsing */}
+              <div
+                className="relative w-full aspect-[1918/871] overflow-hidden bg-slate-950 dark:bg-[#090d16]"
+                style={{ aspectRatio: "1918 / 871" }}
+              >
+                {explorerImages.map((src, i) => (
+                  <img
+                    key={src}
+                    src={src}
+                    alt={`Schema Weaver Voice Data Explorer preview ${i + 1}`}
+                    className={cn(
+                      "absolute inset-0 w-full h-full object-contain block transition-opacity duration-700 ease-in-out",
+                      i === currentSlide
+                        ? "opacity-100 z-10"
+                        : "opacity-0 z-0 pointer-events-none"
+                    )}
+                    loading={i === 0 ? "eager" : "lazy"}
+                  />
+                ))}
 
                 {/* Prev / Next Arrows */}
                 <button
                   onClick={() => setCurrentSlide((prev) => (prev - 1 + explorerImages.length) % explorerImages.length)}
                   aria-label="Previous image"
-                  className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-black/90 text-white border border-white/10 flex items-center justify-center backdrop-blur-sm opacity-0 group-hover/hero-preview:opacity-100 transition-opacity duration-200 cursor-pointer shadow-lg z-10"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-black/90 text-white border border-white/10 flex items-center justify-center backdrop-blur-sm opacity-0 group-hover/hero-preview:opacity-100 transition-opacity duration-200 cursor-pointer shadow-lg z-20"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setCurrentSlide((prev) => (prev + 1) % explorerImages.length)}
                   aria-label="Next image"
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-black/90 text-white border border-white/10 flex items-center justify-center backdrop-blur-sm opacity-0 group-hover/hero-preview:opacity-100 transition-opacity duration-200 cursor-pointer shadow-lg z-10"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-black/90 text-white border border-white/10 flex items-center justify-center backdrop-blur-sm opacity-0 group-hover/hero-preview:opacity-100 transition-opacity duration-200 cursor-pointer shadow-lg z-20"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
 
                 {/* Dot Indicators */}
-                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 z-10">
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 z-20">
                   {explorerImages.map((_, i) => (
                     <button
                       key={i}
