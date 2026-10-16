@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import {
   Mic,
   MessageSquare,
@@ -10,6 +10,25 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const agents = [
+  {
+    id: "dashboard",
+    title: "Resona Dashboard",
+    tabLabel: "Executive Dashboards",
+    mobileTabLabel: "Dashboards",
+    badge: "Dashboard Agent",
+    icon: LayoutDashboard,
+    headline: "Instant automated dashboards.",
+    summary:
+      "Turn raw tables into executive charts in seconds. Resona auto-detects metric distributions, cohort aggregations, and trends without BI setup.",
+    points: [
+      "Auto-detected time-series and KPI cards",
+      "Interactive drill-downs from charts into live rows",
+      "Zero configuration BI for any PostgreSQL database",
+    ],
+    image: "/images/de/resona-ai/ds-ai/ds-generated.png",
+    fallbackImage: "/images/de/resona-ai/ds-ai/dashabord-ai.png",
+    ctaText: "Try Dashboards",
+  },
   {
     id: "voice",
     title: "Resona Voice",
@@ -48,101 +67,25 @@ const agents = [
     fallbackImage: "/images/de.png",
     ctaText: "Try Resona AI",
   },
-  {
-    id: "dashboard",
-    title: "Resona Dashboard",
-    tabLabel: "Executive Dashboards",
-    mobileTabLabel: "Dashboards",
-    badge: "Dashboard Agent",
-    icon: LayoutDashboard,
-    headline: "Instant automated dashboards.",
-    summary:
-      "Turn raw tables into executive charts in seconds. Resona auto-detects metric distributions, cohort aggregations, and trends without BI setup.",
-    points: [
-      "Auto-detected time-series and KPI cards",
-      "Interactive drill-downs from charts into live rows",
-      "Zero configuration BI for any PostgreSQL database",
-    ],
-    image: "/images/de/resona-ai/ds-ai/ds-generated.png",
-    fallbackImage: "/images/de/resona-ai/ds-ai/dashabord-ai.png",
-    ctaText: "Try Dashboards",
-  },
 ];
 
 export function ResonaExplorerSection() {
-  const sectionRef = useRef<HTMLDivElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
-  const isManualClickRef = useRef(false);
-  const manualTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
 
-  // Scroll-driven progression through agents ("magic" scroll carousel)
+  // Auto-advance through agents smoothly every 5s unless hovered
   useEffect(() => {
-    let ticking = false;
+    if (isPaused) return;
 
-    const handleScroll = () => {
-      if (isManualClickRef.current) return;
+    const timer = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % agents.length);
+    }, 5000);
 
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const el = sectionRef.current;
-          if (el) {
-            const rect = el.getBoundingClientRect();
-            // Pinned below fixed announcement bar + header (~96px)
-            const pinOffset = 96;
-            const totalScrollable = el.offsetHeight - window.innerHeight;
-            if (totalScrollable > 0) {
-              const rawProgress = (pinOffset - rect.top) / totalScrollable;
-              const progress = Math.min(1, Math.max(0, rawProgress));
+    return () => clearInterval(timer);
+  }, [isPaused]);
 
-              // Clean 3-agent progression across scroll distance:
-              // 0.00 to 0.35 -> Voice Analytics (Slide 1: Text Left, Image Right)
-              // 0.35 to 0.70 -> Resona AI (Slide 2: Text Right, Image Left)
-              // 0.70 to 1.00 -> Executive Dashboards (Slide 3: Text Left, Image Right)
-              let newIdx = 0;
-              if (progress >= 0.70) {
-                newIdx = 2;
-              } else if (progress >= 0.35) {
-                newIdx = 1;
-              } else {
-                newIdx = 0;
-              }
-              setActiveIdx(newIdx);
-            }
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  // Smooth jump on direct tab click and sync scroll position
   const handleTabClick = (index: number) => {
     setActiveIdx(index);
-    isManualClickRef.current = true;
-    if (manualTimeoutRef.current) clearTimeout(manualTimeoutRef.current);
-    manualTimeoutRef.current = setTimeout(() => {
-      isManualClickRef.current = false;
-    }, 800);
-
-    const el = sectionRef.current;
-    if (el) {
-      const totalScrollable = el.offsetHeight - window.innerHeight;
-      if (totalScrollable > 0) {
-        const pinOffset = 96;
-        const targetPercent = index === 0 ? 0.12 : index === 1 ? 0.52 : 0.86;
-        const elTop = el.getBoundingClientRect().top + window.scrollY - pinOffset;
-        const targetY = elTop + targetPercent * totalScrollable;
-        window.scrollTo({ top: targetY, behavior: "smooth" });
-      }
-    }
   };
 
   const activeAgent = agents[activeIdx];
@@ -153,17 +96,18 @@ export function ResonaExplorerSection() {
 
   return (
     <section
-      ref={sectionRef}
       id="resona-ai"
-      className="relative h-[320vh] sm:h-[340vh] w-full bg-background border-t border-border/40 scroll-mt-28"
+      className="relative pt-8 pb-16 sm:pt-10 sm:pb-20 w-full bg-background border-t border-border/40 scroll-mt-28"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
       {/* Subtle background ambient mesh */}
       <div className="absolute inset-0 grid-bg-emerald opacity-15 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)] pointer-events-none" />
 
-      {/* Sticky pinned container: comfortably fits entire card + header + tabs within viewport */}
-      <div className="sticky top-[72px] sm:top-[96px] h-[calc(100vh-76px)] sm:h-[calc(100vh-100px)] flex flex-col justify-center max-w-6xl mx-auto px-3 sm:px-6 py-1 sm:py-2">
+      {/* Main Container - normal natural scroll flow without sticky trapping */}
+      <div className="max-w-6xl mx-auto px-3 sm:px-6">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-1 sm:mb-1.5 shrink-0">
+        <div className="text-center max-w-3xl mx-auto mb-4 sm:mb-6 shrink-0">
           <h2 className="font-display font-bold tracking-tight text-lg sm:text-2xl md:text-3xl text-foreground leading-tight">
             Resona AI
           </h2>
@@ -173,7 +117,7 @@ export function ResonaExplorerSection() {
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex items-center justify-center mb-1.5 sm:mb-2.5 shrink-0">
+        <div className="flex items-center justify-center mb-4 sm:mb-6 shrink-0">
           <div className="inline-flex p-1 sm:p-1.5 rounded-2xl border border-border/80 bg-card/80 backdrop-blur-md shadow-sm gap-0.5 sm:gap-1 max-w-full overflow-x-auto no-scrollbar">
             {agents.map((agent, index) => {
               const TabIcon = agent.icon;
@@ -199,7 +143,7 @@ export function ResonaExplorerSection() {
           </div>
         </div>
 
-        {/* Outer Card Box: sized to fit 100% in viewport without cutoff, 71% image / 29% text */}
+        {/* Outer Card Box */}
         <div className="relative shrink-0 w-full">
           <div className="absolute -inset-x-8 -top-8 -bottom-8 bg-primary/10 blur-3xl opacity-30 -z-10 rounded-full pointer-events-none" />
 
@@ -229,7 +173,7 @@ export function ResonaExplorerSection() {
                   {activeAgent.summary}
                 </p>
 
-                {/* Concise Highlights: visible on tablet/desktop, hidden on small mobile to maximize screenshot space */}
+                {/* Concise Highlights */}
                 <ul className="hidden sm:block space-y-1 sm:space-y-1.5 pt-0.5 text-xs sm:text-[13px] text-foreground/90">
                   {activeAgent.points.map((point, i) => (
                     <li key={i} className="flex items-start gap-1.5">
@@ -258,7 +202,7 @@ export function ResonaExplorerSection() {
                 </div>
               </div>
 
-              {/* More width for image (71% on desktop, dedicated height on mobile) - centered and stretched */}
+              {/* More width for image (71% on desktop, dedicated height on mobile) */}
               <div
                 className={cn(
                   "w-full lg:w-[71%] relative h-[210px] sm:h-[280px] lg:h-full overflow-hidden bg-slate-950 dark:bg-[#090d16] transition-all duration-300",
@@ -288,9 +232,3 @@ export function ResonaExplorerSection() {
     </section>
   );
 }
-
-
-
-
-
-
